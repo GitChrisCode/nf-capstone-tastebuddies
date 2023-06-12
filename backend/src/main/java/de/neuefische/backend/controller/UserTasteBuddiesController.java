@@ -1,34 +1,23 @@
 package de.neuefische.backend.controller;
 
+import de.neuefische.backend.model.UserTasteBuddies;
 import de.neuefische.backend.service.UserTasteBuddiesDetailsService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/tb/user")
 @RequiredArgsConstructor
 public class UserTasteBuddiesController {
     private final UserTasteBuddiesDetailsService service;
 
-    @GetMapping("/me")
-    public String getMeControllerOnly(Principal principal) {
-        if (principal != null) {
-            return principal.getName();
-        }
-        return "Du bist nicht eingeloggt!";
-    }
-
-    @GetMapping("/me2")
-    public String getMeFromEverywhere(){
-        System.out.println(SecurityContextHolder.getContext());
-        return SecurityContextHolder
-                .getContext()
-                .getAuthentication()
-                .getName();
+    @PostMapping("/registration")
+    @ResponseStatus(HttpStatus.CREATED)
+    public UserTasteBuddies registerUserTasteBuddies(@RequestParam String userName,@RequestParam String userPassword) {
+        return service.registerUserTasteBuddies(userName, userPassword);
     }
 }

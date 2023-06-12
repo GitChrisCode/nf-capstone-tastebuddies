@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,10 +16,19 @@ import java.util.List;
 public class UserTasteBuddiesDetailsService implements UserDetailsService {
 
     private final MongoUserTasteBuddiesRepo repo;
+    private final PasswordEncoder passwordEncoder;
+    private final UUIDService uuidService;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserTasteBuddies mongoUser = repo.findUserTasteBuddiesByUserName(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User with username:" + username + " not found"));
         return new User(mongoUser.getUserName(), mongoUser.getUserPassword(), List.of());
+    }
+
+    public UserTasteBuddies registerUserTasteBuddies(String userName, String userPassword) {
+        String encodedPassword = passwordEncoder.encode(userPassword);
+        UserTasteBuddies newUserTasteBuddies = new UserTasteBuddies(uuidService.generateUUID(), userName, encodedPassword);
+        return repo.save(newUserTasteBuddies);
     }
 }
