@@ -12,7 +12,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class MongoUserDetailsService implements UserDetailsService {
+public class UserTasteBuddiesDetailsService implements UserDetailsService {
 
     private final MongoUserTasteBuddiesRepo repo;
     @Override
