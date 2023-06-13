@@ -13,13 +13,13 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class UserTasteBuddiesControllerTest {
+class UserTasteBuddiesControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
     @DirtiesContext
     @Test
-    public void testRegisterUserTasteBuddies() throws Exception {
+   void testRegisterUserTasteBuddies() throws Exception {
         //given
         String userName = "testUser";
         String userPassword = "testPassword";
