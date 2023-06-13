@@ -4,7 +4,6 @@ import de.neuefische.backend.model.UserTasteBuddies;
 import de.neuefische.backend.service.UserTasteBuddiesDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;

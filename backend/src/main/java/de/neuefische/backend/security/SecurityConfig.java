@@ -22,16 +22,17 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder(){
         return Argon2PasswordEncoder.defaultsForSpringSecurity_v5_8();
     }
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         CsrfTokenRequestAttributeHandler requestHandler = new CsrfTokenRequestAttributeHandler();
         requestHandler.setCsrfRequestAttributeName(null);
 
+
         return http
                 .csrf(csrf -> csrf
                         .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                         .csrfTokenRequestHandler(requestHandler))
+
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
                 .httpBasic(basic -> basic.authenticationEntryPoint(
                         (request, response, authException) ->
@@ -41,7 +42,7 @@ public class SecurityConfig {
                                 )))
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers(
-                            ("/api/**")).permitAll();
+                            ("/tb/**")).permitAll();
                     auth.anyRequest().permitAll();
                 })
                 .build();
