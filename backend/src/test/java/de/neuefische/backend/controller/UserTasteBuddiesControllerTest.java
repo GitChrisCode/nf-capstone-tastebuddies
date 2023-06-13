@@ -42,19 +42,19 @@ class UserTasteBuddiesControllerTest {
 
     @Test
     void testRegisterUserTasteBuddiesV2() {
-        // Erstellen Sie eine Mock-Instanz des UserTasteBuddiesDetailsService
+
         UserTasteBuddiesDetailsService mockService = Mockito.mock(UserTasteBuddiesDetailsService.class);
 
-        // Definieren Sie das erwartete Verhalten der Mock-Instanz
+
         UserTasteBuddies expectedUser = new UserTasteBuddies();
         expectedUser.setUserName("testUser");
         expectedUser.setUserPassword("testPassword");
         Mockito.when(mockService.registerUserTasteBuddies(anyString(), anyString())).thenReturn(expectedUser);
 
-        // Erstellen Sie eine Instanz des Controllers mit dem Mock-Service
+
         UserTasteBuddiesController controller = new UserTasteBuddiesController(mockService);
 
-        // Rufen Sie die Methode des Controllers auf, die getestet werden soll
+
         UserTasteBuddies resultUser = controller.registerUserTasteBuddies("TestUser", "TestPassword");
 
         // Überprüfen Sie das Ergebnis
