@@ -41,7 +41,7 @@ class UserTasteBuddiesControllerTest {
     }
 
     @Test
-    public void testRegisterUserTasteBuddiesV2() {
+    void testRegisterUserTasteBuddiesV2() {
         // Erstellen Sie eine Mock-Instanz des UserTasteBuddiesDetailsService
         UserTasteBuddiesDetailsService mockService = Mockito.mock(UserTasteBuddiesDetailsService.class);
 
