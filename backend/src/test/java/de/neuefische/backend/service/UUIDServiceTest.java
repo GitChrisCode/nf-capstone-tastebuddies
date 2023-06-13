@@ -4,11 +4,12 @@ import org.junit.jupiter.api.Test;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 class UUIDServiceTest {
-    /*@Test
+    @Test
     void testGenerateUUID() {
         // GIVEN
         UUIDService mockUUIDService = mock(UUIDService.class);
@@ -22,17 +23,16 @@ class UUIDServiceTest {
 
         //THEN
         assertEquals(expectedUUID, resultUUID);
-    }*/
+    }
+
     @Test
-        void testGenerateUUID() {
-            // GIVEN
-            UUIDService uuidService = new UUIDService();
-
-            // WHEN
-            String resultUUID = uuidService.generateUUID();
-
-            // THEN
-            assertEquals(36, resultUUID.length());
-        }
+    void testGenerateUUID_generateTwoUUIDs_checkIfUnequal(){
+        final UUIDService uuidService = new UUIDService();
+        //Given
+        String UUIDOne = uuidService.generateUUID();
+        String UUIDTwo = uuidService.generateUUID();
+        //Then When
+        assertNotEquals(UUIDOne, UUIDTwo);
+    }
 
 }
