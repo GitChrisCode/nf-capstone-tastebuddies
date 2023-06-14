@@ -4,10 +4,12 @@ import RegisterForm from "./components/RegisterForm"
 import useUser from "./components/UserHooks"
 import {Route, Routes} from "react-router-dom";
 import LoginPage from "./components/LoginPage";
+import RecipeSearch from "./components/RecipeSearch";
+import ProtectedRoutes from "./components/Protected Routes";
 
 function App() {
 
-    const {login} = useUser();
+    const {login, user} = useUser();
 
   return (
       <div>
@@ -16,8 +18,11 @@ function App() {
           </header>
           <Routes>
               <Route path="/login" element={<LoginPage login={login}/>}/>
-              <Route path="/register" element={<RegisterForm/>}
-              />
+              <Route path="/register" element={<RegisterForm/>}/>
+              <Route element={<ProtectedRoutes user={user}/>}>
+                <Route path="/recipesearch" element={<RecipeSearch/>}
+                />
+              </Route>
           </Routes>
       </div>
   );
