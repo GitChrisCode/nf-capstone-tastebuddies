@@ -6,5 +6,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.Optional;
 
 public interface MongoUserTasteBuddiesRepo extends MongoRepository<UserTasteBuddies, String> {
-    public Optional<UserTasteBuddies> findUserTasteBuddiesByUserName(String userName);
+    public Optional<UserTasteBuddies> findUserByUserName(String userName);
 }

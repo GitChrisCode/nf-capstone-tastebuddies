@@ -21,9 +21,10 @@ public class UserTasteBuddiesDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserTasteBuddies mongoUser = repo.findUserTasteBuddiesByUserName(username)
+        UserTasteBuddies user = repo.findUserByUserName(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User with username:" + username + " not found"));
-        return new User(mongoUser.getUserName(), mongoUser.getUserPassword(), List.of());
+        return new User(user.getUserName(), user.getUserPassword(), List.of()) {
+        };
     }
 
     public UserTasteBuddies registerUserTasteBuddies(String userName, String userPassword) {
