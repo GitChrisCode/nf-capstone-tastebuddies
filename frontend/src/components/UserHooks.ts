@@ -7,10 +7,9 @@ export default function useUser() {
 
     function login(username: string, password: string) {
         // Rückgabewert ist ein Promise weil die Funktion asynchron ist
-        return axios.post("/user/login", undefined, {auth: {username, password}})
+        return axios.post("/tb/user/login", undefined, {auth: {username, password}})
             .then((r) => setUser(r.data))
     }
 
     return {login, user}
-
 }

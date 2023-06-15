@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
 import RegisterForm from "./components/RegisterForm"
 import useUser from "./components/UserHooks"
@@ -7,6 +7,7 @@ import LoginPage from "./components/LoginPage";
 import RecipeSearch from "./components/RecipeSearch";
 import ProtectedRoutes from "./components/Protected Routes";
 import Test from "./components/Test";
+import Homepage from "./components/Homepage";
 
 function App() {
 
@@ -16,17 +17,15 @@ function App() {
       <div>
           <header>
               <h1>TasteBuddies</h1>
-
           </header>
           <Routes>
-              <Route path="/" element={<LoginPage login={login}/>}/>
+              <Route path="/" element={<Homepage/>}/>
               <Route path="/login" element={<LoginPage login={login}/>}/>
-              <Route path="/register" element={<RegisterForm/>}/>
               <Route path="/test" element={<Test/>}/>
+              <Route path="/register" element={<RegisterForm/>}/>
               <Route element={<ProtectedRoutes user={user}/>}>
                 <Route path="/recipesearch" element={<RecipeSearch/>}/>
               </Route>
-
           </Routes>
       </div>
   );

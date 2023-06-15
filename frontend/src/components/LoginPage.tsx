@@ -1,5 +1,4 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react';
-import axios from 'axios';
+import React, { FormEvent, useState } from 'react';
 import {useNavigate} from "react-router-dom";
 
 type Props = {
@@ -9,22 +8,22 @@ function LoginPage(props: Props) {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-
-    const nav = useNavigate()
+    const navigate = useNavigate()
 
     function loginOnSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        // verhindert das neurendern der Seite
-        // wir schicken über den Header unsere Authorisierung mit, der Body ist undefined
-        axios.post("/user/login", undefined, {auth: {username, password}})
-            .then((r) => console.log(r.data))
+        props.login(username,password).then(()=>{
+            navigate('/recipesearch');
+        })
     }
 
     return (
         <div>
             <h1>LOGIN</h1>
             <form onSubmit={loginOnSubmit}>
+                <p>Enter Username:</p>
                 <input type="text" onChange={(e) => setUsername(e.target.value)}/>
+                <p>Enter Password:</p>
                 <input type="password" onChange={(e) => setPassword(e.target.value)}/>
                 <button>LOGIN</button> {/** type="submit" ist default */}
             </form>

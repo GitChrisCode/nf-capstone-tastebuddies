@@ -1,13 +1,13 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class RecipeSearch extends Component {
-    render() {
+function RecipeSearch() {
+
         return (
             <div>
              <h1>Work in Progress</h1>
             </div>
         );
-    }
+
 }
 
 export default RecipeSearch;
