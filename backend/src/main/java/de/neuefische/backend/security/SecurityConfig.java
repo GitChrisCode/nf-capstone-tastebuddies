@@ -25,6 +25,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         CsrfTokenRequestAttributeHandler requestHandler = new CsrfTokenRequestAttributeHandler();
+        requestHandler.setCsrfRequestAttributeName(null);
 
         return http
                 .csrf(csrf -> csrf
@@ -40,10 +41,11 @@ public class SecurityConfig {
                                 )))
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers(
+                            ("/tb/user/recipesearch")).authenticated();
+                    auth.requestMatchers(
                             ("/tb/**")).permitAll();
                     auth.anyRequest().permitAll();
                 })
                 .build();
     }
-
 }

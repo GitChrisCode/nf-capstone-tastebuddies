@@ -1,11 +1,14 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import axios from 'axios';
+import {useNavigate} from "react-router-dom";
 
 function RegisterForm() {
     const [formData, setFormData] = useState({
         userName: '',
         userPassword: ''
     });
+
+    const navigate = useNavigate();
 
     const handleSubmit = (event: FormEvent) => {
         event.preventDefault();
@@ -20,6 +23,7 @@ function RegisterForm() {
             .then((response) => {
                 console.log(response.data);
             })
+            .then(()=>{navigate('/login')})
             .catch((error) => {
                 console.error(error);
             });
