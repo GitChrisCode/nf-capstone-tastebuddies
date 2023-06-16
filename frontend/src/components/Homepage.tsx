@@ -8,10 +8,16 @@ function Homepage() {
         navigate('/login');
     };
 
+    const goToRegister = () => {
+        navigate('/register');
+    }
+
     return (
         <div>
-            <h1>Welcome to REACT hell ...</h1>
+            <p>If you are already registed, please Login:</p>
             <button onClick={goToLogin}>Go to Login</button>
+            <p>Otherwise please register:</p>
+            <button onClick={goToRegister}> Go to Register</button>
         </div>
     );
 }

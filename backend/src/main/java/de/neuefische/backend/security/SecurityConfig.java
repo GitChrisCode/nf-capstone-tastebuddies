@@ -41,10 +41,11 @@ public class SecurityConfig {
                                 )))
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers(
+                            ("/tb/user/recipesearch")).authenticated();
+                    auth.requestMatchers(
                             ("/tb/**")).permitAll();
                     auth.anyRequest().permitAll();
                 })
                 .build();
     }
-
 }
