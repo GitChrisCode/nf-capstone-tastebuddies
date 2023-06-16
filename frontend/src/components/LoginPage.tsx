@@ -10,11 +10,15 @@ function LoginPage(props: Props) {
     const [password, setPassword] = useState("");
     const navigate = useNavigate()
 
-    function loginOnSubmit(e: FormEvent<HTMLFormElement>) {
+    async function loginOnSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        props.login(username,password).then(()=>{
+        try {
+            await props.login(username, password);
             navigate('/recipesearch');
-        })
+        } catch (error) {
+            // Handle error
+            console.error('Login failed', error);
+        }
     }
 
     return (
