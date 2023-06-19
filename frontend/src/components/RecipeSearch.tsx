@@ -7,7 +7,6 @@ type Recipes = {
     title: string,
     image: string,
     imageType: string
-
 }
 
 function RecipeSearch() {
@@ -15,7 +14,7 @@ function RecipeSearch() {
     const [recipesSearchResult, setRecipesSearchResult] = useState<Recipes[]>([]);
     function searchSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        axios.get("/tb/user/recipes/complexSearch?query=" + searchQuery)
+        axios.get("/tb/user/recipesearch?query=" + searchQuery)
             .then(response => response.data)
             .catch(console.error)
             .then((data) => setRecipesSearchResult(data.results))
@@ -27,8 +26,22 @@ function RecipeSearch() {
                 <form onSubmit={searchSubmit}>
                     <p>Enter Ingredients:</p>
                     <input type="text" onChange={(e)=> setSearchQuery(e.target.value)}/>
+                    <button> Search</button>
                 </form>
                 <LogoutButton/>
+                <h2>Search Results:</h2>
+                {recipesSearchResult.length > 0 ? (
+                    <ul>
+                        {recipesSearchResult.map(recipe => (
+                            <li key={recipe.id}>
+                                <img src={recipe.image} alt={recipe.title} />
+                                <h3>{recipe.title}</h3>
+                            </li>
+                        ))}
+                    </ul>
+                ) : (
+                    <p>No recipes found.</p>
+                )}
             </div>
         );
 

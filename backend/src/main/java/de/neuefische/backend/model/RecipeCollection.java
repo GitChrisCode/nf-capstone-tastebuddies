@@ -10,6 +10,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RecipeCollection {
-    private List<Recipe> recipes;
+    private List<Recipe> results;
     private RecipeInfo recipeInfo;
 }
