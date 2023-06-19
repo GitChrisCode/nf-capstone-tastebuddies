@@ -1,6 +1,7 @@
 package de.neuefische.backend.service;
 
 import de.neuefische.backend.model.Recipe;
+import de.neuefische.backend.model.RecipeCollection;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
@@ -19,15 +20,16 @@ public class RecipeService {
 
     WebClient webClient = WebClient.create("https://api.spoonacular.com");
 
-    public List<Recipe> getRecipes(String searchQuery) {
-        List<Recipe> searchResult = new ArrayList<>();
-        searchResult = Objects.requireNonNull(webClient.get())
-                .uri("/complexsearch/" + search)
+    public RecipeCollection getRecipes(String searchQuery) {
+        RecipeCollection result = Objects.requireNonNull(webClient.get())
+                .uri("/complexsearch/" + searchQuery)
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .retrieve()
-                .toEntity(s)
+                .toEntity(RecipeCollection.class)
+                .block()
+                .getBody();
 
 
-        return searchResult;
+        return result;
     }
 }

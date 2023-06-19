@@ -1,6 +1,7 @@
 package de.neuefische.backend.controller;
 
 import de.neuefische.backend.model.Recipe;
+import de.neuefische.backend.model.RecipeCollection;
 import de.neuefische.backend.service.RecipeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +18,7 @@ public class RecipeController {
     private final RecipeService service;
 
     @GetMapping("/recipesearch/{searchQuery}")
-    public List<Recipe> getRecipes(@PathVariable String searchQuery) {
+    public RecipeCollection getRecipes(@PathVariable String searchQuery) {
         return service.getRecipes(searchQuery);
     }
 }
