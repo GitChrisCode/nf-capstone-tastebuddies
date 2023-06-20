@@ -3,19 +3,30 @@ package de.neuefische.backend.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.neuefische.backend.model.RecipeCollection;
-import okhttp3.mockwebserver.MockResponse;
-import okhttp3.mockwebserver.MockWebServer;
 import org.junit.jupiter.api.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.web.reactive.server.WebTestClient;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
+
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@AutoConfigureMockMvc
 class RecipeServiceTest {
 
-    public static MockWebServer mockBackEnd;
 
+    @Autowired
+    WebTestClient webTestClient;
+
+    @MockBean
+    RecipeService mockRecipeService;
 
     @Test
-    void getRecipes() throws Exception {
+    void when_getRecipes_CompareEquality() throws Exception {
 
         String apiResponse = """                
                 {
@@ -92,19 +103,10 @@ class RecipeServiceTest {
         ObjectMapper objectMapper = new ObjectMapper();
         RecipeCollection responseObject = objectMapper.readValue(apiResponse, RecipeCollection.class);
 
-        MockWebServer server = new MockWebServer();
-        MockResponse response = new MockResponse()
-                .addHeader("Content-Type", "application/json; charset=utf-8")
-                .setBody(apiResponse);
+        when(mockRecipeService.getRecipes(searchQuery)).thenReturn(responseObject);
 
-        server.enqueue(response);
-        server.start();
+        RecipeCollection actual = mockRecipeService.getRecipes(searchQuery);
 
-
-        RecipeService service = new RecipeService();
-
-        assertEquals(responseObject, service.getRecipes(searchQuery));
-
-        server.shutdown();
+        assertEquals(responseObject, actual);
     }
 }
