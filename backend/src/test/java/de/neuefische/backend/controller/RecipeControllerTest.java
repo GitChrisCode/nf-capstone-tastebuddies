@@ -1,32 +1,39 @@
-package de.neuefische.backend.service;
+package de.neuefische.backend.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import de.neuefische.backend.model.RecipeCollection;
-import org.junit.jupiter.api.*;
+import de.neuefische.backend.service.RecipeService;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.web.reactive.server.WebTestClient;
+import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.web.servlet.MockMvc;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest
 @AutoConfigureMockMvc
-class RecipeServiceTest {
-
+class RecipeControllerTest {
 
     @Autowired
-    WebTestClient webTestClient;
+    private MockMvc mockMvc;
 
     @MockBean
-    RecipeService mockRecipeService;
+    private RecipeService mockRecipeService;
 
     @Test
-    void when_getRecipes_CompareEquality() throws Exception {
+    @WithMockUser
+    void testGetRecipes() throws Exception {
+        // Mock data
+        RecipeCollection recipeCollection = new RecipeCollection();
 
         String apiResponse = """                
                 {
@@ -101,13 +108,18 @@ class RecipeServiceTest {
         String searchQuery = "apples";
 
         ObjectMapper objectMapper = new ObjectMapper();
-        RecipeCollection responseObject = objectMapper.readValue(apiResponse, RecipeCollection.class);
+        recipeCollection = objectMapper.readValue(apiResponse, RecipeCollection.class);
 
-        when(mockRecipeService.getRecipes(searchQuery)).thenReturn(responseObject);
+        // Mock the service method
+        when(mockRecipeService.getRecipes(anyString())).thenReturn(recipeCollection);
 
-        RecipeCollection actual = mockRecipeService.getRecipes(searchQuery);
-
-        assertEquals(responseObject, actual);
+        // Perform the GET request and verify the response
+        mockMvc.perform(get("/tb/user/recipesearch")
+                        .param("query", "apples")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .with(csrf()))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.results").exists()); // Add additional assertions as needed
     }
-
 }
