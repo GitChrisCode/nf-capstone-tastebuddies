@@ -1,0 +1,9 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns, adjust as needed */
+    grid-gap: 20px; /* Adjust the gap between grid items */
+}
+
+.grid-item {
+    text-align: center;
+}

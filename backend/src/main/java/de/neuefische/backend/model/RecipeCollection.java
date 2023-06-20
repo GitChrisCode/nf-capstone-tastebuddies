@@ -11,5 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 public class RecipeCollection {
     private List<Recipe> results;
-    private RecipeInfo recipeInfo;
+    private Integer offset;
+    private Integer number;
+    private Integer totalResults;
 }
