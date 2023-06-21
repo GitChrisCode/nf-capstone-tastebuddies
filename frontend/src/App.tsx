@@ -13,6 +13,10 @@ function App() {
 
     const {login, user} = useUser();
 
+    async function handleLogin(username: string, password: string) {
+        await login(username, password);
+    }
+
   return (
       <div>
           <header>
@@ -20,7 +24,7 @@ function App() {
           </header>
           <Routes>
               <Route path="/" element={<Homepage/>}/>
-              <Route path="/login" element={<LoginPage login={login}/>}/>
+              <Route path="/login" element={<LoginPage login={handleLogin}/>}/>
               <Route path="/test" element={<Test/>}/>
               <Route path="/register" element={<RegisterForm/>}/>
               <Route element={<ProtectedRoutes user={user}/>}>

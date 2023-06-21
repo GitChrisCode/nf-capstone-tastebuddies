@@ -33,12 +33,14 @@ public class SecurityConfig {
                         .csrfTokenRequestHandler(requestHandler))
 
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
+
                 .httpBasic(basic -> basic.authenticationEntryPoint(
                         (request, response, authException) ->
                                 response.sendError(
                                         HttpStatus.UNAUTHORIZED.value(),
                                         HttpStatus.UNAUTHORIZED.getReasonPhrase()
                                 )))
+
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers(
                             ("/tb/user/recipesearch")).authenticated();
@@ -46,6 +48,7 @@ public class SecurityConfig {
                             ("/tb/**")).permitAll();
                     auth.anyRequest().permitAll();
                 })
+
                 .build();
     }
 }
