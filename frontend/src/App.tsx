@@ -8,6 +8,7 @@ import RecipeSearch from "./components/RecipeSearch";
 import ProtectedRoutes from "./components/Protected Routes";
 import Test from "./components/Test";
 import Homepage from "./components/Homepage";
+import RecipeDetail from "./components/RecipeDetail";
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
               <Route path="/register" element={<RegisterForm/>}/>
               <Route element={<ProtectedRoutes user={user}/>}>
                 <Route path="/recipesearch" element={<RecipeSearch/>}/>
+                <Route path="/recipe/:id" element={<RecipeDetail/>}/>
               </Route>
           </Routes>
       </div>
