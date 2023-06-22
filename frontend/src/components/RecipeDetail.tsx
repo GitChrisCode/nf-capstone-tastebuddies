@@ -7,15 +7,34 @@ type Props = {
     id: string;
 };
 
+type Steps = {
+    number: number;
+    step: string;
+}
+
+type analyzedInstructions = {
+    name: string;
+    steps: Steps[];
+}
+
 type RecipeDetail = {
     id: number;
     title: string;
     image: string;
     imageType: string;
     instructions: string;
+    analyzedInstructions: analyzedInstructions[]
 
 };
-
+function StepList({ steps }: { steps: Steps[] }) {
+    return (
+        <ul>
+            {steps.map((step) => (
+                <li key={step.number}>{step.step}</li>
+            ))}
+        </ul>
+    );
+}
 function RecipeDetail() {
     const { id } = useParams<Props>();
     const [recipe, setRecipe] = useState<RecipeDetail | null>(null);
@@ -37,7 +56,13 @@ function RecipeDetail() {
             <LogoutButton/>
             <h1>{recipe.title}</h1>
             <img src={recipe.image} alt={recipe.title} />
-            <p>{recipe.instructions}</p>
+            <h2>Instructions:</h2>
+            {recipe.analyzedInstructions.map((instruction, index) => (
+                <div key={index}>
+                    <h3>{instruction.name}</h3>
+                    <StepList steps={instruction.steps} />
+                </div>
+            ))}
 
         </div>
     );
