@@ -21,8 +21,7 @@ public class RecipeInformation {
     private Integer aggregateLikes;
     private Double healthScore;
     private Double spoonacularScore;
-    /*private Double pricePerServing;
-    private String[] analyzedInstructions;
+    private Double pricePerServing;
     private Boolean cheap;
     private String creditsText;
     private String[] cuisines;
@@ -31,6 +30,7 @@ public class RecipeInformation {
     private String gaps;
     private Boolean glutenFree;
     private String instructions;
+    private AnalyzedInstructions analyzedInstructions;
     private Boolean ketogenic;
     private Boolean lowFodmap;
     private String[] occasions;
@@ -41,5 +41,5 @@ public class RecipeInformation {
     private Boolean veryPopular;
     private Boolean whole30;
     private Integer weightWatcherSmartPoints;
-    private String[] dishTypes;*/
+    private String[] dishTypes;
 }
