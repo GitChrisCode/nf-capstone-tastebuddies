@@ -30,7 +30,7 @@ public class RecipeInformation {
     private String gaps;
     private Boolean glutenFree;
     private String instructions;
-    private AnalyzedInstructions analyzedInstructions;
+    private AnalyzedInstructions[] analyzedInstructions;
     private Boolean ketogenic;
     private Boolean lowFodmap;
     private String[] occasions;

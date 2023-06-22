@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import LogoutButton from "./LogoutButton";
 
 type Props = {
     id: string;
@@ -33,12 +34,12 @@ function RecipeDetail() {
 
     return (
         <div>
+            <LogoutButton/>
             <h1>{recipe.title}</h1>
             <img src={recipe.image} alt={recipe.title} />
             <p>{recipe.instructions}</p>
-            {/* Weitere Details des Rezepts anzeigen */}
+
         </div>
     );
 }
-
 export default RecipeDetail;

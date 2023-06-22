@@ -7,7 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AnalyzedInstructions {
-    private String name;
-    private Steps[] steps;
+public class Us {
+    private Double amount;
+    private String unitLong;
+    private String unitShort;
 }
