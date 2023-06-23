@@ -20,10 +20,5 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
-      - name: Set up API key
-        env:
-          SPOONACULAR_API_KEY: ${{ secrets.SPOONACULAR_API_KEY }}
-        run: |
-          echo "api-key=${SPOONACULAR_API_KEY}" >> ./backend/src/test/resources/application.properties
       - name: Build with Maven
         run: mvn -B package --file ./backend/pom.xml
