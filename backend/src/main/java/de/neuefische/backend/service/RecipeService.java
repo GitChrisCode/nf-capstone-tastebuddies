@@ -1,8 +1,10 @@
 package de.neuefische.backend.service;
 
 import de.neuefische.backend.model.RecipeCollection;
+import de.neuefische.backend.model.RecipeInformation;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
@@ -16,11 +18,14 @@ import java.util.Objects;
 @Data
 public class RecipeService {
 
+    @Value("${api-key}")
+    private String apiKey;
+
     WebClient webClient = WebClient.create("https://api.spoonacular.com");
 
     public RecipeCollection getRecipes(String searchQuery) {
 
-        String apiKey = System.getenv("SPOONACULAR_API_KEY");
+
         String uri = UriComponentsBuilder
                 .fromUriString("/recipes/complexSearch")
                 .queryParam("query", searchQuery)
@@ -32,6 +37,21 @@ public class RecipeService {
                         .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                         .retrieve()
                         .toEntity(RecipeCollection.class)
+                        .block())
+                .getBody();
+    }
+
+    public RecipeInformation getRecipeDetail(Integer id) {
+        String uri = UriComponentsBuilder
+                .fromUriString("/recipes/" + id + "/information")
+                .queryParam("apiKey", apiKey)
+                .toUriString();
+
+        return Objects.requireNonNull(Objects.requireNonNull(webClient.get())
+                        .uri(uri)
+                        .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                        .retrieve()
+                        .toEntity(RecipeInformation.class)
                         .block())
                 .getBody();
     }

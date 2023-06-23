@@ -2,6 +2,7 @@ package de.neuefische.backend.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.neuefische.backend.model.RecipeCollection;
+import de.neuefische.backend.model.RecipeInformation;
 import de.neuefische.backend.service.RecipeService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +11,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
@@ -29,10 +32,11 @@ class RecipeControllerTest {
     private RecipeService mockRecipeService;
 
     @Test
+    @DirtiesContext
     @WithMockUser
     void testGetRecipes() throws Exception {
         // Mock data
-        RecipeCollection recipeCollection = new RecipeCollection();
+        RecipeCollection recipeCollection;
 
         String apiResponse = """                
                 {
@@ -120,4 +124,93 @@ class RecipeControllerTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.results").exists()); // Add additional assertions as needed
     }
+
+    @Test
+    @DirtiesContext
+    @WithMockUser
+    void testGetRecipeDetail_ForSpecificRecipeAndGetDetailInformation() throws Exception {
+        // Mock data
+        RecipeInformation recipeInformation;
+
+        String apiResponse = """                
+                {
+                     "vegetarian": true,
+                     "vegan": false,
+                     "glutenFree": true,
+                     "dairyFree": false,
+                     "veryHealthy": false,
+                     "cheap": false,
+                     "veryPopular": false,
+                     "sustainable": false,
+                     "lowFodmap": false,
+                     "weightWatcherSmartPoints": 10,
+                     "gaps": "no",
+                     "preparationMinutes": -1,
+                     "cookingMinutes": -1,
+                     "healthScore": 0,
+                     "creditsText": "Foodista.com – The Cooking Encyclopedia Everyone Can Edit",
+                     "license": "CC BY 3.0",
+                     "sourceName": "Foodista",
+                     "pricePerServing": 59.88,                     
+                     "id": 1098248,
+                     "title": "Caramel apples",
+                     "servings": 8,                     
+                     "image": "https://spoonacular.com/recipeImages/1098248-556x370.jpg",
+                     "imageType": "jpg",                     
+                     "cuisines": [],
+                     "dishTypes": [
+                         "dessert"
+                     ],
+                     "diets": [
+                         "gluten free",
+                         "lacto ovo vegetarian"
+                     ],
+                     "occasions": [
+                         "halloween"
+                     ],                     
+                     "instructions": "<ol><li>Prepare baking sheet lined with parchment paper and set aside.</li><li>In a large saucepan melt sugar until it turns dark amber color and all of the crystals have melted.</li><li>Carefully add cream (it will bubble!) and stir until smooth.</li><li>Transfer caramel to small bowl (not too small, the apples must fit in) and leave for 5 minutes.</li><li>Insert candy apple sticks (if you don't have any, you can use popsicle sticks) 1 inch deep into each apple. </li><li>Dip apples into caramel, swirling to coat.</li><li>Transfer to sheet and let the caramel harden.</li><li>Caramel apples are best eaten the same day.</li></ol>"
+                 }
+                """;
+
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        recipeInformation = objectMapper.readValue(apiResponse, RecipeInformation.class);
+
+        // Mock the service method
+        when(mockRecipeService.getRecipeDetail(anyInt())).thenReturn(recipeInformation);
+
+        // Perform the GET request and verify the response
+        mockMvc.perform(get("/tb/user/recipe/1098248")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .with(csrf()))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.instructions").exists());
+    }
+
+    @Test
+    @DirtiesContext
+    @WithMockUser
+    void testGetRecipeDetail_WhenRecipeDetailIsNull_ReturnNotFound() throws Exception {
+
+        when(mockRecipeService.getRecipeDetail(anyInt())).thenReturn(null);
+        mockMvc.perform(get("/tb/user/recipe/1098248")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .with(csrf()))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
+    @DirtiesContext
+    @WithMockUser
+    void testGetRecipeDetail_WhenExceptionOccurs_ReturnInternalServerError() throws Exception {
+
+        when(mockRecipeService.getRecipeDetail(anyInt())).thenThrow(new RuntimeException("Something went wrong"));
+        mockMvc.perform(get("/tb/user/recipe/1098248")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .with(csrf()))
+                .andExpect(status().isInternalServerError());
+    }
+
+
 }

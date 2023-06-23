@@ -51,7 +51,6 @@ class UserTasteBuddiesControllerTest {
     @WithMockUser(username = "testUser")
     void login_shouldReturnIsOK_andShouldReturnUsername() throws Exception {
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/tb/user/login")
-                        .contentType("application/json")
                         .with(csrf()))
                 .andExpect(status().isOk())
                 .andReturn();
