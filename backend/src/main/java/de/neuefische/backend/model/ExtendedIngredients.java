@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ExtendedIngredients {
     private String aisle;
-    private double amount;
+    private Double amount;
     private String consitency;
     private Integer id;
     private String image;
