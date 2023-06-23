@@ -124,6 +124,7 @@ class RecipeControllerTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.results").exists()); // Add additional assertions as needed
     }
+
     @Test
     @DirtiesContext
     @WithMockUser
@@ -186,4 +187,30 @@ class RecipeControllerTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.instructions").exists());
     }
+
+    @Test
+    @DirtiesContext
+    @WithMockUser
+    void testGetRecipeDetail_WhenRecipeDetailIsNull_ReturnNotFound() throws Exception {
+
+        when(mockRecipeService.getRecipeDetail(anyInt())).thenReturn(null);
+        mockMvc.perform(get("/tb/user/recipe/1098248")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .with(csrf()))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
+    @DirtiesContext
+    @WithMockUser
+    void testGetRecipeDetail_WhenExceptionOccurs_ReturnInternalServerError() throws Exception {
+
+        when(mockRecipeService.getRecipeDetail(anyInt())).thenThrow(new RuntimeException("Something went wrong"));
+        mockMvc.perform(get("/tb/user/recipe/1098248")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .with(csrf()))
+                .andExpect(status().isInternalServerError());
+    }
+
+
 }
