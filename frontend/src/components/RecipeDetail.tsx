@@ -53,17 +53,16 @@ function RecipeDetail() {
 
     return (
         <div>
-            <LogoutButton/>
+            <LogoutButton />
             <h1>{recipe.title}</h1>
             <img src={recipe.image} alt={recipe.title} />
             <h2>Instructions:</h2>
-            {recipe.analyzedInstructions.map((instruction, index) => (
-                <div key={index}>
+            {recipe.analyzedInstructions.map((instruction) => (
+                <div key={instruction.name}>
                     <h3>{instruction.name}</h3>
                     <StepList steps={instruction.steps} />
                 </div>
             ))}
-
         </div>
     );
 }
