@@ -23,6 +23,7 @@ public class RecipeInformation {
     private Double healthScore;
     private Double spoonacularScore;
     private Double pricePerServing;
+    private ExtendedIngredients[] extendedIngredients;
     private Boolean cheap;
     private String creditsText;
     private String[] cuisines;

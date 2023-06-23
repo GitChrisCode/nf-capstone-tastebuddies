@@ -1,50 +1,34 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {useParams} from 'react-router-dom';
 import axios from 'axios';
 import LogoutButton from "./LogoutButton";
+import {Steps} from "../model/Steps";
+import {RecipeDetailInformation} from "../model/RecipeDetailInformation";
 
 type Props = {
     id: string;
 };
 
-type Steps = {
-    number: number;
-    step: string;
-}
-
-type analyzedInstructions = {
-    name: string;
-    steps: Steps[];
-}
-
-type RecipeDetail = {
-    id: number;
-    title: string;
-    image: string;
-    imageType: string;
-    instructions: string;
-    analyzedInstructions: analyzedInstructions[]
-
-};
-function StepList({ steps }: { steps: Steps[] }) {
+function StepList({steps}: { steps: Steps[] }) {
     return (
-        <ul>
+        <ol>
             {steps.map((step) => (
                 <li key={step.number}>{step.step}</li>
             ))}
-        </ul>
+        </ol>
     );
 }
+
 function RecipeDetail() {
-    const { id } = useParams<Props>();
-    const [recipe, setRecipe] = useState<RecipeDetail | null>(null);
+    const {id} = useParams<Props>();
+    const [recipe, setRecipe] = useState<RecipeDetailInformation | null>(null);
 
     useEffect(() => {
         axios
             .get(`/tb/user/recipe/${id}`)
             .then(response => response.data)
             .catch(console.error)
-            .then((data: RecipeDetail) => setRecipe(data));
+            .then((data: RecipeDetailInformation) => setRecipe(data));
     }, [id]);
 
     if (!recipe) {
@@ -53,17 +37,24 @@ function RecipeDetail() {
 
     return (
         <div>
-            <LogoutButton />
+            <LogoutButton/>
             <h1>{recipe.title}</h1>
-            <img src={recipe.image} alt={recipe.title} />
+            <img src={recipe.image} alt={recipe.title}/>
+            <h2>Ingredients:</h2>
+            <ul>
+                {recipe.extendedIngredients.map((ingredients) => (
+                    <li key={ingredients.name}> {Math.ceil(ingredients.measures.metric.amount)} {ingredients.measures.metric.unitShort} {ingredients.name}</li>
+                ))}
+            </ul>
             <h2>Instructions:</h2>
-            {recipe.analyzedInstructions.map((instruction) => (
-                <div key={instruction.name}>
-                    <h3>{instruction.name}</h3>
-                    <StepList steps={instruction.steps} />
-                </div>
-            ))}
+                {recipe.analyzedInstructions.map((instruction) => (
+                    <div key={instruction.name}>
+                        <h3>{instruction.name}</h3>
+                        <StepList steps={instruction.steps}/>
+                    </div>
+                ))}
         </div>
     );
 }
+
 export default RecipeDetail;
