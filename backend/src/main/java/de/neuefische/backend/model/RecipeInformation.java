@@ -13,7 +13,8 @@ public class RecipeInformation {
     private String image;
     private String imageType;
     private Integer servings;
-    private Integer readyInMinutes;
+    private Integer preparationMinutes;
+    private Integer cookingMinutes;
     private String license;
     private String sourceName;
     private String sourceURL;
