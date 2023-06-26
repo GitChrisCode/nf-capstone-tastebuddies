@@ -16,8 +16,8 @@ public class RecipeController {
     private final RecipeService service;
 
     @GetMapping("/recipesearch")
-    public RecipeCollection getRecipes(@RequestParam("query") String searchQuery) {
-        return service.getRecipes(searchQuery);
+    public RecipeCollection getRecipes(@RequestParam("includeIngredients") String includeIngredients, @RequestParam("excludeIngredients") String excludeIngredients) {
+        return service.getRecipes(includeIngredients, excludeIngredients);
     }
 
     @GetMapping("/recipe/{id}")

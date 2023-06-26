@@ -23,13 +23,12 @@ public class RecipeService {
 
     WebClient webClient = WebClient.create("https://api.spoonacular.com");
 
-    public RecipeCollection getRecipes(String searchQuery) {
-
-
+    public RecipeCollection getRecipes(String includeIngredients, String excludeIngredients) {
         String uri = UriComponentsBuilder
                 .fromUriString("/recipes/complexSearch")
-                .queryParam("query", searchQuery)
                 .queryParam("apiKey", apiKey)
+                .queryParam("includeIngredients", includeIngredients)
+                .queryParam("excludeIngredients", excludeIngredients)
                 .toUriString();
 
         return Objects.requireNonNull(Objects.requireNonNull(webClient.get())

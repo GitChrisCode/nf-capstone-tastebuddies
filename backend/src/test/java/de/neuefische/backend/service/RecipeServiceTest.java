@@ -100,14 +100,15 @@ class RecipeServiceTest {
                 }
                 """;
 
-        String searchQuery = "apples";
+        String includeIngredients = "apples";
+        String excludeIngredients = "garlic";
 
         ObjectMapper objectMapper = new ObjectMapper();
         RecipeCollection responseObject = objectMapper.readValue(apiResponse, RecipeCollection.class);
 
-        when(mockRecipeService.getRecipes(searchQuery)).thenReturn(responseObject);
+        when(mockRecipeService.getRecipes(includeIngredients, excludeIngredients)).thenReturn(responseObject);
 
-        RecipeCollection actual = mockRecipeService.getRecipes(searchQuery);
+        RecipeCollection actual = mockRecipeService.getRecipes(includeIngredients, excludeIngredients);
 
         assertEquals(responseObject, actual);
     }

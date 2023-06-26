@@ -113,7 +113,7 @@ class RecipeControllerTest {
         recipeCollection = objectMapper.readValue(apiResponse, RecipeCollection.class);
 
         // Mock the service method
-        when(mockRecipeService.getRecipes(anyString())).thenReturn(recipeCollection);
+        when(mockRecipeService.getRecipes(anyString(),anyString())).thenReturn(recipeCollection);
 
         // Perform the GET request and verify the response
         mockMvc.perform(get("/tb/user/recipesearch")
