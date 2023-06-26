@@ -12,6 +12,7 @@ public class RecipeInformation {
     private String title;
     private String image;
     private String imageType;
+    private Nutrition nutrition;
     private Integer servings;
     private Integer preparationMinutes;
     private Integer cookingMinutes;
