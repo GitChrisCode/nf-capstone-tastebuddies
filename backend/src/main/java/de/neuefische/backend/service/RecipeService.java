@@ -45,6 +45,7 @@ public class RecipeService {
         String uri = UriComponentsBuilder
                 .fromUriString("/recipes/" + id + "/information")
                 .queryParam("apiKey", apiKey)
+                .queryParam("includeNutrition", true)
                 .toUriString();
 
         return Objects.requireNonNull(Objects.requireNonNull(webClient.get())

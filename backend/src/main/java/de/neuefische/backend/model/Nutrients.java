@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Nutrients {
     private String name;
-    private String amountK;
+    private String amount;
     private String unit;
     private String percentOfDailyNeeds;
 }

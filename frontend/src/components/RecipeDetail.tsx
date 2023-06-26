@@ -42,8 +42,10 @@ function RecipeDetail() {
             <img src={recipe.image} alt={recipe.title}/>
             <h2>Ingredients:</h2>
             <ul>
-                {recipe.extendedIngredients.map((ingredients) => (
-                    <li key={ingredients.measures.us.amount}> {Math.ceil(ingredients.measures.metric.amount)} {ingredients.measures.metric.unitShort} {ingredients.name}</li>
+                {recipe.extendedIngredients.map((ingredients, index) => (
+                    <li key={`ingredient-${index}`}>
+                        {Math.ceil(ingredients.measures.metric.amount)} {ingredients.measures.metric.unitShort} {ingredients.name}
+                    </li>
                 ))}
             </ul>
             <h2>Instructions:</h2>
@@ -53,6 +55,25 @@ function RecipeDetail() {
                         <StepList steps={instruction.steps}/>
                     </div>
                 ))}
+            <h2>Nutrients:</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th align="left">Name</th>
+                    <th align="left">Amount</th>
+                    <th align="left">Percent of Daily Needs</th>
+                </tr>
+                </thead>
+                <tbody>
+                {recipe.nutrition.nutrients.map((nutrient) => (
+                    <tr key={nutrient.name.toString()}>
+                        <td>{nutrient.name}</td>
+                        <td>{`${nutrient.amount} ${nutrient.unit}`}</td>
+                        <td>{nutrient.percentOfDailyNeeds}</td>
+                    </tr>
+                ))}
+                </tbody>
+            </table>
         </div>
     );
 }
