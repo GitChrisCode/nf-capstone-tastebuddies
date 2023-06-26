@@ -43,7 +43,7 @@ function RecipeDetail() {
             <h2>Ingredients:</h2>
             <ul>
                 {recipe.extendedIngredients.map((ingredients) => (
-                    <li key={ingredients.name}> {Math.ceil(ingredients.measures.metric.amount)} {ingredients.measures.metric.unitShort} {ingredients.name}</li>
+                    <li key={ingredients.measures.us.amount}> {Math.ceil(ingredients.measures.metric.amount)} {ingredients.measures.metric.unitShort} {ingredients.name}</li>
                 ))}
             </ul>
             <h2>Instructions:</h2>
