@@ -1,8 +1,8 @@
 import React, { FormEvent, useState } from 'react';
 import LogoutButton from './LogoutButton';
 import axios from 'axios';
-import { Link } from 'react-router-dom'
-import '../css/RecipeSearch.css'
+import { Link } from 'react-router-dom';
+import '../css/RecipeSearch.css';
 
 type Recipes = {
     id: number;
@@ -16,22 +16,28 @@ type RecipesResponse = {
     offset: number;
     number: number;
     totalResults: number;
-}
+};
 
 function RecipeSearch() {
-    const [searchQuery, setSearchQuery] = useState('');
+    const [includeIngredients, setIncludeIngredients] = useState('');
+    const [excludeIngredients, setExcludeIngredients] = useState('');
     const [recipesSearchResult, setRecipesSearchResult] = useState<Recipes[]>([]);
     const [totalResults, setTotalResults] = useState<number>(0);
 
     function searchSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
+        const queryParams = new URLSearchParams();
+        queryParams.append('includeIngredients', includeIngredients);
+        queryParams.append('excludeIngredients', excludeIngredients);
+        const searchQuery = queryParams.toString();
+
         axios
-            .get('/tb/user/recipesearch?query=' + searchQuery)
+            .get('/tb/user/recipesearch?' + searchQuery)
             .then(response => response.data)
             .catch(console.error)
             .then((data: RecipesResponse) => {
                 setRecipesSearchResult(data.results);
-                setTotalResults(data.totalResults)
+                setTotalResults(data.totalResults);
             });
     }
 
@@ -40,7 +46,8 @@ function RecipeSearch() {
             <h1>Search Recipe:</h1>
             <form onSubmit={searchSubmit}>
                 <p>Enter Ingredients:</p>
-                <input type="text" onChange={e => setSearchQuery(e.target.value)} />
+                <input type="text" onChange={e => setIncludeIngredients(e.target.value)} placeholder="Include ingredients" />
+                <input type="text" onChange={e => setExcludeIngredients(e.target.value)} placeholder="Exclude ingredients" />
                 <button>Search</button>
             </form>
             <LogoutButton />
@@ -60,7 +67,6 @@ function RecipeSearch() {
             ) : (
                 <p>No recipes found.</p>
             )}
-
         </div>
     );
 }
