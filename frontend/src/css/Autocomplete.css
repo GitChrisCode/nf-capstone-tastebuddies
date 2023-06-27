@@ -1,0 +1,17 @@
+.suggestion-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.suggestion-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    cursor: pointer;
+}
+
+
+
+
+
+
