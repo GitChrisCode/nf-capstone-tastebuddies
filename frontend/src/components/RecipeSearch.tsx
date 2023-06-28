@@ -2,6 +2,8 @@ import React, { FormEvent, useState } from 'react';
 import LogoutButton from './LogoutButton';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Autocomplete from './Ingredients';
+import IngredientList from "./IngredientList";
 import '../css/RecipeSearch.css';
 
 type Recipes = {
@@ -19,16 +21,23 @@ type RecipesResponse = {
 };
 
 function RecipeSearch() {
-    const [includeIngredients, setIncludeIngredients] = useState('');
-    const [excludeIngredients, setExcludeIngredients] = useState('');
+    const [includeIngredients, setIncludeIngredients] = useState<string[]>([]);
+    const [excludeIngredients, setExcludeIngredients] = useState<string[]>([]);
     const [recipesSearchResult, setRecipesSearchResult] = useState<Recipes[]>([]);
     const [totalResults, setTotalResults] = useState<number>(0);
+    const handleIncludeChange = (value: string) => {
+        setIncludeIngredients([...includeIngredients, value]);
+    };
+
+    const handleExcludeChange = (value: string) => {
+        setExcludeIngredients([...excludeIngredients, value]);
+    };
 
     function searchSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
         const queryParams = new URLSearchParams();
-        queryParams.append('includeIngredients', includeIngredients);
-        queryParams.append('excludeIngredients', excludeIngredients);
+        queryParams.append('includeIngredients', includeIngredients.join(','));
+        queryParams.append('excludeIngredients', excludeIngredients.join(','));
         const searchQuery = queryParams.toString();
 
         axios
@@ -46,12 +55,18 @@ function RecipeSearch() {
             <h1>Search Recipe:</h1>
             <form onSubmit={searchSubmit}>
                 <p>Enter Ingredients:</p>
-                <input type="text" onChange={e => setIncludeIngredients(e.target.value)} placeholder="Include ingredients" />
-                <input type="text" onChange={e => setExcludeIngredients(e.target.value)} placeholder="Exclude ingredients" />
-                <button>Search</button>
+                <Autocomplete
+                    onIncludeChange={handleIncludeChange}
+                    onExcludeChange={handleExcludeChange}
+                />
+                <button type="submit">Search</button>
             </form>
+            <IngredientList
+                includeIngredients={includeIngredients}
+                excludeIngredients={excludeIngredients}
+            />
             <LogoutButton />
-            <h2>Search Results:</h2>
+          <h2>Search Results:</h2>
             <p>Total Results: {totalResults}</p>
             {recipesSearchResult.length > 0 ? (
                 <div className="grid-container">

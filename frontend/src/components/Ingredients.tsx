@@ -1,21 +1,27 @@
-import React, {useState} from 'react';
-import ingredientsV2 from '../data/ingredientsV2.json'
+import React, { useState } from 'react';
+import ingredientsV2 from '../data/ingredientsV2.json';
 import '../css/Autocomplete.css';
+
 interface Ingredient {
     FIELD1: string;
     FIELD2: number;
 }
 
-const Autocomplete = () => {
+interface AutocompleteProps {
+    onIncludeChange: (value: string) => void;
+    onExcludeChange: (value: string) => void;
+}
+
+const Autocomplete = ({ onIncludeChange, onExcludeChange }: AutocompleteProps) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [suggestions, setSuggestions] = useState<Ingredient[]>([]);
     const [selectedSuggestion, setSelectedSuggestion] = useState<Ingredient | null>(null);
+    const [ingredientType, setIngredientType] = useState<'include' | 'exclude'>('include');
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
         setSearchTerm(value);
 
-        // Filtere die Vorschläge basierend auf dem eingegebenen Suchbegriff
         const filteredSuggestions = ingredientsV2.filter((item) =>
             item.FIELD1.toLowerCase().includes(value.toLowerCase())
         );
@@ -25,7 +31,21 @@ const Autocomplete = () => {
 
     const handleSuggestionClick = (suggestion: Ingredient) => {
         setSelectedSuggestion(suggestion);
-        setSearchTerm(suggestion.FIELD1); // Setze den ausgewählten Vorschlag als Suchbegriff
+        setSearchTerm(suggestion.FIELD1);
+
+        if (ingredientType === 'include') {
+            onIncludeChange(suggestion.FIELD1);
+        } else {
+            onExcludeChange(suggestion.FIELD1);
+        }
+    };
+
+    const handleIncludeButtonClick = () => {
+        setIngredientType('include');
+    };
+
+    const handleExcludeButtonClick = () => {
+        setIngredientType('exclude');
     };
 
     return (
@@ -43,6 +63,10 @@ const Autocomplete = () => {
                     Ausgewählter Vorschlag: {selectedSuggestion.FIELD1} (ID: {selectedSuggestion.FIELD2})
                 </div>
             )}
+            <div>
+                <button onClick={handleIncludeButtonClick}>Include Ingredient</button>
+                <button onClick={handleExcludeButtonClick}>Exclude Ingredient</button>
+            </div>
         </div>
     );
 };
