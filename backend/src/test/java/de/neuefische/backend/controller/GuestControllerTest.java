@@ -29,7 +29,7 @@ class GuestControllerTest {
     private GuestService mockGuestService;
 
     @Test
-    public void testAddGuest_Successful() throws Exception {
+    void testAddGuest_Successful() throws Exception {
         // Given
         String requestGuest = """
                 {
@@ -60,7 +60,7 @@ class GuestControllerTest {
     }
 
     @Test
-    public void testAddGuest_Failure() throws Exception {
+    void testAddGuest_Failure() throws Exception {
         // Given
         String requestGuest = """
                 {
@@ -87,7 +87,7 @@ class GuestControllerTest {
     }
 
     @Test
-    public void testGetGuestList_NotEmpty() throws Exception {
+    void testGetGuestList_NotEmpty() throws Exception {
         // Given
         String response = """
             [
@@ -122,7 +122,7 @@ class GuestControllerTest {
     }
 
     @Test
-    public void testGetGuestList_Empty() throws Exception {
+    void testGetGuestList_Empty() throws Exception {
         // Given
         List<Guest> emptyGuestList = new ArrayList<>();
 
@@ -138,7 +138,7 @@ class GuestControllerTest {
     }
 
     @Test
-    public void testEditGuest_Successful() throws Exception {
+    void testEditGuest_Successful() throws Exception {
         // Given
         String guestId = "12345";
         String requestBody = """
@@ -169,7 +169,7 @@ class GuestControllerTest {
     }
 
     @Test
-    public void testEditGuest_NotFound() throws Exception {
+    void testEditGuest_NotFound() throws Exception {
         // Given
         String guestId = "12345";
         String requestJson = """
@@ -197,7 +197,7 @@ class GuestControllerTest {
     }
 
     @Test
-    public void testDeleteGuest_Successful() throws Exception {
+    void testDeleteGuest_Successful() throws Exception {
         // Given
         String guestId = "12345";
         Mockito.when(mockGuestService.deleteGuest(guestId)).thenReturn(true);
@@ -213,7 +213,7 @@ class GuestControllerTest {
     }
 
     @Test
-    public void testDeleteGuest_GuestNotFound() throws Exception {
+    void testDeleteGuest_GuestNotFound() throws Exception {
         // Given
         String guestId = "12345";
         Mockito.when(mockGuestService.deleteGuest(guestId)).thenReturn(false);

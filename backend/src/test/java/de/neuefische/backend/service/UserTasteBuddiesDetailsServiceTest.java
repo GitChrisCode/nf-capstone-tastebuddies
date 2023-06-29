@@ -5,6 +5,7 @@ import de.neuefische.backend.model.UserTasteBuddies;
 import de.neuefische.backend.repository.MongoUserTasteBuddiesRepo;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -45,10 +46,46 @@ class UserTasteBuddiesDetailsServiceTest {
 
         when(userRepo.findUserByUserName(username)).thenReturn(Optional.empty());
 
-        assertThrows(UsernameNotFoundException.class, () -> {
-            service.loadUserByUsername(username);
-        });
+        assertThrows(UsernameNotFoundException.class, () ->
+                service.loadUserByUsername(username)
+        );
 
         Mockito.verify(userRepo).findUserByUserName(username);
+    }
+
+    @Test
+    public void testLoadUserByUsername_UserFound() {
+        // Given
+        String username = "testUser";
+        String password = "testPassword";
+        UserTasteBuddies user = new UserTasteBuddies("123", username, password);
+
+        Mockito.when(userRepo.findUserByUserName(username)).thenReturn(Optional.of(user));
+
+        // When
+        UserDetails userDetails = service.loadUserByUsername(username);
+
+        // Then
+        assertNotNull(userDetails);
+        assertEquals(username, userDetails.getUsername());
+        assertEquals(password, userDetails.getPassword());
+        assertTrue(userDetails.getAuthorities().isEmpty());
+
+        Mockito.verify(userRepo, Mockito.times(1)).findUserByUserName(username);
+    }
+
+    @Test
+    public void testLoadUserByUsername_UserNotFound() {
+        // Given
+        String username = "nonExistingUser";
+
+        Mockito.when(userRepo.findUserByUserName(username)).thenReturn(Optional.empty());
+
+        // When/Then
+        assertThrows(UsernameNotFoundException.class,
+                () -> service.loadUserByUsername(username),
+                "User with username: nonExistingUser not found");
+
+        Mockito.verify(userRepo, Mockito.times(1)).findUserByUserName(username);
     }
 }

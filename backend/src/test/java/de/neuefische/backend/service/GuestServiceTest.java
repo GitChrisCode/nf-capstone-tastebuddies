@@ -27,7 +27,7 @@ class GuestServiceTest {
 
 
     @Test
-    public void testAddGuest_Successful() {
+    void testAddGuest_Successful() {
         // Given
         Guest guest = new Guest();
         guest.setUserName("MaxMustermann");
@@ -48,7 +48,7 @@ class GuestServiceTest {
     }
 
     @Test
-    public void testAddGuest_NullInput() {
+    void testAddGuest_NullInput() {
         // When
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> guestService.addGuest(null),
@@ -62,7 +62,7 @@ class GuestServiceTest {
         Mockito.verify(guestRepository, Mockito.never()).save(Mockito.any());
     }
     @Test
-    public void testGetGuestList_NotEmpty() {
+    void testGetGuestList_NotEmpty() {
         // Given
         List<Guest> guests = new ArrayList<>();
         guests.add(new Guest());
@@ -80,7 +80,7 @@ class GuestServiceTest {
     }
 
     @Test
-    public void testGetGuestList_Empty() {
+    void testGetGuestList_Empty() {
         // Given
         List<Guest> guests = new ArrayList<>();
         Mockito.when(guestService.getGuestList()).thenReturn(guests);
@@ -93,7 +93,7 @@ class GuestServiceTest {
         assertNull(response.getBody());
     }
     @Test
-    public void testEditGuest_Successful() {
+    void testEditGuest_Successful() {
         // Given
         String guestId = "123";
 
@@ -132,7 +132,7 @@ class GuestServiceTest {
 
 
     @Test
-    public void testEditGuest_NonExistentGuest() {
+    void testEditGuest_NonExistentGuest() {
         // Given
         String guestId = "123"; // Beispielhafte Gast-ID, die nicht existiert
         Mockito.when(guestRepository.findById(guestId)).thenReturn(Optional.empty());
@@ -149,7 +149,7 @@ class GuestServiceTest {
         Mockito.verify(guestRepository, Mockito.never()).save(Mockito.any());
     }
     @Test
-    public void testDeleteGuest_Successful() {
+    void testDeleteGuest_Successful() {
         // Given
         String guestId = "123";
         Guest existingGuest = new Guest();
@@ -164,7 +164,7 @@ class GuestServiceTest {
         Mockito.verify(guestRepository, Mockito.times(1)).deleteById(guestId);
     }
     @Test
-    public void testDeleteGuest_NonExistentGuest() {
+    void testDeleteGuest_NonExistentGuest() {
         // Given
         String guestId = "123";
         Mockito.when(guestRepository.findById(guestId)).thenReturn(Optional.empty());
