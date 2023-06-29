@@ -42,10 +42,12 @@ const Autocomplete = ({ onIncludeChange, onExcludeChange }: AutocompleteProps) =
 
     const handleIncludeButtonClick = () => {
         setIngredientType('include');
+        setSuggestions(ingredientsV2); // Reset suggestions to show all ingredients
     };
 
     const handleExcludeButtonClick = () => {
         setIngredientType('exclude');
+        setSuggestions(ingredientsV2); // Reset suggestions to show all ingredients
     };
 
     return (
@@ -64,8 +66,18 @@ const Autocomplete = ({ onIncludeChange, onExcludeChange }: AutocompleteProps) =
                 </div>
             )}
             <div>
-                <button onClick={handleIncludeButtonClick}>Include Ingredient</button>
-                <button onClick={handleExcludeButtonClick}>Exclude Ingredient</button>
+                <button
+                    onClick={handleIncludeButtonClick}
+                    disabled={ingredientType === 'include'} // Disable button if already selected
+                >
+                    Include Ingredient
+                </button>
+                <button
+                    onClick={handleExcludeButtonClick}
+                    disabled={ingredientType === 'exclude'} // Disable button if already selected
+                >
+                    Exclude Ingredient
+                </button>
             </div>
         </div>
     );

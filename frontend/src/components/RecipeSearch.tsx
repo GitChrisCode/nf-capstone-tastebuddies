@@ -1,9 +1,8 @@
-import React, { FormEvent, useState } from 'react';
+import React, {FormEvent, useState} from 'react';
 import LogoutButton from './LogoutButton';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import Autocomplete from './Ingredients';
-import IngredientList from "./IngredientList";
 import '../css/RecipeSearch.css';
 
 type Recipes = {
@@ -32,6 +31,15 @@ function RecipeSearch() {
     const handleExcludeChange = (value: string) => {
         setExcludeIngredients([...excludeIngredients, value]);
     };
+    const onIncludeIngredientRemove = (value: string) => {
+        const updatedIngredients = includeIngredients.filter((ingredient) => ingredient !== value);
+        setIncludeIngredients(updatedIngredients);
+    };
+
+    const onExcludeIngredientRemove = (value: string) => {
+        const updatedIngredients = excludeIngredients.filter((ingredient) => ingredient !== value);
+        setExcludeIngredients(updatedIngredients);
+    };
 
     function searchSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -55,25 +63,36 @@ function RecipeSearch() {
             <h1>Search Recipe:</h1>
             <form onSubmit={searchSubmit}>
                 <p>Enter Ingredients:</p>
-                <Autocomplete
-                    onIncludeChange={handleIncludeChange}
-                    onExcludeChange={handleExcludeChange}
-                />
+                <Autocomplete onIncludeChange={handleIncludeChange} onExcludeChange={handleExcludeChange}/>
                 <button type="submit">Search</button>
             </form>
-            <IngredientList
-                includeIngredients={includeIngredients}
-                excludeIngredients={excludeIngredients}
-            />
-            <LogoutButton />
-          <h2>Search Results:</h2>
+            <div>
+                <h3>Include Ingredients:</h3>
+                {includeIngredients.map((ingredient) => (
+                    <div key={ingredient}>
+                        {ingredient}
+                        <button onClick={() => onIncludeIngredientRemove(ingredient)}>Remove</button>
+                    </div>
+                ))}
+            </div>
+            <div>
+                <h3>Exclude Ingredients:</h3>
+                {excludeIngredients.map((ingredient) => (
+                    <div key={ingredient}>
+                        {ingredient}
+                        <button onClick={() => onExcludeIngredientRemove(ingredient)}>Remove</button>
+                    </div>
+                ))}
+            </div>
+            <LogoutButton/>
+            <h2>Search Results:</h2>
             <p>Total Results: {totalResults}</p>
             {recipesSearchResult.length > 0 ? (
                 <div className="grid-container">
                     {recipesSearchResult.map(recipe => (
                         <div key={recipe.id} className="grid-item">
                             <Link to={`/recipe/${recipe.id}`}>
-                                <img src={recipe.image} alt={recipe.title} />
+                                <img src={recipe.image} alt={recipe.title}/>
                                 <h3>{recipe.title}</h3>
                             </Link>
                         </div>
