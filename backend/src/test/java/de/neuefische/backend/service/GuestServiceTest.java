@@ -3,7 +3,6 @@ package de.neuefische.backend.service;
 import de.neuefische.backend.controller.GuestController;
 import de.neuefische.backend.model.Guest;
 import de.neuefische.backend.repository.GuestRepository;
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.http.HttpStatus;
@@ -42,8 +41,8 @@ class GuestServiceTest {
         Guest addedGuest = guestService.addGuest(guest);
 
         // Then
-        Assert.assertNotNull(addedGuest);
-        Assert.assertEquals(generatedUUID, addedGuest.getGuestID());
+        assertNotNull(addedGuest);
+        assertEquals(generatedUUID, addedGuest.getGuestID());
         Mockito.verify(uuidService, Mockito.times(1)).generateUUID();
         Mockito.verify(guestRepository, Mockito.times(1)).save(guest);
     }
@@ -51,10 +50,9 @@ class GuestServiceTest {
     @Test
     public void testAddGuest_NullInput() {
         // When
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            guestService.addGuest(null);
-        });
-
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> guestService.addGuest(null),
+                "Error: guest is null!!!");
         // Then
         String expectedMessage = "Error: guest is null!!!";
         String actualMessage = exception.getMessage();
@@ -77,8 +75,8 @@ class GuestServiceTest {
         ResponseEntity<List<Guest>> response = guestController.getGuestList();
 
         // Then
-        Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
-        Assert.assertEquals(guests, response.getBody());
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(guests, response.getBody());
     }
 
     @Test
@@ -91,8 +89,8 @@ class GuestServiceTest {
         ResponseEntity<List<Guest>> response = guestController.getGuestList();
 
         // Then
-        Assert.assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
-        Assert.assertNull(response.getBody());
+        assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
+        assertNull(response.getBody());
     }
     @Test
     public void testEditGuest_Successful() {
@@ -125,9 +123,9 @@ class GuestServiceTest {
         Guest editedGuest = guestService.editGuest(guestId, updatedGuest);
 
         // Then
-        Assert.assertNotNull(editedGuest);
-        Assert.assertEquals(updatedGuest.getUserName(), editedGuest.getUserName());
-        Assert.assertEquals(updatedGuest.getGuestName(), editedGuest.getGuestName());
+        assertNotNull(editedGuest);
+        assertEquals(updatedGuest.getUserName(), editedGuest.getUserName());
+        assertEquals(updatedGuest.getGuestName(), editedGuest.getGuestName());
 
         Mockito.verify(guestRepository, Mockito.times(1)).save(existingGuest);
     }
@@ -147,7 +145,7 @@ class GuestServiceTest {
         Guest editedGuest = guestService.editGuest(guestId, updatedGuest);
 
         // Then
-        Assert.assertNull(editedGuest);
+        assertNull(editedGuest);
         Mockito.verify(guestRepository, Mockito.never()).save(Mockito.any());
     }
     @Test
@@ -162,7 +160,7 @@ class GuestServiceTest {
         boolean deleted = guestService.deleteGuest(guestId);
 
         // Then
-        Assert.assertTrue(deleted);
+        assertTrue(deleted);
         Mockito.verify(guestRepository, Mockito.times(1)).deleteById(guestId);
     }
     @Test
@@ -175,7 +173,7 @@ class GuestServiceTest {
         boolean deleted = guestService.deleteGuest(guestId);
 
         // Then
-        Assert.assertFalse(deleted);
+        assertFalse(deleted);
         Mockito.verify(guestRepository, Mockito.never()).deleteById(guestId);
     }
 
