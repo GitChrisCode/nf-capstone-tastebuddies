@@ -33,7 +33,7 @@ class GuestServiceTest {
         guest.setUserName("MaxMustermann");
         guest.setGuestName("Jaqueline");
 
-        String generatedUUID = "12345678"; // Beispiel UUID
+        String generatedUUID = "12345678";
         Mockito.when(uuidService.generateUUID()).thenReturn(generatedUUID);
         Mockito.when(guestRepository.save(guest)).thenReturn(guest);
 
@@ -99,7 +99,7 @@ class GuestServiceTest {
 
 
         GuestRepository guestRepository = Mockito.mock(GuestRepository.class);
-        Mockito.when(guestRepository.findById(Mockito.eq(guestId))).thenReturn(Optional.empty());
+        Mockito.when(guestRepository.findById(guestId)).thenReturn(Optional.empty());
         Mockito.when(guestRepository.save(Mockito.any())).thenAnswer(invocation -> invocation.getArgument(0)); // Rückgabe des gespeicherten Guest-Objekts
 
 
@@ -111,7 +111,7 @@ class GuestServiceTest {
         existingGuest.setGuestName("Paulinchen");
         existingGuest.setIncludeIngredients(new String[]{"Milch", "Eier"});
         existingGuest.setExcludeIngredients(new String[]{"Butter", "Zucker"});
-        Mockito.when(guestRepository.findById(Mockito.eq(guestId))).thenReturn(Optional.of(existingGuest));
+        Mockito.when(guestRepository.findById(guestId)).thenReturn(Optional.of(existingGuest));
 
         Guest updatedGuest = new Guest();
         updatedGuest.setUserName("AntonGross");

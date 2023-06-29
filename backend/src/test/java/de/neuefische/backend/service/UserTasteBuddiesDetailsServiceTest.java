@@ -54,7 +54,7 @@ class UserTasteBuddiesDetailsServiceTest {
     }
 
     @Test
-    public void testLoadUserByUsername_UserFound() {
+    void testLoadUserByUsername_UserFound() {
         // Given
         String username = "testUser";
         String password = "testPassword";
@@ -75,7 +75,7 @@ class UserTasteBuddiesDetailsServiceTest {
     }
 
     @Test
-    public void testLoadUserByUsername_UserNotFound() {
+    void testLoadUserByUsername_UserNotFound() {
         // Given
         String username = "nonExistingUser";
 
@@ -87,5 +87,23 @@ class UserTasteBuddiesDetailsServiceTest {
                 "User with username: nonExistingUser not found");
 
         Mockito.verify(userRepo, Mockito.times(1)).findUserByUserName(username);
+    }
+    @Test
+    void testRegisterUserTasteBuddies_UserAlreadyExists() {
+        // Given
+        String userName = "existingUser";
+        String userPassword = "password";
+
+        UserTasteBuddies existingUser = new UserTasteBuddies();
+        existingUser.setUserName(userName);
+
+        when(userRepo.findUserByUserName(userName)).thenReturn(Optional.of(existingUser));
+
+        // When/Then
+        assertThrows(IllegalArgumentException.class, () ->
+                service.registerUserTasteBuddies(userName, userPassword)
+        );
+
+        Mockito.verify(userRepo).findUserByUserName(userName);
     }
 }
