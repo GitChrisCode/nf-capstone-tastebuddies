@@ -28,7 +28,7 @@ const IngredientsList: React.FC<IngredientsListProps> = ({
                 <h2>Include Ingredients:</h2>
                 <ul>
                     {includeIngredients.map((ingredient, index) => (
-                        <li key={index} onClick={() => handleIncludeIngredientRemove(ingredient)}>
+                        <li key={ingredient.length + index} onClick={() => handleIncludeIngredientRemove(ingredient)}>
                             {ingredient}
                         </li>
                     ))}
@@ -38,7 +38,7 @@ const IngredientsList: React.FC<IngredientsListProps> = ({
                 <h2>Exclude Ingredients:</h2>
                 <ul>
                     {excludeIngredients.map((ingredient, index) => (
-                        <li key={index} onClick={() => handleExcludeIngredientRemove(ingredient)}>
+                        <li key={ingredient.length + index} onClick={() => handleExcludeIngredientRemove(ingredient)}>
                             {ingredient}
                         </li>
                     ))}
