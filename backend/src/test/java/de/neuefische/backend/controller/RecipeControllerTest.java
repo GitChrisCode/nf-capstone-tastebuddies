@@ -35,7 +35,7 @@ class RecipeControllerTest {
     @DirtiesContext
     @WithMockUser
     void testGetRecipes() throws Exception {
-        // Mock data
+        // Given
         RecipeCollection recipeCollection;
 
         String apiResponse = """                

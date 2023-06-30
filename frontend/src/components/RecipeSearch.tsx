@@ -1,7 +1,8 @@
-import React, { FormEvent, useState } from 'react';
+import React, {FormEvent, useState} from 'react';
 import LogoutButton from './LogoutButton';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
+import Autocomplete from './Ingredients';
 import '../css/RecipeSearch.css';
 
 type Recipes = {
@@ -19,16 +20,32 @@ type RecipesResponse = {
 };
 
 function RecipeSearch() {
-    const [includeIngredients, setIncludeIngredients] = useState('');
-    const [excludeIngredients, setExcludeIngredients] = useState('');
+    const [includeIngredients, setIncludeIngredients] = useState<string[]>([]);
+    const [excludeIngredients, setExcludeIngredients] = useState<string[]>([]);
     const [recipesSearchResult, setRecipesSearchResult] = useState<Recipes[]>([]);
     const [totalResults, setTotalResults] = useState<number>(0);
+    const handleIncludeChange = (value: string) => {
+        setIncludeIngredients([...includeIngredients, value]);
+    };
+
+    const handleExcludeChange = (value: string) => {
+        setExcludeIngredients([...excludeIngredients, value]);
+    };
+    const onIncludeIngredientRemove = (value: string) => {
+        const updatedIngredients = includeIngredients.filter((ingredient) => ingredient !== value);
+        setIncludeIngredients(updatedIngredients);
+    };
+
+    const onExcludeIngredientRemove = (value: string) => {
+        const updatedIngredients = excludeIngredients.filter((ingredient) => ingredient !== value);
+        setExcludeIngredients(updatedIngredients);
+    };
 
     function searchSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
         const queryParams = new URLSearchParams();
-        queryParams.append('includeIngredients', includeIngredients);
-        queryParams.append('excludeIngredients', excludeIngredients);
+        queryParams.append('includeIngredients', includeIngredients.join(','));
+        queryParams.append('excludeIngredients', excludeIngredients.join(','));
         const searchQuery = queryParams.toString();
 
         axios
@@ -46,11 +63,28 @@ function RecipeSearch() {
             <h1>Search Recipe:</h1>
             <form onSubmit={searchSubmit}>
                 <p>Enter Ingredients:</p>
-                <input type="text" onChange={e => setIncludeIngredients(e.target.value)} placeholder="Include ingredients" />
-                <input type="text" onChange={e => setExcludeIngredients(e.target.value)} placeholder="Exclude ingredients" />
-                <button>Search</button>
+                <Autocomplete onIncludeChange={handleIncludeChange} onExcludeChange={handleExcludeChange}/>
+                <button type="submit">Search</button>
             </form>
-            <LogoutButton />
+            <div>
+                <h3>Include Ingredients:</h3>
+                {includeIngredients.map((ingredient) => (
+                    <div key={ingredient}>
+                        {ingredient}
+                        <button onClick={() => onIncludeIngredientRemove(ingredient)}>Remove</button>
+                    </div>
+                ))}
+            </div>
+            <div>
+                <h3>Exclude Ingredients:</h3>
+                {excludeIngredients.map((ingredient) => (
+                    <div key={ingredient}>
+                        {ingredient}
+                        <button onClick={() => onExcludeIngredientRemove(ingredient)}>Remove</button>
+                    </div>
+                ))}
+            </div>
+            <LogoutButton/>
             <h2>Search Results:</h2>
             <p>Total Results: {totalResults}</p>
             {recipesSearchResult.length > 0 ? (
@@ -58,7 +92,7 @@ function RecipeSearch() {
                     {recipesSearchResult.map(recipe => (
                         <div key={recipe.id} className="grid-item">
                             <Link to={`/recipe/${recipe.id}`}>
-                                <img src={recipe.image} alt={recipe.title} />
+                                <img src={recipe.image} alt={recipe.title}/>
                                 <h3>{recipe.title}</h3>
                             </Link>
                         </div>

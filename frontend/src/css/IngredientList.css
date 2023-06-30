@@ -1,0 +1,7 @@
+.ingredients-list-container {
+    display: flex;
+}
+
+.ingredients-list {
+    margin-right: 20px;
+}

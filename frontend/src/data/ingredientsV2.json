@@ -1,0 +1,4002 @@
+[
+ {
+   "FIELD1": "5 spice powder",
+   "FIELD2": 1002002
+ },
+ {
+   "FIELD1": "acorn squash",
+   "FIELD2": 11482
+ },
+ {
+   "FIELD1": "adobo sauce",
+   "FIELD2": 6979
+ },
+ {
+   "FIELD1": "agave nectar",
+   "FIELD2": 19912
+ },
+ {
+   "FIELD1": "ahi tuna",
+   "FIELD2": 15117
+ },
+ {
+   "FIELD1": "alfredo pasta sauce",
+   "FIELD2": 93606
+ },
+ {
+   "FIELD1": "almond extract",
+   "FIELD2": 1002050
+ },
+ {
+   "FIELD1": "almond flour",
+   "FIELD2": 93740
+ },
+ {
+   "FIELD1": "almond milk",
+   "FIELD2": 93607
+ },
+ {
+   "FIELD1": "almonds",
+   "FIELD2": 12061
+ },
+ {
+   "FIELD1": "amaretto",
+   "FIELD2": 10014534
+ },
+ {
+   "FIELD1": "ancho chiles",
+   "FIELD2": 10211962
+ },
+ {
+   "FIELD1": "anchovies",
+   "FIELD2": 15001
+ },
+ {
+   "FIELD1": "andouille sausage",
+   "FIELD2": 7064
+ },
+ {
+   "FIELD1": "angel food cake mix",
+   "FIELD2": 18087
+ },
+ {
+   "FIELD1": "angel hair pasta",
+   "FIELD2": 10020420
+ },
+ {
+   "FIELD1": "angostura bitters",
+   "FIELD2": 93653
+ },
+ {
+   "FIELD1": "apple",
+   "FIELD2": 9003
+ },
+ {
+   "FIELD1": "apple butter spread",
+   "FIELD2": 19294
+ },
+ {
+   "FIELD1": "apple cider",
+   "FIELD2": 1009016
+ },
+ {
+   "FIELD1": "apple juice",
+   "FIELD2": 9016
+ },
+ {
+   "FIELD1": "apple pie spice",
+   "FIELD2": 1042035
+ },
+ {
+   "FIELD1": "apricot preserves",
+   "FIELD2": 19719
+ },
+ {
+   "FIELD1": "apricots",
+   "FIELD2": 9021
+ },
+ {
+   "FIELD1": "arborio rice",
+   "FIELD2": 10020052
+ },
+ {
+   "FIELD1": "arrowroot powder",
+   "FIELD2": 20003
+ },
+ {
+   "FIELD1": "artichoke heart quarters",
+   "FIELD2": 93828
+ },
+ {
+   "FIELD1": "artichokes",
+   "FIELD2": 11007
+ },
+ {
+   "FIELD1": "arugula",
+   "FIELD2": 11959
+ },
+ {
+   "FIELD1": "asafoetida",
+   "FIELD2": 1032035
+ },
+ {
+   "FIELD1": "asafoetida powder",
+   "FIELD2": 0
+ },
+ {
+   "FIELD1": "asiago cheese",
+   "FIELD2": 1001033
+ },
+ {
+   "FIELD1": "asian pear",
+   "FIELD2": 9252
+ },
+ {
+   "FIELD1": "asparagus spears",
+   "FIELD2": 11011
+ },
+ {
+   "FIELD1": "avocado",
+   "FIELD2": 9037
+ },
+ {
+   "FIELD1": "avocado oil",
+   "FIELD2": 4581
+ },
+ {
+   "FIELD1": "baby bell peppers",
+   "FIELD2": 10311821
+ },
+ {
+   "FIELD1": "baby bok choy",
+   "FIELD2": 93636
+ },
+ {
+   "FIELD1": "baby carrots",
+   "FIELD2": 11960
+ },
+ {
+   "FIELD1": "baby corn",
+   "FIELD2": 10011168
+ },
+ {
+   "FIELD1": "baby spinach leaves",
+   "FIELD2": 11457
+ },
+ {
+   "FIELD1": "baby-back ribs",
+   "FIELD2": 10010204
+ },
+ {
+   "FIELD1": "baby-back ribs",
+   "FIELD2": 10192
+ },
+ {
+   "FIELD1": "bacon",
+   "FIELD2": 10123
+ },
+ {
+   "FIELD1": "bacon fat",
+   "FIELD2": 4609
+ },
+ {
+   "FIELD1": "baguette",
+   "FIELD2": 18033
+ },
+ {
+   "FIELD1": "baking bar",
+   "FIELD2": 19078
+ },
+ {
+   "FIELD1": "baking powder",
+   "FIELD2": 18371
+ },
+ {
+   "FIELD1": "baking soda",
+   "FIELD2": 18372
+ },
+ {
+   "FIELD1": "balsamic glaze",
+   "FIELD2": 98998
+ },
+ {
+   "FIELD1": "balsamic vinegar",
+   "FIELD2": 2069
+ },
+ {
+   "FIELD1": "bamboo shoots",
+   "FIELD2": 11028
+ },
+ {
+   "FIELD1": "banana",
+   "FIELD2": 9040
+ },
+ {
+   "FIELD1": "basmati rice",
+   "FIELD2": 10020444
+ },
+ {
+   "FIELD1": "bay leaves",
+   "FIELD2": 2004
+ },
+ {
+   "FIELD1": "bbq sauce",
+   "FIELD2": 6150
+ },
+ {
+   "FIELD1": "beans",
+   "FIELD2": 16069
+ },
+ {
+   "FIELD1": "beef",
+   "FIELD2": 23572
+ },
+ {
+   "FIELD1": "beef brisket",
+   "FIELD2": 13023
+ },
+ {
+   "FIELD1": "beef broth",
+   "FIELD2": 6008
+ },
+ {
+   "FIELD1": "beef chuck roast",
+   "FIELD2": 13786
+ },
+ {
+   "FIELD1": "beef stock",
+   "FIELD2": 6170
+ },
+ {
+   "FIELD1": "beef tenderloin",
+   "FIELD2": 13926
+ },
+ {
+   "FIELD1": "beer",
+   "FIELD2": 14003
+ },
+ {
+   "FIELD1": "beer",
+   "FIELD2": 14006
+ },
+ {
+   "FIELD1": "beets",
+   "FIELD2": 11080
+ },
+ {
+   "FIELD1": "bell pepper",
+   "FIELD2": 10211821
+ },
+ {
+   "FIELD1": "berries",
+   "FIELD2": 1009054
+ },
+ {
+   "FIELD1": "biscuit mix",
+   "FIELD2": 18010
+ },
+ {
+   "FIELD1": "biscuits",
+   "FIELD2": 18009
+ },
+ {
+   "FIELD1": "bittersweet chocolate",
+   "FIELD2": 19903
+ },
+ {
+   "FIELD1": "black bean sauce",
+   "FIELD2": 99210
+ },
+ {
+   "FIELD1": "black beans",
+   "FIELD2": 16015
+ },
+ {
+   "FIELD1": "black olives",
+   "FIELD2": 1059195
+ },
+ {
+   "FIELD1": "black pepper",
+   "FIELD2": 1002030
+ },
+ {
+   "FIELD1": "black sesame seeds",
+   "FIELD2": 10012023
+ },
+ {
+   "FIELD1": "blackberries",
+   "FIELD2": 9042
+ },
+ {
+   "FIELD1": "blanched almonds",
+   "FIELD2": 12062
+ },
+ {
+   "FIELD1": "blood orange",
+   "FIELD2": 1009200
+ },
+ {
+   "FIELD1": "blue cheese",
+   "FIELD2": 1004
+ },
+ {
+   "FIELD1": "blueberries",
+   "FIELD2": 9050
+ },
+ {
+   "FIELD1": "bok choy",
+   "FIELD2": 11116
+ },
+ {
+   "FIELD1": "boneless skinless chicken breast",
+   "FIELD2": 1055062
+ },
+ {
+   "FIELD1": "bourbon",
+   "FIELD2": 10014037
+ },
+ {
+   "FIELD1": "brandy",
+   "FIELD2": 10114037
+ },
+ {
+   "FIELD1": "bread",
+   "FIELD2": 18064
+ },
+ {
+   "FIELD1": "bread flour",
+   "FIELD2": 10120129
+ },
+ {
+   "FIELD1": "breakfast links",
+   "FIELD2": 7919
+ },
+ {
+   "FIELD1": "brie",
+   "FIELD2": 1006
+ },
+ {
+   "FIELD1": "broccoli",
+   "FIELD2": 11090
+ },
+ {
+   "FIELD1": "broccoli florets",
+   "FIELD2": 10011090
+ },
+ {
+   "FIELD1": "brown rice",
+   "FIELD2": 20040
+ },
+ {
+   "FIELD1": "brown rice flour",
+   "FIELD2": 20090
+ },
+ {
+   "FIELD1": "brown sugar",
+   "FIELD2": 19334
+ },
+ {
+   "FIELD1": "brownie mix",
+   "FIELD2": 18632
+ },
+ {
+   "FIELD1": "brussel sprouts",
+   "FIELD2": 11098
+ },
+ {
+   "FIELD1": "bulgur",
+   "FIELD2": 20012
+ },
+ {
+   "FIELD1": "butter",
+   "FIELD2": 1001
+ },
+ {
+   "FIELD1": "butterhead lettuce",
+   "FIELD2": 11250
+ },
+ {
+   "FIELD1": "buttermilk",
+   "FIELD2": 1230
+ },
+ {
+   "FIELD1": "butternut squash",
+   "FIELD2": 11485
+ },
+ {
+   "FIELD1": "butterscotch chips",
+   "FIELD2": 19070
+ },
+ {
+   "FIELD1": "cabbage",
+   "FIELD2": 11109
+ },
+ {
+   "FIELD1": "caesar dressing",
+   "FIELD2": 43015
+ },
+ {
+   "FIELD1": "cajun seasoning",
+   "FIELD2": 1032028
+ },
+ {
+   "FIELD1": "cake flour",
+   "FIELD2": 10020129
+ },
+ {
+   "FIELD1": "candy canes",
+   "FIELD2": 93759
+ },
+ {
+   "FIELD1": "candy coating",
+   "FIELD2": 98857
+ },
+ {
+   "FIELD1": "candy melts",
+   "FIELD2": 93775
+ },
+ {
+   "FIELD1": "canned black beans",
+   "FIELD2": 16018
+ },
+ {
+   "FIELD1": "canned diced tomatoes",
+   "FIELD2": 11531
+ },
+ {
+   "FIELD1": "canned garbanzo beans",
+   "FIELD2": 16058
+ },
+ {
+   "FIELD1": "canned green chiles",
+   "FIELD2": 11980
+ },
+ {
+   "FIELD1": "canned kidney beans",
+   "FIELD2": 16034
+ },
+ {
+   "FIELD1": "canned mushrooms",
+   "FIELD2": 11264
+ },
+ {
+   "FIELD1": "canned pinto beans",
+   "FIELD2": 16044
+ },
+ {
+   "FIELD1": "canned red kidney beans",
+   "FIELD2": 10016034
+ },
+ {
+   "FIELD1": "canned tomatoes",
+   "FIELD2": 10011693
+ },
+ {
+   "FIELD1": "canned tuna",
+   "FIELD2": 10115121
+ },
+ {
+   "FIELD1": "canned white beans",
+   "FIELD2": 16051
+ },
+ {
+   "FIELD1": "canned white cannellini beans",
+   "FIELD2": 10016051
+ },
+ {
+   "FIELD1": "cannellini beans",
+   "FIELD2": 10716050
+ },
+ {
+   "FIELD1": "cantaloupe",
+   "FIELD2": 9181
+ },
+ {
+   "FIELD1": "capers",
+   "FIELD2": 2054
+ },
+ {
+   "FIELD1": "caramel sauce",
+   "FIELD2": 19364
+ },
+ {
+   "FIELD1": "caramels",
+   "FIELD2": 19074
+ },
+ {
+   "FIELD1": "caraway seed",
+   "FIELD2": 2005
+ },
+ {
+   "FIELD1": "cardamom",
+   "FIELD2": 2006
+ },
+ {
+   "FIELD1": "cardamom pods",
+   "FIELD2": 1002006
+ },
+ {
+   "FIELD1": "carp",
+   "FIELD2": 15008
+ },
+ {
+   "FIELD1": "carrots",
+   "FIELD2": 11124
+ },
+ {
+   "FIELD1": "cat fish filets",
+   "FIELD2": 15010
+ },
+ {
+   "FIELD1": "cauliflower",
+   "FIELD2": 11135
+ },
+ {
+   "FIELD1": "cauliflower florets",
+   "FIELD2": 10011135
+ },
+ {
+   "FIELD1": "cauliflower rice",
+   "FIELD2": 10111135
+ },
+ {
+   "FIELD1": "celery",
+   "FIELD2": 11143
+ },
+ {
+   "FIELD1": "celery ribs",
+   "FIELD2": 10111143
+ },
+ {
+   "FIELD1": "celery root",
+   "FIELD2": 11141
+ },
+ {
+   "FIELD1": "celery salt",
+   "FIELD2": 1052047
+ },
+ {
+   "FIELD1": "celery seed",
+   "FIELD2": 2007
+ },
+ {
+   "FIELD1": "cereal",
+   "FIELD2": 8029
+ },
+ {
+   "FIELD1": "champagne",
+   "FIELD2": 10043155
+ },
+ {
+   "FIELD1": "chana dal",
+   "FIELD2": 99236
+ },
+ {
+   "FIELD1": "cheddar",
+   "FIELD2": 1009
+ },
+ {
+   "FIELD1": "cheese",
+   "FIELD2": 1041009
+ },
+ {
+   "FIELD1": "cheese curds",
+   "FIELD2": 98921
+ },
+ {
+   "FIELD1": "cheese dip",
+   "FIELD2": 1188
+ },
+ {
+   "FIELD1": "cheese soup",
+   "FIELD2": 6038
+ },
+ {
+   "FIELD1": "cheese tortellini",
+   "FIELD2": 10093727
+ },
+ {
+   "FIELD1": "cherry",
+   "FIELD2": 9070
+ },
+ {
+   "FIELD1": "cherry pie filling",
+   "FIELD2": 19314
+ },
+ {
+   "FIELD1": "cherry tomatoes",
+   "FIELD2": 10311529
+ },
+ {
+   "FIELD1": "chestnuts",
+   "FIELD2": 12098
+ },
+ {
+   "FIELD1": "chia seeds",
+   "FIELD2": 12006
+ },
+ {
+   "FIELD1": "chicken base",
+   "FIELD2": 6080
+ },
+ {
+   "FIELD1": "chicken bouillon",
+   "FIELD2": 6480
+ },
+ {
+   "FIELD1": "chicken bouillon granules",
+   "FIELD2": 1006080
+ },
+ {
+   "FIELD1": "chicken breasts",
+   "FIELD2": 5062
+ },
+ {
+   "FIELD1": "chicken broth",
+   "FIELD2": 6194
+ },
+ {
+   "FIELD1": "chicken drumsticks",
+   "FIELD2": 5066
+ },
+ {
+   "FIELD1": "chicken legs",
+   "FIELD2": 5075
+ },
+ {
+   "FIELD1": "chicken pieces",
+   "FIELD2": 1005006
+ },
+ {
+   "FIELD1": "chicken sausage",
+   "FIELD2": 93668
+ },
+ {
+   "FIELD1": "chicken stock",
+   "FIELD2": 6172
+ },
+ {
+   "FIELD1": "chicken tenders",
+   "FIELD2": 1015062
+ },
+ {
+   "FIELD1": "chicken thighs",
+   "FIELD2": 5091
+ },
+ {
+   "FIELD1": "chicken wings",
+   "FIELD2": 5100
+ },
+ {
+   "FIELD1": "chickpea",
+   "FIELD2": 16057
+ },
+ {
+   "FIELD1": "chile garlic sauce",
+   "FIELD2": 93749
+ },
+ {
+   "FIELD1": "chili paste",
+   "FIELD2": 6973
+ },
+ {
+   "FIELD1": "chili peppers",
+   "FIELD2": 11962
+ },
+ {
+   "FIELD1": "chili powder",
+   "FIELD2": 2009
+ },
+ {
+   "FIELD1": "chili sauce",
+   "FIELD2": 6972
+ },
+ {
+   "FIELD1": "chipotle chiles in adobo",
+   "FIELD2": 11632
+ },
+ {
+   "FIELD1": "chipotle chilies",
+   "FIELD2": 98839
+ },
+ {
+   "FIELD1": "chipotle peppers in adobo",
+   "FIELD2": 99223
+ },
+ {
+   "FIELD1": "chive & onion cream cheese spread",
+   "FIELD2": 93748
+ },
+ {
+   "FIELD1": "chocolate",
+   "FIELD2": 19081
+ },
+ {
+   "FIELD1": "chocolate chip cookies",
+   "FIELD2": 28027
+ },
+ {
+   "FIELD1": "chocolate chunks",
+   "FIELD2": 10419903
+ },
+ {
+   "FIELD1": "chocolate ice cream",
+   "FIELD2": 19270
+ },
+ {
+   "FIELD1": "chocolate milk",
+   "FIELD2": 1102
+ },
+ {
+   "FIELD1": "chocolate sandwich cookies",
+   "FIELD2": 18166
+ },
+ {
+   "FIELD1": "chocolate syrup",
+   "FIELD2": 14181
+ },
+ {
+   "FIELD1": "chocolate wafer cookies",
+   "FIELD2": 10118157
+ },
+ {
+   "FIELD1": "chorizo sausage",
+   "FIELD2": 7019
+ },
+ {
+   "FIELD1": "cider vinegar",
+   "FIELD2": 2048
+ },
+ {
+   "FIELD1": "cilantro",
+   "FIELD2": 11165
+ },
+ {
+   "FIELD1": "cinnamon roll",
+   "FIELD2": 99020
+ },
+ {
+   "FIELD1": "cinnamon stick",
+   "FIELD2": 1002010
+ },
+ {
+   "FIELD1": "cinnamon sugar",
+   "FIELD2": 10219335
+ },
+ {
+   "FIELD1": "cinnamon swirl bread",
+   "FIELD2": 18047
+ },
+ {
+   "FIELD1": "clam juice",
+   "FIELD2": 14187
+ },
+ {
+   "FIELD1": "clams",
+   "FIELD2": 15157
+ },
+ {
+   "FIELD1": "clarified butter",
+   "FIELD2": 93632
+ },
+ {
+   "FIELD1": "clove",
+   "FIELD2": 1002011
+ },
+ {
+   "FIELD1": "coarse salt",
+   "FIELD2": 1002047
+ },
+ {
+   "FIELD1": "coarsely ground pepper",
+   "FIELD2": 2035
+ },
+ {
+   "FIELD1": "cocoa nibs",
+   "FIELD2": 98846
+ },
+ {
+   "FIELD1": "cocoa powder",
+   "FIELD2": 19165
+ },
+ {
+   "FIELD1": "coconut",
+   "FIELD2": 12104
+ },
+ {
+   "FIELD1": "coconut aminos",
+   "FIELD2": 98929
+ },
+ {
+   "FIELD1": "coconut butter",
+   "FIELD2": 93746
+ },
+ {
+   "FIELD1": "coconut cream",
+   "FIELD2": 12115
+ },
+ {
+   "FIELD1": "coconut extract",
+   "FIELD2": 1032050
+ },
+ {
+   "FIELD1": "coconut flour",
+   "FIELD2": 93747
+ },
+ {
+   "FIELD1": "coconut milk",
+   "FIELD2": 12118
+ },
+ {
+   "FIELD1": "coconut oil",
+   "FIELD2": 4047
+ },
+ {
+   "FIELD1": "coconut water",
+   "FIELD2": 12119
+ },
+ {
+   "FIELD1": "cod",
+   "FIELD2": 15015
+ },
+ {
+   "FIELD1": "coffee",
+   "FIELD2": 14209
+ },
+ {
+   "FIELD1": "cognac",
+   "FIELD2": 10414037
+ },
+ {
+   "FIELD1": "cola",
+   "FIELD2": 14400
+ },
+ {
+   "FIELD1": "colby jack",
+   "FIELD2": 1011
+ },
+ {
+   "FIELD1": "collard greens",
+   "FIELD2": 11161
+ },
+ {
+   "FIELD1": "condensed cream of celery soup",
+   "FIELD2": 6010
+ },
+ {
+   "FIELD1": "condensed cream of mushroom soup",
+   "FIELD2": 6147
+ },
+ {
+   "FIELD1": "confectioner's swerve",
+   "FIELD2": 99084
+ },
+ {
+   "FIELD1": "cooked bacon",
+   "FIELD2": 10862
+ },
+ {
+   "FIELD1": "cooked brown rice",
+   "FIELD2": 20041
+ },
+ {
+   "FIELD1": "cooked chicken breast",
+   "FIELD2": 5064
+ },
+ {
+   "FIELD1": "cooked ham",
+   "FIELD2": 10802
+ },
+ {
+   "FIELD1": "cooked long grain rice",
+   "FIELD2": 10220445
+ },
+ {
+   "FIELD1": "cooked pasta",
+   "FIELD2": 20421
+ },
+ {
+   "FIELD1": "cooked polenta",
+   "FIELD2": 1008166
+ },
+ {
+   "FIELD1": "cooked quinoa",
+   "FIELD2": 20137
+ },
+ {
+   "FIELD1": "cooked wild rice",
+   "FIELD2": 20088
+ },
+ {
+   "FIELD1": "cookies",
+   "FIELD2": 10118192
+ },
+ {
+   "FIELD1": "coriander",
+   "FIELD2": 2012
+ },
+ {
+   "FIELD1": "corn",
+   "FIELD2": 11168
+ },
+ {
+   "FIELD1": "corn bread mix",
+   "FIELD2": 18022
+ },
+ {
+   "FIELD1": "corn chips",
+   "FIELD2": 19003
+ },
+ {
+   "FIELD1": "corn flakes cereal",
+   "FIELD2": 8020
+ },
+ {
+   "FIELD1": "corn flour",
+   "FIELD2": 20019
+ },
+ {
+   "FIELD1": "corn kernels",
+   "FIELD2": 11172
+ },
+ {
+   "FIELD1": "corn oil",
+   "FIELD2": 42289
+ },
+ {
+   "FIELD1": "corn tortillas",
+   "FIELD2": 18363
+ },
+ {
+   "FIELD1": "cornbread",
+   "FIELD2": 18023
+ },
+ {
+   "FIELD1": "corned beef",
+   "FIELD2": 13346
+ },
+ {
+   "FIELD1": "cornish hens",
+   "FIELD2": 5307
+ },
+ {
+   "FIELD1": "cornmeal",
+   "FIELD2": 35137
+ },
+ {
+   "FIELD1": "cornstarch",
+   "FIELD2": 20027
+ },
+ {
+   "FIELD1": "cotija cheese",
+   "FIELD2": 1001019
+ },
+ {
+   "FIELD1": "cottage cheese",
+   "FIELD2": 1012
+ },
+ {
+   "FIELD1": "country bread",
+   "FIELD2": 10018029
+ },
+ {
+   "FIELD1": "courgettes",
+   "FIELD2": 11477
+ },
+ {
+   "FIELD1": "couscous",
+   "FIELD2": 20028
+ },
+ {
+   "FIELD1": "cow pea",
+   "FIELD2": 16063
+ },
+ {
+   "FIELD1": "crabmeat",
+   "FIELD2": 10015136
+ },
+ {
+   "FIELD1": "cracked pepper",
+   "FIELD2": 2030
+ },
+ {
+   "FIELD1": "cranberries",
+   "FIELD2": 9078
+ },
+ {
+   "FIELD1": "cranberry juice",
+   "FIELD2": 43382
+ },
+ {
+   "FIELD1": "cream",
+   "FIELD2": 1053
+ },
+ {
+   "FIELD1": "cream cheese",
+   "FIELD2": 1017
+ },
+ {
+   "FIELD1": "cream cheese block",
+   "FIELD2": 1186
+ },
+ {
+   "FIELD1": "cream of chicken soup",
+   "FIELD2": 6016
+ },
+ {
+   "FIELD1": "cream of tartar",
+   "FIELD2": 18373
+ },
+ {
+   "FIELD1": "creamed corn",
+   "FIELD2": 11174
+ },
+ {
+   "FIELD1": "creamy peanut butter",
+   "FIELD2": 10116098
+ },
+ {
+   "FIELD1": "creme fraiche",
+   "FIELD2": 1001056
+ },
+ {
+   "FIELD1": "cremini mushrooms",
+   "FIELD2": 11266
+ },
+ {
+   "FIELD1": "creole seasoning",
+   "FIELD2": 1002031
+ },
+ {
+   "FIELD1": "crisp rice cereal",
+   "FIELD2": 8066
+ },
+ {
+   "FIELD1": "croutons",
+   "FIELD2": 18242
+ },
+ {
+   "FIELD1": "crystallized ginger",
+   "FIELD2": 93751
+ },
+ {
+   "FIELD1": "cucumber",
+   "FIELD2": 11206
+ },
+ {
+   "FIELD1": "cumin seeds",
+   "FIELD2": 2014
+ },
+ {
+   "FIELD1": "cup cake",
+   "FIELD2": 18139
+ },
+ {
+   "FIELD1": "currants",
+   "FIELD2": 9085
+ },
+ {
+   "FIELD1": "curry leaves",
+   "FIELD2": 93604
+ },
+ {
+   "FIELD1": "dairy free milk",
+   "FIELD2": 10016223
+ },
+ {
+   "FIELD1": "dark brown sugar",
+   "FIELD2": 10019334
+ },
+ {
+   "FIELD1": "dark chocolate",
+   "FIELD2": 19904
+ },
+ {
+   "FIELD1": "dark chocolate candy bars",
+   "FIELD2": 10019904
+ },
+ {
+   "FIELD1": "dark chocolate chips",
+   "FIELD2": 10019071
+ },
+ {
+   "FIELD1": "dark sesame oil",
+   "FIELD2": 1004058
+ },
+ {
+   "FIELD1": "dates",
+   "FIELD2": 9087
+ },
+ {
+   "FIELD1": "deep dish pie crust",
+   "FIELD2": 18945
+ },
+ {
+   "FIELD1": "deli ham",
+   "FIELD2": 10010151
+ },
+ {
+   "FIELD1": "deli turkey",
+   "FIELD2": 7259
+ },
+ {
+   "FIELD1": "dessert oats",
+   "FIELD2": 8121
+ },
+ {
+   "FIELD1": "dessert wine",
+   "FIELD2": 10014057
+ },
+ {
+   "FIELD1": "diced ham",
+   "FIELD2": 99186
+ },
+ {
+   "FIELD1": "diet pop",
+   "FIELD2": 14146
+ },
+ {
+   "FIELD1": "dijon mustard",
+   "FIELD2": 1002046
+ },
+ {
+   "FIELD1": "dill",
+   "FIELD2": 2045
+ },
+ {
+   "FIELD1": "dill pickles",
+   "FIELD2": 10011937
+ },
+ {
+   "FIELD1": "hot dog",
+   "FIELD2": 21118
+ },
+ {
+   "FIELD1": "double cream",
+   "FIELD2": 1011053
+ },
+ {
+   "FIELD1": "dried apricots",
+   "FIELD2": 9032
+ },
+ {
+   "FIELD1": "dried basil",
+   "FIELD2": 2003
+ },
+ {
+   "FIELD1": "dried cherries",
+   "FIELD2": 93822
+ },
+ {
+   "FIELD1": "dried chorizo",
+   "FIELD2": 99233
+ },
+ {
+   "FIELD1": "dried cranberries",
+   "FIELD2": 9079
+ },
+ {
+   "FIELD1": "dried dill",
+   "FIELD2": 2017
+ },
+ {
+   "FIELD1": "dried onion",
+   "FIELD2": 11284
+ },
+ {
+   "FIELD1": "dried porcini mushrooms",
+   "FIELD2": 10011268
+ },
+ {
+   "FIELD1": "dried rubbed sage",
+   "FIELD2": 1002038
+ },
+ {
+   "FIELD1": "dried thyme",
+   "FIELD2": 2042
+ },
+ {
+   "FIELD1": "dried tomatoes",
+   "FIELD2": 11955
+ },
+ {
+   "FIELD1": "dry bread crumbs",
+   "FIELD2": 18079
+ },
+ {
+   "FIELD1": "dry milk",
+   "FIELD2": 1090
+ },
+ {
+   "FIELD1": "dry mustard",
+   "FIELD2": 1002024
+ },
+ {
+   "FIELD1": "dry red wine",
+   "FIELD2": 14097
+ },
+ {
+   "FIELD1": "dry roasted peanuts",
+   "FIELD2": 16090
+ },
+ {
+   "FIELD1": "duck fat",
+   "FIELD2": 4574
+ },
+ {
+   "FIELD1": "dutch process cocoa powder",
+   "FIELD2": 10019165
+ },
+ {
+   "FIELD1": "edamame",
+   "FIELD2": 11212
+ },
+ {
+   "FIELD1": "egg substitute",
+   "FIELD2": 1226
+ },
+ {
+   "FIELD1": "egg vermicelli",
+   "FIELD2": 20409
+ },
+ {
+   "FIELD1": "egg whites",
+   "FIELD2": 1124
+ },
+ {
+   "FIELD1": "egg yolk",
+   "FIELD2": 1125
+ },
+ {
+   "FIELD1": "eggnog",
+   "FIELD2": 1057
+ },
+ {
+   "FIELD1": "eggplant",
+   "FIELD2": 11209
+ },
+ {
+   "FIELD1": "elbow macaroni",
+   "FIELD2": 10120499
+ },
+ {
+   "FIELD1": "enchilada sauce",
+   "FIELD2": 6599
+ },
+ {
+   "FIELD1": "english cucumber",
+   "FIELD2": 10111205
+ },
+ {
+   "FIELD1": "english muffin",
+   "FIELD2": 18439
+ },
+ {
+   "FIELD1": "erythritol",
+   "FIELD2": 98887
+ },
+ {
+   "FIELD1": "escarole",
+   "FIELD2": 11213
+ },
+ {
+   "FIELD1": "espresso",
+   "FIELD2": 14210
+ },
+ {
+   "FIELD1": "evaporated milk",
+   "FIELD2": 1214
+ },
+ {
+   "FIELD1": "extra firm tofu",
+   "FIELD2": 16163
+ },
+ {
+   "FIELD1": "extra virgin olive oil",
+   "FIELD2": 1034053
+ },
+ {
+   "FIELD1": "farfalle",
+   "FIELD2": 10120420
+ },
+ {
+   "FIELD1": "farro",
+   "FIELD2": 10020005
+ },
+ {
+   "FIELD1": "fat free mayo",
+   "FIELD2": 42193
+ },
+ {
+   "FIELD1": "fat-free less-sodium chicken broth",
+   "FIELD2": 6984
+ },
+ {
+   "FIELD1": "fennel",
+   "FIELD2": 11957
+ },
+ {
+   "FIELD1": "fennel seeds",
+   "FIELD2": 2018
+ },
+ {
+   "FIELD1": "fenugreek leaf",
+   "FIELD2": 98963
+ },
+ {
+   "FIELD1": "fenugreek seeds",
+   "FIELD2": 2019
+ },
+ {
+   "FIELD1": "feta cheese",
+   "FIELD2": 1019
+ },
+ {
+   "FIELD1": "fettuccine",
+   "FIELD2": 10020409
+ },
+ {
+   "FIELD1": "fire roasted tomatoes",
+   "FIELD2": 98849
+ },
+ {
+   "FIELD1": "fish",
+   "FIELD2": 10115261
+ },
+ {
+   "FIELD1": "fish sauce",
+   "FIELD2": 6179
+ },
+ {
+   "FIELD1": "fish stock",
+   "FIELD2": 6963
+ },
+ {
+   "FIELD1": "flank steak",
+   "FIELD2": 23657
+ },
+ {
+   "FIELD1": "flax seeds",
+   "FIELD2": 10012220
+ },
+ {
+   "FIELD1": "fleur de sel",
+   "FIELD2": 1022047
+ },
+ {
+   "FIELD1": "flour",
+   "FIELD2": 20081
+ },
+ {
+   "FIELD1": "flour tortillas",
+   "FIELD2": 10218364
+ },
+ {
+   "FIELD1": "fontina cheese",
+   "FIELD2": 1020
+ },
+ {
+   "FIELD1": "food dye",
+   "FIELD2": 10711111
+ },
+ {
+   "FIELD1": "frank's redhot sauce",
+   "FIELD2": 98878
+ },
+ {
+   "FIELD1": "free range eggs",
+   "FIELD2": 1123
+ },
+ {
+   "FIELD1": "french bread",
+   "FIELD2": 18029
+ },
+ {
+   "FIELD1": "fresh basil",
+   "FIELD2": 2044
+ },
+ {
+   "FIELD1": "fresh bean sprouts",
+   "FIELD2": 11043
+ },
+ {
+   "FIELD1": "fresh chives",
+   "FIELD2": 11156
+ },
+ {
+   "FIELD1": "fresh corn",
+   "FIELD2": 11167
+ },
+ {
+   "FIELD1": "fresh corn kernels",
+   "FIELD2": 10011167
+ },
+ {
+   "FIELD1": "fresh figs",
+   "FIELD2": 9089
+ },
+ {
+   "FIELD1": "fresh fruit",
+   "FIELD2": 9431
+ },
+ {
+   "FIELD1": "fresh herbs",
+   "FIELD2": 10111297
+ },
+ {
+   "FIELD1": "fresh mint",
+   "FIELD2": 2064
+ },
+ {
+   "FIELD1": "fresh mozzarella",
+   "FIELD2": 1026
+ },
+ {
+   "FIELD1": "fresh rosemary",
+   "FIELD2": 2063
+ },
+ {
+   "FIELD1": "fresh thyme leaves",
+   "FIELD2": 2049
+ },
+ {
+   "FIELD1": "fried onions",
+   "FIELD2": 93709
+ },
+ {
+   "FIELD1": "frosting",
+   "FIELD2": 19230
+ },
+ {
+   "FIELD1": "froyo bars",
+   "FIELD2": 93629
+ },
+ {
+   "FIELD1": "frozen corn",
+   "FIELD2": 11913
+ },
+ {
+   "FIELD1": "frozen spinach",
+   "FIELD2": 11463
+ },
+ {
+   "FIELD1": "fudge",
+   "FIELD2": 19100
+ },
+ {
+   "FIELD1": "fudge topping",
+   "FIELD2": 10019348
+ },
+ {
+   "FIELD1": "fun size almond joy bar",
+   "FIELD2": 19065
+ },
+ {
+   "FIELD1": "garam masala",
+   "FIELD2": 93663
+ },
+ {
+   "FIELD1": "garbanzo bean flour",
+   "FIELD2": 16157
+ },
+ {
+   "FIELD1": "garlic",
+   "FIELD2": 11215
+ },
+ {
+   "FIELD1": "garlic paste",
+   "FIELD2": 10111215
+ },
+ {
+   "FIELD1": "garlic powder",
+   "FIELD2": 1022020
+ },
+ {
+   "FIELD1": "garlic powder",
+   "FIELD2": 2020
+ },
+ {
+   "FIELD1": "garlic salt",
+   "FIELD2": 1062047
+ },
+ {
+   "FIELD1": "gelatin",
+   "FIELD2": 19177
+ },
+ {
+   "FIELD1": "gf chocolate cake mix",
+   "FIELD2": 99040
+ },
+ {
+   "FIELD1": "gin",
+   "FIELD2": 10514037
+ },
+ {
+   "FIELD1": "ginger",
+   "FIELD2": 11216
+ },
+ {
+   "FIELD1": "ginger ale",
+   "FIELD2": 14136
+ },
+ {
+   "FIELD1": "ginger paste",
+   "FIELD2": 93754
+ },
+ {
+   "FIELD1": "ginger-garlic paste",
+   "FIELD2": 10093754
+ },
+ {
+   "FIELD1": "gingersnap cookies",
+   "FIELD2": 18172
+ },
+ {
+   "FIELD1": "gnocchi",
+   "FIELD2": 98853
+ },
+ {
+   "FIELD1": "goat cheese",
+   "FIELD2": 1159
+ },
+ {
+   "FIELD1": "golden raisins",
+   "FIELD2": 9297
+ },
+ {
+   "FIELD1": "gorgonzola",
+   "FIELD2": 1011004
+ },
+ {
+   "FIELD1": "gouda cheese",
+   "FIELD2": 1022
+ },
+ {
+   "FIELD1": "graham cracker crumbs",
+   "FIELD2": 10018617
+ },
+ {
+   "FIELD1": "graham cracker pie crust",
+   "FIELD2": 18942
+ },
+ {
+   "FIELD1": "graham crackers",
+   "FIELD2": 18617
+ },
+ {
+   "FIELD1": "grain blend",
+   "FIELD2": 10020088
+ },
+ {
+   "FIELD1": "grand marnier",
+   "FIELD2": 10314534
+ },
+ {
+   "FIELD1": "granny smith apples",
+   "FIELD2": 1089003
+ },
+ {
+   "FIELD1": "granola",
+   "FIELD2": 8212
+ },
+ {
+   "FIELD1": "granulated garlic",
+   "FIELD2": 1002020
+ },
+ {
+   "FIELD1": "grape tomatoes",
+   "FIELD2": 10111529
+ },
+ {
+   "FIELD1": "grapefruit",
+   "FIELD2": 9112
+ },
+ {
+   "FIELD1": "grapeseed oil",
+   "FIELD2": 4517
+ },
+ {
+   "FIELD1": "gravy",
+   "FIELD2": 6997
+ },
+ {
+   "FIELD1": "great northern beans",
+   "FIELD2": 16025
+ },
+ {
+   "FIELD1": "greek yogurt",
+   "FIELD2": 1256
+ },
+ {
+   "FIELD1": "green beans",
+   "FIELD2": 11052
+ },
+ {
+   "FIELD1": "green bell pepper",
+   "FIELD2": 11333
+ },
+ {
+   "FIELD1": "green chili pepper",
+   "FIELD2": 31015
+ },
+ {
+   "FIELD1": "green food coloring",
+   "FIELD2": 1441111
+ },
+ {
+   "FIELD1": "green grapes",
+   "FIELD2": 1019132
+ },
+ {
+   "FIELD1": "green olives",
+   "FIELD2": 1029195
+ },
+ {
+   "FIELD1": "green onions",
+   "FIELD2": 11291
+ },
+ {
+   "FIELD1": "greens",
+   "FIELD2": 21052
+ },
+ {
+   "FIELD1": "grill cheese",
+   "FIELD2": 10093624
+ },
+ {
+   "FIELD1": "grill seasoning",
+   "FIELD2": 1022034
+ },
+ {
+   "FIELD1": "ground allspice",
+   "FIELD2": 2001
+ },
+ {
+   "FIELD1": "ground ancho chili",
+   "FIELD2": 1022009
+ },
+ {
+   "FIELD1": "ground beef",
+   "FIELD2": 10023572
+ },
+ {
+   "FIELD1": "ground chicken",
+   "FIELD2": 5332
+ },
+ {
+   "FIELD1": "ground chipotle chile pepper",
+   "FIELD2": 1052009
+ },
+ {
+   "FIELD1": "ground cinnamon",
+   "FIELD2": 1012010
+ },
+ {
+   "FIELD1": "ground cinnamon",
+   "FIELD2": 2010
+ },
+ {
+   "FIELD1": "ground cloves",
+   "FIELD2": 2011
+ },
+ {
+   "FIELD1": "ground coriander seeds",
+   "FIELD2": 1002013
+ },
+ {
+   "FIELD1": "ground cumin",
+   "FIELD2": 1002014
+ },
+ {
+   "FIELD1": "ground flaxseed",
+   "FIELD2": 12220
+ },
+ {
+   "FIELD1": "ground ginger",
+   "FIELD2": 2021
+ },
+ {
+   "FIELD1": "ground lamb",
+   "FIELD2": 17224
+ },
+ {
+   "FIELD1": "ground mace",
+   "FIELD2": 2022
+ },
+ {
+   "FIELD1": "ground nutmeg",
+   "FIELD2": 2025
+ },
+ {
+   "FIELD1": "ground pork",
+   "FIELD2": 10219
+ },
+ {
+   "FIELD1": "ground pork sausage",
+   "FIELD2": 7063
+ },
+ {
+   "FIELD1": "ground veal",
+   "FIELD2": 17142
+ },
+ {
+   "FIELD1": "gruyere",
+   "FIELD2": 1023
+ },
+ {
+   "FIELD1": "guacamole",
+   "FIELD2": 1009037
+ },
+ {
+   "FIELD1": "half n half",
+   "FIELD2": 1049
+ },
+ {
+   "FIELD1": "halibut fillet",
+   "FIELD2": 15036
+ },
+ {
+   "FIELD1": "ham",
+   "FIELD2": 10151
+ },
+ {
+   "FIELD1": "hamburger buns",
+   "FIELD2": 18350
+ },
+ {
+   "FIELD1": "hard cooked eggs",
+   "FIELD2": 1129
+ },
+ {
+   "FIELD1": "harissa",
+   "FIELD2": 1006972
+ },
+ {
+   "FIELD1": "hash brown potatoes",
+   "FIELD2": 11390
+ },
+ {
+   "FIELD1": "hazelnuts",
+   "FIELD2": 12120
+ },
+ {
+   "FIELD1": "healthy request cream of celery soup",
+   "FIELD2": 6987
+ },
+ {
+   "FIELD1": "hemp seeds",
+   "FIELD2": 93602
+ },
+ {
+   "FIELD1": "herbes de provence",
+   "FIELD2": 1012042
+ },
+ {
+   "FIELD1": "herbs",
+   "FIELD2": 1002044
+ },
+ {
+   "FIELD1": "hershey's kisses brand milk chocolates",
+   "FIELD2": 93743
+ },
+ {
+   "FIELD1": "hoisin sauce",
+   "FIELD2": 6175
+ },
+ {
+   "FIELD1": "honey mustard",
+   "FIELD2": 99227
+ },
+ {
+   "FIELD1": "horseradish",
+   "FIELD2": 1002055
+ },
+ {
+   "FIELD1": "hot sauce",
+   "FIELD2": 6168
+ },
+ {
+   "FIELD1": "hummus",
+   "FIELD2": 16158
+ },
+ {
+   "FIELD1": "ice",
+   "FIELD2": 10014412
+ },
+ {
+   "FIELD1": "ice cream",
+   "FIELD2": 19095
+ },
+ {
+   "FIELD1": "instant chocolate pudding mix",
+   "FIELD2": 19184
+ },
+ {
+   "FIELD1": "instant coffee powder",
+   "FIELD2": 14214
+ },
+ {
+   "FIELD1": "instant espresso powder",
+   "FIELD2": 10014214
+ },
+ {
+   "FIELD1": "instant lemon pudding mix",
+   "FIELD2": 19332
+ },
+ {
+   "FIELD1": "instant yeast",
+   "FIELD2": 10118375
+ },
+ {
+   "FIELD1": "irish cream",
+   "FIELD2": 93764
+ },
+ {
+   "FIELD1": "italian bread",
+   "FIELD2": 10028033
+ },
+ {
+   "FIELD1": "italian cheese blend",
+   "FIELD2": 93651
+ },
+ {
+   "FIELD1": "italian sausages",
+   "FIELD2": 7036
+ },
+ {
+   "FIELD1": "italian seasoning",
+   "FIELD2": 1022027
+ },
+ {
+   "FIELD1": "jaggery",
+   "FIELD2": 99002
+ },
+ {
+   "FIELD1": "jalapeno",
+   "FIELD2": 11979
+ },
+ {
+   "FIELD1": "jasmine rice",
+   "FIELD2": 10120444
+ },
+ {
+   "FIELD1": "jelly",
+   "FIELD2": 19297
+ },
+ {
+   "FIELD1": "jicama",
+   "FIELD2": 11603
+ },
+ {
+   "FIELD1": "jimmies",
+   "FIELD2": 93645
+ },
+ {
+   "FIELD1": "juice",
+   "FIELD2": 1019016
+ },
+ {
+   "FIELD1": "jumbo shell pasta",
+   "FIELD2": 10520420
+ },
+ {
+   "FIELD1": "kaffir lime leaves",
+   "FIELD2": 93633
+ },
+ {
+   "FIELD1": "kahlua",
+   "FIELD2": 93716
+ },
+ {
+   "FIELD1": "kalamata olives",
+   "FIELD2": 1009195
+ },
+ {
+   "FIELD1": "kale",
+   "FIELD2": 11233
+ },
+ {
+   "FIELD1": "ketchup",
+   "FIELD2": 11935
+ },
+ {
+   "FIELD1": "kitchen bouquet",
+   "FIELD2": 93768
+ },
+ {
+   "FIELD1": "kiwis",
+   "FIELD2": 9148
+ },
+ {
+   "FIELD1": "kosher salt",
+   "FIELD2": 1082047
+ },
+ {
+   "FIELD1": "ladyfingers",
+   "FIELD2": 18423
+ },
+ {
+   "FIELD1": "lamb",
+   "FIELD2": 10017224
+ },
+ {
+   "FIELD1": "lasagna noodles",
+   "FIELD2": 10620420
+ },
+ {
+   "FIELD1": "lb cake",
+   "FIELD2": 18133
+ },
+ {
+   "FIELD1": "lean ground beef",
+   "FIELD2": 23557
+ },
+ {
+   "FIELD1": "lean ground turkey",
+   "FIELD2": 5662
+ },
+ {
+   "FIELD1": "lean pork tenderloin",
+   "FIELD2": 10060
+ },
+ {
+   "FIELD1": "leeks",
+   "FIELD2": 11246
+ },
+ {
+   "FIELD1": "leg of lamb",
+   "FIELD2": 17013
+ },
+ {
+   "FIELD1": "lemon",
+   "FIELD2": 9150
+ },
+ {
+   "FIELD1": "lemon curd",
+   "FIELD2": 93834
+ },
+ {
+   "FIELD1": "lemon extract",
+   "FIELD2": 12311111
+ },
+ {
+   "FIELD1": "lemon juice",
+   "FIELD2": 9152
+ },
+ {
+   "FIELD1": "lemon peel",
+   "FIELD2": 9156
+ },
+ {
+   "FIELD1": "lemon pepper",
+   "FIELD2": 1012030
+ },
+ {
+   "FIELD1": "lemon wedges",
+   "FIELD2": 1029150
+ },
+ {
+   "FIELD1": "lemongrass",
+   "FIELD2": 11972
+ },
+ {
+   "FIELD1": "lettuce",
+   "FIELD2": 11252
+ },
+ {
+   "FIELD1": "lettuce leaves",
+   "FIELD2": 93623
+ },
+ {
+   "FIELD1": "light butter",
+   "FIELD2": 4602
+ },
+ {
+   "FIELD1": "light coconut milk",
+   "FIELD2": 99009
+ },
+ {
+   "FIELD1": "light corn syrup",
+   "FIELD2": 19350
+ },
+ {
+   "FIELD1": "light cream cheese",
+   "FIELD2": 43274
+ },
+ {
+   "FIELD1": "light mayonnaise",
+   "FIELD2": 4641
+ },
+ {
+   "FIELD1": "light olive oil",
+   "FIELD2": 1054053
+ },
+ {
+   "FIELD1": "light soy sauce",
+   "FIELD2": 10216124
+ },
+ {
+   "FIELD1": "lime",
+   "FIELD2": 9159
+ },
+ {
+   "FIELD1": "lime juice",
+   "FIELD2": 9160
+ },
+ {
+   "FIELD1": "lime wedges",
+   "FIELD2": 1029159
+ },
+ {
+   "FIELD1": "lime zest",
+   "FIELD2": 1009159
+ },
+ {
+   "FIELD1": "linguine",
+   "FIELD2": 10720420
+ },
+ {
+   "FIELD1": "liquid smoke",
+   "FIELD2": 93627
+ },
+ {
+   "FIELD1": "liquid stevia",
+   "FIELD2": 10811111
+ },
+ {
+   "FIELD1": "liquor",
+   "FIELD2": 14037
+ },
+ {
+   "FIELD1": "live lobster",
+   "FIELD2": 15147
+ },
+ {
+   "FIELD1": "long-grain rice",
+   "FIELD2": 10220444
+ },
+ {
+   "FIELD1": "low fat buttermilk",
+   "FIELD2": 1088
+ },
+ {
+   "FIELD1": "low fat milk",
+   "FIELD2": 1082
+ },
+ {
+   "FIELD1": "low fat milk",
+   "FIELD2": 1174
+ },
+ {
+   "FIELD1": "low fat plain yogurt",
+   "FIELD2": 1117
+ },
+ {
+   "FIELD1": "low fat ricotta cheese",
+   "FIELD2": 1037
+ },
+ {
+   "FIELD1": "low fat sour cream",
+   "FIELD2": 1179
+ },
+ {
+   "FIELD1": "low sodium chicken broth",
+   "FIELD2": 6970
+ },
+ {
+   "FIELD1": "low sodium soy sauce",
+   "FIELD2": 16424
+ },
+ {
+   "FIELD1": "low-sodium chicken stock",
+   "FIELD2": 1006970
+ },
+ {
+   "FIELD1": "lower sodium beef broth",
+   "FIELD2": 10093741
+ },
+ {
+   "FIELD1": "lump crab",
+   "FIELD2": 10115136
+ },
+ {
+   "FIELD1": "m&m candies",
+   "FIELD2": 19157
+ },
+ {
+   "FIELD1": "macadamia nuts",
+   "FIELD2": 12131
+ },
+ {
+   "FIELD1": "macaroni and cheese mix",
+   "FIELD2": 32004
+ },
+ {
+   "FIELD1": "madras curry powder",
+   "FIELD2": 2015
+ },
+ {
+   "FIELD1": "malt drink mix",
+   "FIELD2": 14311
+ },
+ {
+   "FIELD1": "mandarin orange sections",
+   "FIELD2": 9383
+ },
+ {
+   "FIELD1": "mandarin oranges",
+   "FIELD2": 9218
+ },
+ {
+   "FIELD1": "mango",
+   "FIELD2": 9176
+ },
+ {
+   "FIELD1": "maple syrup",
+   "FIELD2": 19911
+ },
+ {
+   "FIELD1": "maraschino cherries",
+   "FIELD2": 9328
+ },
+ {
+   "FIELD1": "margarine",
+   "FIELD2": 4073
+ },
+ {
+   "FIELD1": "marinara sauce",
+   "FIELD2": 10111549
+ },
+ {
+   "FIELD1": "marjoram",
+   "FIELD2": 2023
+ },
+ {
+   "FIELD1": "marsala wine",
+   "FIELD2": 14057
+ },
+ {
+   "FIELD1": "marshmallow fluff",
+   "FIELD2": 93644
+ },
+ {
+   "FIELD1": "marshmallows",
+   "FIELD2": 19116
+ },
+ {
+   "FIELD1": "masa harina",
+   "FIELD2": 20317
+ },
+ {
+   "FIELD1": "mascarpone",
+   "FIELD2": 93820
+ },
+ {
+   "FIELD1": "mat beans",
+   "FIELD2": 99144
+ },
+ {
+   "FIELD1": "matcha tea",
+   "FIELD2": 98932
+ },
+ {
+   "FIELD1": "mayonnaise",
+   "FIELD2": 4025
+ },
+ {
+   "FIELD1": "meat",
+   "FIELD2": 1015006
+ },
+ {
+   "FIELD1": "meat",
+   "FIELD2": 1065062
+ },
+ {
+   "FIELD1": "meatballs",
+   "FIELD2": 10110219
+ },
+ {
+   "FIELD1": "medjool dates",
+   "FIELD2": 9421
+ },
+ {
+   "FIELD1": "mexican cream",
+   "FIELD2": 93772
+ },
+ {
+   "FIELD1": "meyer lemon juice",
+   "FIELD2": 1009152
+ },
+ {
+   "FIELD1": "milk",
+   "FIELD2": 1077
+ },
+ {
+   "FIELD1": "milk chocolate chips",
+   "FIELD2": 10019146
+ },
+ {
+   "FIELD1": "mint chutney",
+   "FIELD2": 98991
+ },
+ {
+   "FIELD1": "minute rice",
+   "FIELD2": 20048
+ },
+ {
+   "FIELD1": "miracle whip",
+   "FIELD2": 4014
+ },
+ {
+   "FIELD1": "mirin",
+   "FIELD2": 93830
+ },
+ {
+   "FIELD1": "miso",
+   "FIELD2": 16112
+ },
+ {
+   "FIELD1": "molasses",
+   "FIELD2": 19304
+ },
+ {
+   "FIELD1": "monterey jack cheese",
+   "FIELD2": 1001025
+ },
+ {
+   "FIELD1": "mushroom",
+   "FIELD2": 11260
+ },
+ {
+   "FIELD1": "mussels",
+   "FIELD2": 15164
+ },
+ {
+   "FIELD1": "mustard",
+   "FIELD2": 2046
+ },
+ {
+   "FIELD1": "mustard seeds",
+   "FIELD2": 2024
+ },
+ {
+   "FIELD1": "napa cabbage",
+   "FIELD2": 11119
+ },
+ {
+   "FIELD1": "navel oranges",
+   "FIELD2": 9202
+ },
+ {
+   "FIELD1": "nectarine",
+   "FIELD2": 9191
+ },
+ {
+   "FIELD1": "new potatoes",
+   "FIELD2": 11352
+ },
+ {
+   "FIELD1": "non-fat greek yogurt",
+   "FIELD2": 1011256
+ },
+ {
+   "FIELD1": "nonfat cool whip",
+   "FIELD2": 1200
+ },
+ {
+   "FIELD1": "nonfat milk",
+   "FIELD2": 1085
+ },
+ {
+   "FIELD1": "nori",
+   "FIELD2": 11446
+ },
+ {
+   "FIELD1": "nut butter",
+   "FIELD2": 12195
+ },
+ {
+   "FIELD1": "nut meal",
+   "FIELD2": 93620
+ },
+ {
+   "FIELD1": "nutella",
+   "FIELD2": 19125
+ },
+ {
+   "FIELD1": "nutritional yeast",
+   "FIELD2": 93690
+ },
+ {
+   "FIELD1": "oat flour",
+   "FIELD2": 20132
+ },
+ {
+   "FIELD1": "oats",
+   "FIELD2": 8120
+ },
+ {
+   "FIELD1": "oil",
+   "FIELD2": 4582
+ },
+ {
+   "FIELD1": "oil packed sun dried tomatoes",
+   "FIELD2": 11956
+ },
+ {
+   "FIELD1": "okra",
+   "FIELD2": 11278
+ },
+ {
+   "FIELD1": "old bay seasoning",
+   "FIELD2": 1052034
+ },
+ {
+   "FIELD1": "olive oil",
+   "FIELD2": 4053
+ },
+ {
+   "FIELD1": "olives",
+   "FIELD2": 9195
+ },
+ {
+   "FIELD1": "onion",
+   "FIELD2": 11282
+ },
+ {
+   "FIELD1": "onion powder",
+   "FIELD2": 2026
+ },
+ {
+   "FIELD1": "onion soup mix",
+   "FIELD2": 6094
+ },
+ {
+   "FIELD1": "orange",
+   "FIELD2": 9200
+ },
+ {
+   "FIELD1": "orange bell pepper",
+   "FIELD2": 10011821
+ },
+ {
+   "FIELD1": "orange juice",
+   "FIELD2": 9206
+ },
+ {
+   "FIELD1": "orange juice concentrate",
+   "FIELD2": 9214
+ },
+ {
+   "FIELD1": "orange liqueur",
+   "FIELD2": 10414534
+ },
+ {
+   "FIELD1": "orange marmalade",
+   "FIELD2": 19303
+ },
+ {
+   "FIELD1": "orange oil",
+   "FIELD2": 12511111
+ },
+ {
+   "FIELD1": "orange zest",
+   "FIELD2": 9216
+ },
+ {
+   "FIELD1": "oregano",
+   "FIELD2": 2027
+ },
+ {
+   "FIELD1": "oreo cookies",
+   "FIELD2": 10018166
+ },
+ {
+   "FIELD1": "orzo",
+   "FIELD2": 10920420
+ },
+ {
+   "FIELD1": "oyster sauce",
+   "FIELD2": 6176
+ },
+ {
+   "FIELD1": "oysters",
+   "FIELD2": 15167
+ },
+ {
+   "FIELD1": "palm sugar",
+   "FIELD2": 93831
+ },
+ {
+   "FIELD1": "pancetta",
+   "FIELD2": 10410123
+ },
+ {
+   "FIELD1": "paneer",
+   "FIELD2": 98847
+ },
+ {
+   "FIELD1": "panko",
+   "FIELD2": 10018079
+ },
+ {
+   "FIELD1": "papaya",
+   "FIELD2": 9226
+ },
+ {
+   "FIELD1": "paprika",
+   "FIELD2": 2028
+ },
+ {
+   "FIELD1": "parmigiano reggiano",
+   "FIELD2": 1033
+ },
+ {
+   "FIELD1": "parsley",
+   "FIELD2": 11297
+ },
+ {
+   "FIELD1": "parsley flakes",
+   "FIELD2": 2029
+ },
+ {
+   "FIELD1": "parsnip",
+   "FIELD2": 11298
+ },
+ {
+   "FIELD1": "part-skim mozzarella cheese",
+   "FIELD2": 1028
+ },
+ {
+   "FIELD1": "pasta",
+   "FIELD2": 20420
+ },
+ {
+   "FIELD1": "pasta salad mix",
+   "FIELD2": 99036
+ },
+ {
+   "FIELD1": "pasta sauce",
+   "FIELD2": 10011549
+ },
+ {
+   "FIELD1": "pastry flour",
+   "FIELD2": 10020080
+ },
+ {
+   "FIELD1": "peach",
+   "FIELD2": 9236
+ },
+ {
+   "FIELD1": "peanut butter",
+   "FIELD2": 16098
+ },
+ {
+   "FIELD1": "peanut butter chips",
+   "FIELD2": 93762
+ },
+ {
+   "FIELD1": "peanut butter cups",
+   "FIELD2": 19150
+ },
+ {
+   "FIELD1": "peanut oil",
+   "FIELD2": 4042
+ },
+ {
+   "FIELD1": "peanuts",
+   "FIELD2": 16091
+ },
+ {
+   "FIELD1": "pear liqueur",
+   "FIELD2": 98988
+ },
+ {
+   "FIELD1": "pearl barley",
+   "FIELD2": 20005
+ },
+ {
+   "FIELD1": "pearl onions",
+   "FIELD2": 10111282
+ },
+ {
+   "FIELD1": "peas",
+   "FIELD2": 11304
+ },
+ {
+   "FIELD1": "pecan",
+   "FIELD2": 12142
+ },
+ {
+   "FIELD1": "pecan pieces",
+   "FIELD2": 10012142
+ },
+ {
+   "FIELD1": "pecorino",
+   "FIELD2": 1038
+ },
+ {
+   "FIELD1": "penne",
+   "FIELD2": 11120420
+ },
+ {
+   "FIELD1": "peperoncino",
+   "FIELD2": 11976
+ },
+ {
+   "FIELD1": "pepper jack cheese",
+   "FIELD2": 1025
+ },
+ {
+   "FIELD1": "peppercorns",
+   "FIELD2": 1022030
+ },
+ {
+   "FIELD1": "peppermint baking chips",
+   "FIELD2": 98858
+ },
+ {
+   "FIELD1": "peppermint extract",
+   "FIELD2": 1022050
+ },
+ {
+   "FIELD1": "pepperoni",
+   "FIELD2": 7057
+ },
+ {
+   "FIELD1": "peppers",
+   "FIELD2": 10111333
+ },
+ {
+   "FIELD1": "pesto",
+   "FIELD2": 93698
+ },
+ {
+   "FIELD1": "pickle relish",
+   "FIELD2": 11944
+ },
+ {
+   "FIELD1": "pickles",
+   "FIELD2": 11937
+ },
+ {
+   "FIELD1": "pico de gallo",
+   "FIELD2": 27027
+ },
+ {
+   "FIELD1": "pie crust",
+   "FIELD2": 18334
+ },
+ {
+   "FIELD1": "pimento stuffed olives",
+   "FIELD2": 1049195
+ },
+ {
+   "FIELD1": "pimientos",
+   "FIELD2": 11943
+ },
+ {
+   "FIELD1": "pine nuts",
+   "FIELD2": 12147
+ },
+ {
+   "FIELD1": "pineapple",
+   "FIELD2": 9266
+ },
+ {
+   "FIELD1": "pineapple chunks",
+   "FIELD2": 1029354
+ },
+ {
+   "FIELD1": "pineapple in juice",
+   "FIELD2": 9354
+ },
+ {
+   "FIELD1": "pineapple juice",
+   "FIELD2": 9273
+ },
+ {
+   "FIELD1": "pink himalayan salt",
+   "FIELD2": 1032047
+ },
+ {
+   "FIELD1": "pinto beans",
+   "FIELD2": 16043
+ },
+ {
+   "FIELD1": "pistachios",
+   "FIELD2": 12151
+ },
+ {
+   "FIELD1": "pita",
+   "FIELD2": 18413
+ },
+ {
+   "FIELD1": "pizza crust",
+   "FIELD2": 93770
+ },
+ {
+   "FIELD1": "pizza mix",
+   "FIELD2": 98924
+ },
+ {
+   "FIELD1": "plain greek yogurt",
+   "FIELD2": 1001256
+ },
+ {
+   "FIELD1": "plain nonfat yogurt",
+   "FIELD2": 1118
+ },
+ {
+   "FIELD1": "plain yogurt",
+   "FIELD2": 1001116
+ },
+ {
+   "FIELD1": "plantain",
+   "FIELD2": 9277
+ },
+ {
+   "FIELD1": "plum",
+   "FIELD2": 9279
+ },
+ {
+   "FIELD1": "plum tomatoes",
+   "FIELD2": 10411529
+ },
+ {
+   "FIELD1": "poblano peppers",
+   "FIELD2": 10011333
+ },
+ {
+   "FIELD1": "polenta",
+   "FIELD2": 10035137
+ },
+ {
+   "FIELD1": "polish sausage",
+   "FIELD2": 7059
+ },
+ {
+   "FIELD1": "pomegranate juice",
+   "FIELD2": 9442
+ },
+ {
+   "FIELD1": "pomegranate molasses",
+   "FIELD2": 10042040
+ },
+ {
+   "FIELD1": "pomegranate seeds",
+   "FIELD2": 9286
+ },
+ {
+   "FIELD1": "popcorn",
+   "FIELD2": 19034
+ },
+ {
+   "FIELD1": "poppy seeds",
+   "FIELD2": 2033
+ },
+ {
+   "FIELD1": "pork",
+   "FIELD2": 10010219
+ },
+ {
+   "FIELD1": "Pork & Beans",
+   "FIELD2": 16009
+ },
+ {
+   "FIELD1": "pork belly",
+   "FIELD2": 10005
+ },
+ {
+   "FIELD1": "pork butt",
+   "FIELD2": 10084
+ },
+ {
+   "FIELD1": "pork chops",
+   "FIELD2": 10010062
+ },
+ {
+   "FIELD1": "pork links",
+   "FIELD2": 1007063
+ },
+ {
+   "FIELD1": "pork loin chops",
+   "FIELD2": 10062
+ },
+ {
+   "FIELD1": "pork loin roast",
+   "FIELD2": 10225
+ },
+ {
+   "FIELD1": "pork roast",
+   "FIELD2": 10010225
+ },
+ {
+   "FIELD1": "pork shoulder",
+   "FIELD2": 10072
+ },
+ {
+   "FIELD1": "pork tenderloin",
+   "FIELD2": 10218
+ },
+ {
+   "FIELD1": "port",
+   "FIELD2": 10114057
+ },
+ {
+   "FIELD1": "portabella mushrooms",
+   "FIELD2": 11265
+ },
+ {
+   "FIELD1": "pot roast",
+   "FIELD2": 23612
+ },
+ {
+   "FIELD1": "potato chips",
+   "FIELD2": 19411
+ },
+ {
+   "FIELD1": "potato starch",
+   "FIELD2": 11413
+ },
+ {
+   "FIELD1": "potatoes",
+   "FIELD2": 11362
+ },
+ {
+   "FIELD1": "poultry seasoning",
+   "FIELD2": 2034
+ },
+ {
+   "FIELD1": "powdered sugar",
+   "FIELD2": 19336
+ },
+ {
+   "FIELD1": "pretzel sandwiches",
+   "FIELD2": 19047
+ },
+ {
+   "FIELD1": "processed american cheese",
+   "FIELD2": 1253
+ },
+ {
+   "FIELD1": "prosciutto",
+   "FIELD2": 10010123
+ },
+ {
+   "FIELD1": "provolone cheese",
+   "FIELD2": 1035
+ },
+ {
+   "FIELD1": "prunes",
+   "FIELD2": 9291
+ },
+ {
+   "FIELD1": "puff pastry",
+   "FIELD2": 18337
+ },
+ {
+   "FIELD1": "pumpkin",
+   "FIELD2": 11422
+ },
+ {
+   "FIELD1": "pumpkin pie filling",
+   "FIELD2": 11426
+ },
+ {
+   "FIELD1": "pumpkin pie spice",
+   "FIELD2": 1002035
+ },
+ {
+   "FIELD1": "pumpkin puree",
+   "FIELD2": 11424
+ },
+ {
+   "FIELD1": "pumpkin seeds",
+   "FIELD2": 12014
+ },
+ {
+   "FIELD1": "queso fresco",
+   "FIELD2": 1228
+ },
+ {
+   "FIELD1": "quick cooking oats",
+   "FIELD2": 8402
+ },
+ {
+   "FIELD1": "quinoa",
+   "FIELD2": 20035
+ },
+ {
+   "FIELD1": "quinoa flour",
+   "FIELD2": 93773
+ },
+ {
+   "FIELD1": "radicchio",
+   "FIELD2": 11952
+ },
+ {
+   "FIELD1": "radishes",
+   "FIELD2": 11429
+ },
+ {
+   "FIELD1": "raisins",
+   "FIELD2": 9299
+ },
+ {
+   "FIELD1": "rajma masala",
+   "FIELD2": 10193663
+ },
+ {
+   "FIELD1": "ramen noodles",
+   "FIELD2": 6583
+ },
+ {
+   "FIELD1": "ranch dressing",
+   "FIELD2": 4639
+ },
+ {
+   "FIELD1": "ranch dressing mix",
+   "FIELD2": 93733
+ },
+ {
+   "FIELD1": "raspberries",
+   "FIELD2": 9302
+ },
+ {
+   "FIELD1": "raspberry jam",
+   "FIELD2": 10719297
+ },
+ {
+   "FIELD1": "raw cashews",
+   "FIELD2": 12087
+ },
+ {
+   "FIELD1": "raw shrimp",
+   "FIELD2": 15152
+ },
+ {
+   "FIELD1": "ready-to-serve Asian fried rice",
+   "FIELD2": 93721
+ },
+ {
+   "FIELD1": "real bacon recipe pieces",
+   "FIELD2": 99229
+ },
+ {
+   "FIELD1": "red apples",
+   "FIELD2": 1079003
+ },
+ {
+   "FIELD1": "red bell peppers",
+   "FIELD2": 11821
+ },
+ {
+   "FIELD1": "red cabbage",
+   "FIELD2": 11112
+ },
+ {
+   "FIELD1": "red chilli",
+   "FIELD2": 11819
+ },
+ {
+   "FIELD1": "red delicious apples",
+   "FIELD2": 1059003
+ },
+ {
+   "FIELD1": "red food coloring",
+   "FIELD2": 1451111
+ },
+ {
+   "FIELD1": "red grapefruit juice",
+   "FIELD2": 98926
+ },
+ {
+   "FIELD1": "red grapes",
+   "FIELD2": 9132
+ },
+ {
+   "FIELD1": "red kidney beans",
+   "FIELD2": 16033
+ },
+ {
+   "FIELD1": "red lentils",
+   "FIELD2": 10016069
+ },
+ {
+   "FIELD1": "red onion",
+   "FIELD2": 10011282
+ },
+ {
+   "FIELD1": "red pepper flakes",
+   "FIELD2": 1032009
+ },
+ {
+   "FIELD1": "red pepper powder",
+   "FIELD2": 2031
+ },
+ {
+   "FIELD1": "red potatoes",
+   "FIELD2": 10011355
+ },
+ {
+   "FIELD1": "red velvet cookie",
+   "FIELD2": 18157
+ },
+ {
+   "FIELD1": "red wine",
+   "FIELD2": 14096
+ },
+ {
+   "FIELD1": "red wine vinegar",
+   "FIELD2": 1022068
+ },
+ {
+   "FIELD1": "reduced fat shredded cheddar cheese",
+   "FIELD2": 1001168
+ },
+ {
+   "FIELD1": "refried beans",
+   "FIELD2": 16202
+ },
+ {
+   "FIELD1": "refrigerated crescent rolls",
+   "FIELD2": 93618
+ },
+ {
+   "FIELD1": "refrigerated pizza dough",
+   "FIELD2": 93610
+ },
+ {
+   "FIELD1": "refrigerated sugar cookie dough",
+   "FIELD2": 18205
+ },
+ {
+   "FIELD1": "rhubarb",
+   "FIELD2": 9307
+ },
+ {
+   "FIELD1": "rib tips",
+   "FIELD2": 98937
+ },
+ {
+   "FIELD1": "rice",
+   "FIELD2": 20444
+ },
+ {
+   "FIELD1": "rice flour",
+   "FIELD2": 20061
+ },
+ {
+   "FIELD1": "rice krispies cereal",
+   "FIELD2": 8065
+ },
+ {
+   "FIELD1": "rice milk",
+   "FIELD2": 93761
+ },
+ {
+   "FIELD1": "rice noodles",
+   "FIELD2": 20133
+ },
+ {
+   "FIELD1": "rice paper",
+   "FIELD2": 10118368
+ },
+ {
+   "FIELD1": "rice syrup",
+   "FIELD2": 93784
+ },
+ {
+   "FIELD1": "rice vinegar",
+   "FIELD2": 1022053
+ },
+ {
+   "FIELD1": "rice wine",
+   "FIELD2": 43479
+ },
+ {
+   "FIELD1": "ricotta salata",
+   "FIELD2": 1036
+ },
+ {
+   "FIELD1": "ritz crackers",
+   "FIELD2": 18621
+ },
+ {
+   "FIELD1": "roast beef",
+   "FIELD2": 93713
+ },
+ {
+   "FIELD1": "roasted chicken",
+   "FIELD2": 5114
+ },
+ {
+   "FIELD1": "roasted nuts",
+   "FIELD2": 12135
+ },
+ {
+   "FIELD1": "roasted peanuts",
+   "FIELD2": 16092
+ },
+ {
+   "FIELD1": "roasted red peppers",
+   "FIELD2": 11916
+ },
+ {
+   "FIELD1": "roma tomatoes",
+   "FIELD2": 10211529
+ },
+ {
+   "FIELD1": "romaine lettuce",
+   "FIELD2": 10111251
+ },
+ {
+   "FIELD1": "root vegetables",
+   "FIELD2": 10011298
+ },
+ {
+   "FIELD1": "rosemary",
+   "FIELD2": 2036
+ },
+ {
+   "FIELD1": "rotini pasta",
+   "FIELD2": 11320420
+ },
+ {
+   "FIELD1": "rotisserie chicken",
+   "FIELD2": 5348
+ },
+ {
+   "FIELD1": "round steak",
+   "FIELD2": 23617
+ },
+ {
+   "FIELD1": "rub",
+   "FIELD2": 1012034
+ },
+ {
+   "FIELD1": "rum extract",
+   "FIELD2": 12211111
+ },
+ {
+   "FIELD1": "runny honey",
+   "FIELD2": 19296
+ },
+ {
+   "FIELD1": "russet potatoes",
+   "FIELD2": 11353
+ },
+ {
+   "FIELD1": "rutabaga",
+   "FIELD2": 11435
+ },
+ {
+   "FIELD1": "rye bread",
+   "FIELD2": 18060
+ },
+ {
+   "FIELD1": "rye meal",
+   "FIELD2": 98905
+ },
+ {
+   "FIELD1": "saffron threads",
+   "FIELD2": 2037
+ },
+ {
+   "FIELD1": "sage",
+   "FIELD2": 2038
+ },
+ {
+   "FIELD1": "sage leaves",
+   "FIELD2": 99226
+ },
+ {
+   "FIELD1": "salad dressing",
+   "FIELD2": 4114
+ },
+ {
+   "FIELD1": "salami",
+   "FIELD2": 7071
+ },
+ {
+   "FIELD1": "salmon fillet",
+   "FIELD2": 15076
+ },
+ {
+   "FIELD1": "salsa",
+   "FIELD2": 6164
+ },
+ {
+   "FIELD1": "salsa verde",
+   "FIELD2": 27028
+ },
+ {
+   "FIELD1": "salt",
+   "FIELD2": 2047
+ },
+ {
+   "FIELD1": "salt and pepper",
+   "FIELD2": 1102047
+ },
+ {
+   "FIELD1": "salted butter",
+   "FIELD2": 1001001
+ },
+ {
+   "FIELD1": "saltine crackers",
+   "FIELD2": 18228
+ },
+ {
+   "FIELD1": "sandwich bun",
+   "FIELD2": 18353
+ },
+ {
+   "FIELD1": "sauerkraut",
+   "FIELD2": 11439
+ },
+ {
+   "FIELD1": "sausage",
+   "FIELD2": 1017063
+ },
+ {
+   "FIELD1": "sausage links",
+   "FIELD2": 1037063
+ },
+ {
+   "FIELD1": "scotch bonnet chili",
+   "FIELD2": 10011819
+ },
+ {
+   "FIELD1": "sea salt",
+   "FIELD2": 1012047
+ },
+ {
+   "FIELD1": "sea scallops",
+   "FIELD2": 10015172
+ },
+ {
+   "FIELD1": "seasoned bread crumbs",
+   "FIELD2": 18376
+ },
+ {
+   "FIELD1": "seasoned rice vinegar",
+   "FIELD2": 1032053
+ },
+ {
+   "FIELD1": "seasoned salt",
+   "FIELD2": 1042047
+ },
+ {
+   "FIELD1": "seasoning",
+   "FIELD2": 1042027
+ },
+ {
+   "FIELD1": "seasoning blend",
+   "FIELD2": 1032027
+ },
+ {
+   "FIELD1": "seeds",
+   "FIELD2": 93818
+ },
+ {
+   "FIELD1": "self-rising flour",
+   "FIELD2": 20129
+ },
+ {
+   "FIELD1": "semi sweet chocolate chips",
+   "FIELD2": 10019903
+ },
+ {
+   "FIELD1": "serrano chile",
+   "FIELD2": 11977
+ },
+ {
+   "FIELD1": "sesame oil",
+   "FIELD2": 4058
+ },
+ {
+   "FIELD1": "sesame seed hamburger buns",
+   "FIELD2": 10018350
+ },
+ {
+   "FIELD1": "sesame seeds",
+   "FIELD2": 12023
+ },
+ {
+   "FIELD1": "shallot",
+   "FIELD2": 11677
+ },
+ {
+   "FIELD1": "sharp cheddar cheese",
+   "FIELD2": 1031009
+ },
+ {
+   "FIELD1": "sheeps milk cheese",
+   "FIELD2": 1011019
+ },
+ {
+   "FIELD1": "shells",
+   "FIELD2": 11020420
+ },
+ {
+   "FIELD1": "sherry",
+   "FIELD2": 10114106
+ },
+ {
+   "FIELD1": "sherry",
+   "FIELD2": 10214106
+ },
+ {
+   "FIELD1": "sherry vinegar",
+   "FIELD2": 1012068
+ },
+ {
+   "FIELD1": "shiitake mushroom caps",
+   "FIELD2": 11238
+ },
+ {
+   "FIELD1": "short grain rice",
+   "FIELD2": 10120052
+ },
+ {
+   "FIELD1": "short pasta",
+   "FIELD2": 20499
+ },
+ {
+   "FIELD1": "short ribs",
+   "FIELD2": 10013149
+ },
+ {
+   "FIELD1": "shortbread cookies",
+   "FIELD2": 18192
+ },
+ {
+   "FIELD1": "shortcrust pastry",
+   "FIELD2": 10018338
+ },
+ {
+   "FIELD1": "shortening",
+   "FIELD2": 4615
+ },
+ {
+   "FIELD1": "shredded cheddar cheese",
+   "FIELD2": 1001009
+ },
+ {
+   "FIELD1": "shredded cheese",
+   "FIELD2": 1011026
+ },
+ {
+   "FIELD1": "shredded chicken",
+   "FIELD2": 1005114
+ },
+ {
+   "FIELD1": "shredded coconut",
+   "FIELD2": 12108
+ },
+ {
+   "FIELD1": "shredded mexican cheese blend",
+   "FIELD2": 1001251
+ },
+ {
+   "FIELD1": "shredded mexican cheese blend",
+   "FIELD2": 1251
+ },
+ {
+   "FIELD1": "shredded mozzarella",
+   "FIELD2": 1001026
+ },
+ {
+   "FIELD1": "silken tofu",
+   "FIELD2": 16161
+ },
+ {
+   "FIELD1": "sirloin steak",
+   "FIELD2": 23625
+ },
+ {
+   "FIELD1": "skim milk ricotta",
+   "FIELD2": 93630
+ },
+ {
+   "FIELD1": "skim vanilla greek yogurt",
+   "FIELD2": 99033
+ },
+ {
+   "FIELD1": "skin-on bone-in chicken leg quarters",
+   "FIELD2": 1005091
+ },
+ {
+   "FIELD1": "skinless boneless chicken breast halves",
+   "FIELD2": 1045062
+ },
+ {
+   "FIELD1": "skinless boneless chicken thighs",
+   "FIELD2": 5096
+ },
+ {
+   "FIELD1": "skinned black gram",
+   "FIELD2": 93718
+ },
+ {
+   "FIELD1": "slaw dressing",
+   "FIELD2": 43016
+ },
+ {
+   "FIELD1": "slaw mix",
+   "FIELD2": 10011109
+ },
+ {
+   "FIELD1": "slivered almonds",
+   "FIELD2": 10012061
+ },
+ {
+   "FIELD1": "smoked paprika",
+   "FIELD2": 1012028
+ },
+ {
+   "FIELD1": "smoked salmon",
+   "FIELD2": 15077
+ },
+ {
+   "FIELD1": "smoked sausage",
+   "FIELD2": 7916
+ },
+ {
+   "FIELD1": "smooth peanut butter",
+   "FIELD2": 16150
+ },
+ {
+   "FIELD1": "snapper fillets",
+   "FIELD2": 15101
+ },
+ {
+   "FIELD1": "snow peas",
+   "FIELD2": 11300
+ },
+ {
+   "FIELD1": "soda water",
+   "FIELD2": 14121
+ },
+ {
+   "FIELD1": "sour cream",
+   "FIELD2": 1056
+ },
+ {
+   "FIELD1": "sourdough bowl",
+   "FIELD2": 99169
+ },
+ {
+   "FIELD1": "sourdough bread",
+   "FIELD2": 10118029
+ },
+ {
+   "FIELD1": "soy milk",
+   "FIELD2": 16223
+ },
+ {
+   "FIELD1": "soy protein powder",
+   "FIELD2": 16122
+ },
+ {
+   "FIELD1": "soy sauce",
+   "FIELD2": 16124
+ },
+ {
+   "FIELD1": "spaghetti",
+   "FIELD2": 11420420
+ },
+ {
+   "FIELD1": "spaghetti squash",
+   "FIELD2": 11492
+ },
+ {
+   "FIELD1": "sparkling wine",
+   "FIELD2": 43155
+ },
+ {
+   "FIELD1": "spelt flour",
+   "FIELD2": 93823
+ },
+ {
+   "FIELD1": "spicy brown mustard",
+   "FIELD2": 1022046
+ },
+ {
+   "FIELD1": "spinach",
+   "FIELD2": 10011457
+ },
+ {
+   "FIELD1": "sprite",
+   "FIELD2": 14144
+ },
+ {
+   "FIELD1": "sprouts",
+   "FIELD2": 11001
+ },
+ {
+   "FIELD1": "squash",
+   "FIELD2": 10011485
+ },
+ {
+   "FIELD1": "sriracha sauce",
+   "FIELD2": 1016168
+ },
+ {
+   "FIELD1": "steaks",
+   "FIELD2": 23232
+ },
+ {
+   "FIELD1": "steel cut oats",
+   "FIELD2": 93695
+ },
+ {
+   "FIELD1": "stevia",
+   "FIELD2": 93628
+ },
+ {
+   "FIELD1": "stew meat",
+   "FIELD2": 10023618
+ },
+ {
+   "FIELD1": "stew vegetables",
+   "FIELD2": 11583
+ },
+ {
+   "FIELD1": "stock",
+   "FIELD2": 1006615
+ },
+ {
+   "FIELD1": "store-bought phyllo",
+   "FIELD2": 18338
+ },
+ {
+   "FIELD1": "stout",
+   "FIELD2": 93619
+ },
+ {
+   "FIELD1": "strawberries",
+   "FIELD2": 9316
+ },
+ {
+   "FIELD1": "strawberry jam",
+   "FIELD2": 10819297
+ },
+ {
+   "FIELD1": "strawberry jello",
+   "FIELD2": 10219172
+ },
+ {
+   "FIELD1": "stuffing",
+   "FIELD2": 18082
+ },
+ {
+   "FIELD1": "stuffing mix",
+   "FIELD2": 18081
+ },
+ {
+   "FIELD1": "sub rolls",
+   "FIELD2": 98940
+ },
+ {
+   "FIELD1": "sugar",
+   "FIELD2": 19335
+ },
+ {
+   "FIELD1": "sugar snap peas",
+   "FIELD2": 10011300
+ },
+ {
+   "FIELD1": "sugar syrup",
+   "FIELD2": 90480
+ },
+ {
+   "FIELD1": "sukrin sweetener",
+   "FIELD2": 99190
+ },
+ {
+   "FIELD1": "summer savory",
+   "FIELD2": 98961
+ },
+ {
+   "FIELD1": "summer squash",
+   "FIELD2": 11641
+ },
+ {
+   "FIELD1": "sunflower oil",
+   "FIELD2": 4584
+ },
+ {
+   "FIELD1": "sunflower seeds",
+   "FIELD2": 12036
+ },
+ {
+   "FIELD1": "sweet chilli sauce",
+   "FIELD2": 98962
+ },
+ {
+   "FIELD1": "sweet onion",
+   "FIELD2": 11294
+ },
+ {
+   "FIELD1": "sweet paprika",
+   "FIELD2": 1002028
+ },
+ {
+   "FIELD1": "sweet pickle juice",
+   "FIELD2": 93640
+ },
+ {
+   "FIELD1": "sweet pickle relish",
+   "FIELD2": 11945
+ },
+ {
+   "FIELD1": "sweet potato",
+   "FIELD2": 11507
+ },
+ {
+   "FIELD1": "sweet tea",
+   "FIELD2": 14355
+ },
+ {
+   "FIELD1": "sweetened coconut",
+   "FIELD2": 12109
+ },
+ {
+   "FIELD1": "sweetened condensed milk",
+   "FIELD2": 1095
+ },
+ {
+   "FIELD1": "sweetened shredded coconut",
+   "FIELD2": 12179
+ },
+ {
+   "FIELD1": "swiss chard",
+   "FIELD2": 11147
+ },
+ {
+   "FIELD1": "swiss cheese",
+   "FIELD2": 1040
+ },
+ {
+   "FIELD1": "taco seasoning mix",
+   "FIELD2": 2073
+ },
+ {
+   "FIELD1": "taco shells",
+   "FIELD2": 18360
+ },
+ {
+   "FIELD1": "tahini",
+   "FIELD2": 12698
+ },
+ {
+   "FIELD1": "tamari",
+   "FIELD2": 10116124
+ },
+ {
+   "FIELD1": "tapioca flour",
+   "FIELD2": 93696
+ },
+ {
+   "FIELD1": "tarragon",
+   "FIELD2": 2041
+ },
+ {
+   "FIELD1": "tart apple",
+   "FIELD2": 1029003
+ },
+ {
+   "FIELD1": "tea bags",
+   "FIELD2": 10111111
+ },
+ {
+   "FIELD1": "tequila",
+   "FIELD2": 10814037
+ },
+ {
+   "FIELD1": "teriyaki sauce",
+   "FIELD2": 6112
+ },
+ {
+   "FIELD1": "thai basil",
+   "FIELD2": 1012044
+ },
+ {
+   "FIELD1": "thai chiles",
+   "FIELD2": 11670
+ },
+ {
+   "FIELD1": "thai red curry paste",
+   "FIELD2": 93605
+ },
+ {
+   "FIELD1": "thick-cut bacon",
+   "FIELD2": 10310123
+ },
+ {
+   "FIELD1": "tilapia fillets",
+   "FIELD2": 15261
+ },
+ {
+   "FIELD1": "toast",
+   "FIELD2": 18070
+ },
+ {
+   "FIELD1": "toffee bits",
+   "FIELD2": 19383
+ },
+ {
+   "FIELD1": "tofu",
+   "FIELD2": 16213
+ },
+ {
+   "FIELD1": "tomatillos",
+   "FIELD2": 11954
+ },
+ {
+   "FIELD1": "tomato juice",
+   "FIELD2": 11886
+ },
+ {
+   "FIELD1": "tomato paste",
+   "FIELD2": 11887
+ },
+ {
+   "FIELD1": "tomato puree",
+   "FIELD2": 11547
+ },
+ {
+   "FIELD1": "tomato sauce",
+   "FIELD2": 11549
+ },
+ {
+   "FIELD1": "tomato soup",
+   "FIELD2": 6159
+ },
+ {
+   "FIELD1": "tomatoes",
+   "FIELD2": 11529
+ },
+ {
+   "FIELD1": "top blade steak",
+   "FIELD2": 13523
+ },
+ {
+   "FIELD1": "top round steak",
+   "FIELD2": 23636
+ },
+ {
+   "FIELD1": "Top Sirloin",
+   "FIELD2": 23584
+ },
+ {
+   "FIELD1": "tortilla",
+   "FIELD2": 18364
+ },
+ {
+   "FIELD1": "tortilla chips",
+   "FIELD2": 19056
+ },
+ {
+   "FIELD1": "triple sec",
+   "FIELD2": 14534
+ },
+ {
+   "FIELD1": "truffle oil",
+   "FIELD2": 1024053
+ },
+ {
+   "FIELD1": "tuna",
+   "FIELD2": 10015121
+ },
+ {
+   "FIELD1": "turbinado sugar",
+   "FIELD2": 19908
+ },
+ {
+   "FIELD1": "turkey",
+   "FIELD2": 5165
+ },
+ {
+   "FIELD1": "turkey breast",
+   "FIELD2": 5696
+ },
+ {
+   "FIELD1": "turkey kielbasa",
+   "FIELD2": 7955
+ },
+ {
+   "FIELD1": "turmeric",
+   "FIELD2": 2043
+ },
+ {
+   "FIELD1": "turnips",
+   "FIELD2": 11564
+ },
+ {
+   "FIELD1": "unbleached flour",
+   "FIELD2": 10020081
+ },
+ {
+   "FIELD1": "unsalted butter",
+   "FIELD2": 1145
+ },
+ {
+   "FIELD1": "unsmoked back bacon",
+   "FIELD2": 10130
+ },
+ {
+   "FIELD1": "unsweetened applesauce",
+   "FIELD2": 9019
+ },
+ {
+   "FIELD1": "unsweetened coconut milk",
+   "FIELD2": 12117
+ },
+ {
+   "FIELD1": "unsweetened shredded coconut",
+   "FIELD2": 10012108
+ },
+ {
+   "FIELD1": "vanilla bean",
+   "FIELD2": 93622
+ },
+ {
+   "FIELD1": "vanilla bean paste",
+   "FIELD2": 93813
+ },
+ {
+   "FIELD1": "vanilla essence",
+   "FIELD2": 1012050
+ },
+ {
+   "FIELD1": "vanilla extract",
+   "FIELD2": 2050
+ },
+ {
+   "FIELD1": "vanilla frosting",
+   "FIELD2": 10019230
+ },
+ {
+   "FIELD1": "vanilla instant pudding mix",
+   "FIELD2": 19206
+ },
+ {
+   "FIELD1": "vanilla protein powder",
+   "FIELD2": 99076
+ },
+ {
+   "FIELD1": "vanilla wafers",
+   "FIELD2": 18609
+ },
+ {
+   "FIELD1": "vanilla yogurt",
+   "FIELD2": 1119
+ },
+ {
+   "FIELD1": "vegan cheese",
+   "FIELD2": 93701
+ },
+ {
+   "FIELD1": "vegan chocolate chips",
+   "FIELD2": 98848
+ },
+ {
+   "FIELD1": "vegan margarine",
+   "FIELD2": 4673
+ },
+ {
+   "FIELD1": "vegetable broth",
+   "FIELD2": 6615
+ },
+ {
+   "FIELD1": "vegetable oil",
+   "FIELD2": 4513
+ },
+ {
+   "FIELD1": "vegetarian bacon",
+   "FIELD2": 16542
+ },
+ {
+   "FIELD1": "vermouth",
+   "FIELD2": 14132
+ },
+ {
+   "FIELD1": "vinaigrette",
+   "FIELD2": 4135
+ },
+ {
+   "FIELD1": "vinegar",
+   "FIELD2": 2053
+ },
+ {
+   "FIELD1": "vodka",
+   "FIELD2": 14051
+ },
+ {
+   "FIELD1": "walnuts",
+   "FIELD2": 12155
+ },
+ {
+   "FIELD1": "water",
+   "FIELD2": 14412
+ },
+ {
+   "FIELD1": "water chestnuts",
+   "FIELD2": 11590
+ },
+ {
+   "FIELD1": "water-packed tuna",
+   "FIELD2": 15121
+ },
+ {
+   "FIELD1": "watercress",
+   "FIELD2": 11591
+ },
+ {
+   "FIELD1": "watermelon chunks",
+   "FIELD2": 9326
+ },
+ {
+   "FIELD1": "wheat bran",
+   "FIELD2": 20077
+ },
+ {
+   "FIELD1": "wheat germ",
+   "FIELD2": 20078
+ },
+ {
+   "FIELD1": "whipped cream",
+   "FIELD2": 1054
+ },
+ {
+   "FIELD1": "whipped topping",
+   "FIELD2": 42135
+ },
+ {
+   "FIELD1": "whipping cream",
+   "FIELD2": 1001053
+ },
+ {
+   "FIELD1": "whiskey",
+   "FIELD2": 14052
+ },
+ {
+   "FIELD1": "white balsamic vinegar",
+   "FIELD2": 1012069
+ },
+ {
+   "FIELD1": "white bread",
+   "FIELD2": 18069
+ },
+ {
+   "FIELD1": "white cake mix",
+   "FIELD2": 18137
+ },
+ {
+   "FIELD1": "white cheddar",
+   "FIELD2": 1011009
+ },
+ {
+   "FIELD1": "white chocolate",
+   "FIELD2": 19087
+ },
+ {
+   "FIELD1": "white chocolate chips",
+   "FIELD2": 10019087
+ },
+ {
+   "FIELD1": "white onion",
+   "FIELD2": 10611282
+ },
+ {
+   "FIELD1": "white pepper",
+   "FIELD2": 2032
+ },
+ {
+   "FIELD1": "white whole wheat flour",
+   "FIELD2": 93824
+ },
+ {
+   "FIELD1": "white wine",
+   "FIELD2": 14106
+ },
+ {
+   "FIELD1": "white wine vinegar",
+   "FIELD2": 1002068
+ },
+ {
+   "FIELD1": "whole allspice berries",
+   "FIELD2": 1002001
+ },
+ {
+   "FIELD1": "whole chicken",
+   "FIELD2": 5006
+ },
+ {
+   "FIELD1": "whole coriander seeds",
+   "FIELD2": 2013
+ },
+ {
+   "FIELD1": "whole cranberry sauce",
+   "FIELD2": 9081
+ },
+ {
+   "FIELD1": "whole kernel corn",
+   "FIELD2": 11177
+ },
+ {
+   "FIELD1": "whole star anise",
+   "FIELD2": 1012002
+ },
+ {
+   "FIELD1": "whole wheat bread",
+   "FIELD2": 18075
+ },
+ {
+   "FIELD1": "whole wheat flour",
+   "FIELD2": 20080
+ },
+ {
+   "FIELD1": "whole wheat tortillas",
+   "FIELD2": 93675
+ },
+ {
+   "FIELD1": "whole-grain mustard",
+   "FIELD2": 1012046
+ },
+ {
+   "FIELD1": "wine",
+   "FIELD2": 14084
+ },
+ {
+   "FIELD1": "wine vinegar",
+   "FIELD2": 2068
+ },
+ {
+   "FIELD1": "winter squash",
+   "FIELD2": 10111485
+ },
+ {
+   "FIELD1": "won ton wraps",
+   "FIELD2": 10018368
+ },
+ {
+   "FIELD1": "worcestershire sauce",
+   "FIELD2": 6971
+ },
+ {
+   "FIELD1": "wraps",
+   "FIELD2": 10018364
+ },
+ {
+   "FIELD1": "xanthan gum",
+   "FIELD2": 93626
+ },
+ {
+   "FIELD1": "yeast",
+   "FIELD2": 18375
+ },
+ {
+   "FIELD1": "yellow bell pepper",
+   "FIELD2": 11951
+ },
+ {
+   "FIELD1": "yellow cake mix",
+   "FIELD2": 18144
+ },
+ {
+   "FIELD1": "yellow onion",
+   "FIELD2": 10511282
+ },
+ {
+   "FIELD1": "yogurt",
+   "FIELD2": 1116
+ },
+ {
+   "FIELD1": "yukon gold potato",
+   "FIELD2": 10211362
+ }
+]

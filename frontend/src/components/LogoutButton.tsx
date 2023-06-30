@@ -2,7 +2,6 @@ import React from 'react';
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 
-
 function LogoutButton() {
 
     const navigate = useNavigate();
@@ -18,6 +17,7 @@ function LogoutButton() {
                 // Fehler verarbeiten
                 console.error(error);
             });
+        localStorage.removeItem('user');
     }
     return (
         <div>
