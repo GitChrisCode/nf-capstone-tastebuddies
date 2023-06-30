@@ -3,6 +3,7 @@ package de.neuefische.backend.service;
 import de.neuefische.backend.model.Guest;
 import de.neuefische.backend.repository.GuestRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -49,5 +50,15 @@ public class GuestService {
         return false;
     }
 
+    public ResponseEntity<Guest> getGuestByGuestName(String guestName) {
+        Optional<Guest> optionalGuest = guestRepository.findByGuestName(guestName);
+
+        if (optionalGuest.isPresent()) {
+            Guest guest = optionalGuest.get();
+            return ResponseEntity.ok(guest);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 }

@@ -176,5 +176,43 @@ class GuestServiceTest {
         assertFalse(deleted);
         Mockito.verify(guestRepository, Mockito.never()).deleteById(guestId);
     }
+    @Test
+    void testGetGuestByGuestName_ReturnsGuest_WhenGuestExists() {
+        // Given
+        String guestName = "John";
+        Guest expectedGuest = new Guest();
+        expectedGuest.setGuestID("1");
+        expectedGuest.setGuestName(guestName);
+
+
+        GuestRepository guestRepository = mock(GuestRepository.class);
+        Mockito.when(guestRepository.findByGuestName(guestName)).thenReturn(Optional.of(expectedGuest));
+
+        GuestService guestService = new GuestService(guestRepository, uuidService);
+
+        // When
+        ResponseEntity<Guest> response = guestService.getGuestByGuestName(guestName);
+
+        // Then
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(expectedGuest, response.getBody());
+    }
+    @Test
+    void testGetGuestByGuestName_ReturnsNotFound_WhenGuestDoesNotExist() {
+        // Given
+        String guestName = "NonExistingGuest";
+
+        GuestRepository guestRepository = mock(GuestRepository.class);
+        Mockito.when(guestRepository.findByGuestName(guestName)).thenReturn(Optional.empty());
+
+        GuestService guestService = new GuestService(guestRepository,uuidService);
+
+        // When
+        ResponseEntity<Guest> response = guestService.getGuestByGuestName(guestName);
+
+        // Then
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        assertNull(response.getBody());
+    }
 
 }

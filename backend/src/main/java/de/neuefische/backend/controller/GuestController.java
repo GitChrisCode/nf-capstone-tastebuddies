@@ -25,6 +25,13 @@ public class GuestController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
+
+    @GetMapping("/find/{guestName}")
+    public ResponseEntity<Guest> findGuest(@PathVariable String guestName) {
+        return guestService.getGuestByGuestName(guestName);
+    }
+
+
     @GetMapping
     public ResponseEntity<List<Guest>> getGuestList() {
         List<Guest> guests = guestService.getGuestList();
@@ -46,6 +53,7 @@ public class GuestController {
             return ResponseEntity.notFound().build();
         }
     }
+
     @DeleteMapping("/{guestId}")
     public ResponseEntity<Void> deleteGuest(@PathVariable String guestId) {
         boolean isDeleted = guestService.deleteGuest(guestId);
