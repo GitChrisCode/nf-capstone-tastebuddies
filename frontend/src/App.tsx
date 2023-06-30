@@ -9,6 +9,7 @@ import ProtectedRoutes from "./components/Protected Routes";
 import Test from "./components/Test";
 import Homepage from "./components/Homepage";
 import RecipeDetail from "./components/RecipeDetail";
+import UserDetails from "./components/UserDetails";
 
 function App() {
 
@@ -28,9 +29,10 @@ function App() {
               <Route path="/login" element={<LoginPage login={handleLogin}/>}/>
               <Route path="/test" element={<Test/>}/>
               <Route path="/register" element={<RegisterForm/>}/>
-              <Route element={<ProtectedRoutes user={user}/>}>
+              <Route element={<ProtectedRoutes user={user} />}>
                 <Route path="/recipesearch" element={<RecipeSearch/>}/>
                 <Route path="/recipe/:id" element={<RecipeDetail/>}/>
+                <Route path="/userDetails" element={<UserDetails/>}/>
               </Route>
           </Routes>
       </div>

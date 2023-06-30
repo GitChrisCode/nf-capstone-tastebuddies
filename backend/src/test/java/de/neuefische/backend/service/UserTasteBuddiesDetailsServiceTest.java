@@ -39,7 +39,6 @@ class UserTasteBuddiesDetailsServiceTest {
         assertEquals(expectedUser, resultUser);
     }
 
-
     @Test
     void testLoadUserByName() {
         String username = "noUser";

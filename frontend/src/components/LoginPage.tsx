@@ -14,7 +14,8 @@ function LoginPage(props: Props) {
         e.preventDefault();
         try {
             await props.login(username, password);
-            navigate('/recipesearch');
+            navigate('/userDetails');
+            localStorage.setItem('user', username);
         } catch (error) {
             // Handle error
             console.error('Login failed', error);

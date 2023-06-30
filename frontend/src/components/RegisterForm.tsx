@@ -1,29 +1,39 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import axios from 'axios';
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 function RegisterForm() {
     const [formData, setFormData] = useState({
         userName: '',
-        userPassword: ''
+        password: '',
+        confirmPassword: '',
     });
 
     const navigate = useNavigate();
 
     const handleSubmit = (event: FormEvent) => {
         event.preventDefault();
+        // Hier können Sie die Passwortvalidierung implementieren
+        if (formData.password !== formData.confirmPassword) {
+            alert('Die eingegebenen Passwörter stimmen nicht überein.');
+            return;
+        }
+
         axios
-            .post('/tb/user/registration', undefined,
+            .post(
+                '/tb/user/registration',
+                undefined,
                 {
                     params: {
                         userName: formData.userName,
-                        userPassword: formData.userPassword
-                    }
-                })
+                        userPassword: formData.password,
+                    },
+                }
+            )
             .then((response) => {
                 console.log(response.data);
+                navigate('/login');
             })
-            .then(()=>{navigate('/login')})
             .catch((error) => {
                 console.error(error);
             });
@@ -33,7 +43,7 @@ function RegisterForm() {
         const { name, value } = event.target;
         setFormData((prevFormData) => ({
             ...prevFormData,
-            [name]: value
+            [name]: value,
         }));
     };
 
@@ -49,12 +59,21 @@ function RegisterForm() {
                         onChange={handleInputChange}
                     />
                 </label>
-                <label htmlFor="userPassword">
+                <label htmlFor="password">
                     Enter Password:
                     <input
                         type="password"
-                        name="userPassword"
-                        value={formData.userPassword}
+                        name="password"
+                        value={formData.password}
+                        onChange={handleInputChange}
+                    />
+                </label>
+                <label htmlFor="confirmPassword">
+                    Confirm Password:
+                    <input
+                        type="password"
+                        name="confirmPassword"
+                        value={formData.confirmPassword}
                         onChange={handleInputChange}
                     />
                 </label>
