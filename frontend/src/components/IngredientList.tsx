@@ -1,5 +1,6 @@
 import React from 'react';
 import '../css/IngredientsList.css';
+import { v4 as uuidv4 } from 'uuid';
 
 interface IngredientsListProps {
     includeIngredients: string[];
@@ -27,8 +28,8 @@ const IngredientsList: React.FC<IngredientsListProps> = ({
             <div className="ingredients-list">
                 <h2>Include Ingredients:</h2>
                 <ul>
-                    {includeIngredients.map((ingredient, index) => (
-                        <li key={ingredient.length + index} onClick={() => handleIncludeIngredientRemove(ingredient)}>
+                    {includeIngredients.map((ingredient)=> (
+                        <li key={uuidv4()} onClick={() => handleIncludeIngredientRemove(ingredient)}>
                             {ingredient}
                         </li>
                     ))}
@@ -37,8 +38,8 @@ const IngredientsList: React.FC<IngredientsListProps> = ({
             <div className="ingredients-list">
                 <h2>Exclude Ingredients:</h2>
                 <ul>
-                    {excludeIngredients.map((ingredient, index) => (
-                        <li key={ingredient.length + index} onClick={() => handleExcludeIngredientRemove(ingredient)}>
+                    {excludeIngredients.map((ingredient) => (
+                        <li key={uuidv4()} onClick={() => handleExcludeIngredientRemove(ingredient)}>
                             {ingredient}
                         </li>
                     ))}
