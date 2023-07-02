@@ -8,6 +8,7 @@ import org.mockito.Mockito;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.test.annotation.DirtiesContext;
 
 import java.util.Optional;
 
@@ -23,6 +24,7 @@ class UserTasteBuddiesDetailsServiceTest {
     UserTasteBuddiesDetailsService service = new UserTasteBuddiesDetailsService(userRepo, passwordEncoder, uuidService);
 
     @Test
+    @DirtiesContext
     void testRegisterUserTasteBuddies_isUserRegistrationSuccessful() {
 
         UserTasteBuddiesDetailsService mockService = mock(UserTasteBuddiesDetailsService.class);
@@ -30,15 +32,14 @@ class UserTasteBuddiesDetailsServiceTest {
         UserTasteBuddies expectedUser = new UserTasteBuddies();
         expectedUser.setUserName("testUser");
         expectedUser.setUserPassword("testPassword");
+
         when(mockService.registerUserTasteBuddies(anyString(), anyString())).thenReturn(expectedUser);
 
         UserTasteBuddiesController controller = new UserTasteBuddiesController(mockService);
-        UserTasteBuddies resultUser = controller.registerUserTasteBuddies("TestUser", "TestPassword");
-
+        UserTasteBuddies resultUser = controller.registerUserTasteBuddies("testUser", "testPassword");
 
         assertEquals(expectedUser, resultUser);
     }
-
     @Test
     void testLoadUserByName() {
         String username = "noUser";

@@ -2,7 +2,8 @@ import React, {FormEvent, useState} from 'react';
 import LogoutButton from './LogoutButton';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-import Autocomplete from './Ingredients';
+import Autocomplete from './Autocomplete';
+import IngredientsList from "./Ingredients";
 import '../css/RecipeSearch.css';
 
 type Recipes = {
@@ -67,22 +68,16 @@ function RecipeSearch() {
                 <button type="submit">Search</button>
             </form>
             <div>
-                <h3>Include Ingredients:</h3>
-                {includeIngredients.map((ingredient) => (
-                    <div key={ingredient}>
-                        {ingredient}
-                        <button onClick={() => onIncludeIngredientRemove(ingredient)}>Remove</button>
-                    </div>
-                ))}
-            </div>
-            <div>
-                <h3>Exclude Ingredients:</h3>
-                {excludeIngredients.map((ingredient) => (
-                    <div key={ingredient}>
-                        {ingredient}
-                        <button onClick={() => onExcludeIngredientRemove(ingredient)}>Remove</button>
-                    </div>
-                ))}
+                <IngredientsList
+                    ingredients={includeIngredients}
+                    onIngredientRemove={onIncludeIngredientRemove}
+                    title="Include Ingredients"
+                />
+                <IngredientsList
+                    ingredients={excludeIngredients}
+                    onIngredientRemove={onExcludeIngredientRemove}
+                    title="Exclude Ingredients"
+                />
             </div>
             <LogoutButton/>
             <h2>Search Results:</h2>

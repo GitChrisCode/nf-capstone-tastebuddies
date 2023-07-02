@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import LogoutButton from './LogoutButton';
 import axios from 'axios';
 import { Guest } from '../model/Guest';
+import IngredientsList from "./Ingredients";
+import Autocomplete from "./Autocomplete";
 
 function UserDetails() {
     const navigate = useNavigate();
@@ -20,6 +22,14 @@ function UserDetails() {
         }
     }, []);
 
+    const handleIncludeChange = (value: string) => {
+        setIncludeIngredients([...includeIngredients, value]);
+    };
+
+    const handleExcludeChange = (value: string) => {
+        setExcludeIngredients([...excludeIngredients, value]);
+    };
+
     const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(event.target.value);
     };
@@ -28,18 +38,20 @@ function UserDetails() {
         setGuestName(event.target.value);
     };
 
-    const handleIncludeIngredientsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setIncludeIngredients(event.target.value.split(','));
+    const onIncludeIngredientRemove = (value: string) => {
+        const updatedIngredients = includeIngredients.filter((ingredient) => ingredient !== value);
+        setIncludeIngredients(updatedIngredients);
     };
 
-    const handleExcludeIngredientsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setExcludeIngredients(event.target.value.split(','));
+    const onExcludeIngredientRemove = (value: string) => {
+        const updatedIngredients = excludeIngredients.filter((ingredient) => ingredient !== value);
+        setExcludeIngredients(updatedIngredients);
     };
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        const newGuest = {
+        const newGuest: Guest = {
             userName: userName || '',
             guestName: guestName,
             includeIngredients: includeIngredients,
@@ -81,30 +93,33 @@ function UserDetails() {
                     Neues Passwort:
                     <input type="password" value={password} onChange={handlePasswordChange} />
                 </label>
-                <br />
+                <br/>
                 <label>
                     Gastname:
                     <input type="text" value={guestName} onChange={handleGuestNameChange} />
                 </label>
-                <br />
+                <br/>
                 <label>
-                    Inkludierte Zutaten (durch Komma getrennt):
-                    <input
-                        type="text"
-                        value={includeIngredients.join(',')}
-                        onChange={handleIncludeIngredientsChange}
-                    />
+                    <p>Enter Ingredient:</p>
+                    <Autocomplete onIncludeChange={handleIncludeChange} onExcludeChange={handleExcludeChange} />
                 </label>
-                <br />
-                <label>
-                    Ausgeschlossene Zutaten (durch Komma getrennt):
-                    <input
-                        type="text"
-                        value={excludeIngredients.join(',')}
-                        onChange={handleExcludeIngredientsChange}
-                    />
-                </label>
-                <br />
+                <div style={{ display: 'flex', gap: '20px' }}>
+                    <div>
+                        <IngredientsList
+                            ingredients={includeIngredients}
+                            onIngredientRemove={onIncludeIngredientRemove}
+                            title="Include Ingredients"
+                        />
+                    </div>
+                    <div>
+                        <IngredientsList
+                            ingredients={excludeIngredients}
+                            onIngredientRemove={onExcludeIngredientRemove}
+                            title="Exclude Ingredients"
+                        />
+                    </div>
+                </div>
+                <br/>
                 <button type="submit">Save</button>
             </form>
             <button onClick={() => navigate('/recipesearch')}>Search for Recipes</button>

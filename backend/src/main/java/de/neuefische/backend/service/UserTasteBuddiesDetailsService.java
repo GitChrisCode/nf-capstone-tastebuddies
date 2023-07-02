@@ -31,6 +31,7 @@ public class UserTasteBuddiesDetailsService implements UserDetailsService {
     public UserTasteBuddies registerUserTasteBuddies(String userName, String userPassword) {
         Optional<UserTasteBuddies> existingUser = repo.findUserByUserName(userName);
         if (existingUser.isPresent()) {
+
             throw new IllegalArgumentException("User with username '" + userName + "' already exists");
         }
 
