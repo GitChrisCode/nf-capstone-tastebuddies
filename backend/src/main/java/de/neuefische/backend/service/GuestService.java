@@ -28,7 +28,21 @@ public class GuestService {
         Guest existingGuest = guestRepository.findById(guestId).orElse(null);
 
         if (existingGuest != null) {
-            existingGuest.setUserName(updatedGuest.getUserName());
+            String newUserName = updatedGuest.getUserName();
+
+            if (newUserName != null && !newUserName.isEmpty()) {
+                List<Guest> guestsWithSameUserName = guestRepository.findByUserName(existingGuest.getUserName());
+
+                for (Guest guest : guestsWithSameUserName) {
+                    if (!guest.getGuestID().equals(existingGuest.getGuestID())) {
+                        guest.setUserName(newUserName);
+                        guestRepository.save(guest);
+                    }
+                }
+
+                existingGuest.setUserName(newUserName);
+            }
+
             existingGuest.setGuestName(updatedGuest.getGuestName());
             existingGuest.setIncludeIngredients(updatedGuest.getIncludeIngredients());
             existingGuest.setExcludeIngredients(updatedGuest.getExcludeIngredients());
@@ -37,6 +51,7 @@ public class GuestService {
         }
         return null;
     }
+
     public List<Guest> getGuestList() {
         return guestRepository.findAll();
     }

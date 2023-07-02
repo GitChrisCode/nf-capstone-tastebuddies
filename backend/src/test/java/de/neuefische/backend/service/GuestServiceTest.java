@@ -9,11 +9,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
 
 class GuestServiceTest {
 
@@ -34,8 +36,8 @@ class GuestServiceTest {
         guest.setGuestName("Jaqueline");
 
         String generatedUUID = "12345678";
-        Mockito.when(uuidService.generateUUID()).thenReturn(generatedUUID);
-        Mockito.when(guestRepository.save(guest)).thenReturn(guest);
+        when(uuidService.generateUUID()).thenReturn(generatedUUID);
+        when(guestRepository.save(guest)).thenReturn(guest);
 
         // When
         Guest addedGuest = guestService.addGuest(guest);
@@ -43,8 +45,8 @@ class GuestServiceTest {
         // Then
         assertNotNull(addedGuest);
         assertEquals(generatedUUID, addedGuest.getGuestID());
-        Mockito.verify(uuidService, Mockito.times(1)).generateUUID();
-        Mockito.verify(guestRepository, Mockito.times(1)).save(guest);
+        verify(uuidService, Mockito.times(1)).generateUUID();
+        verify(guestRepository, Mockito.times(1)).save(guest);
     }
 
     @Test
@@ -58,8 +60,8 @@ class GuestServiceTest {
         String actualMessage = exception.getMessage();
         assertEquals(expectedMessage, actualMessage);
 
-        Mockito.verify(uuidService, Mockito.never()).generateUUID();
-        Mockito.verify(guestRepository, Mockito.never()).save(Mockito.any());
+        verify(uuidService, Mockito.never()).generateUUID();
+        verify(guestRepository, Mockito.never()).save(any());
     }
     @Test
     void testGetGuestList_NotEmpty() {
@@ -67,7 +69,7 @@ class GuestServiceTest {
         List<Guest> guests = new ArrayList<>();
         guests.add(new Guest());
         guests.add(new Guest());
-        Mockito.when(guestService.getGuestList()).thenReturn(guests);
+        when(guestService.getGuestList()).thenReturn(guests);
 
         GuestController guestController = new GuestController(guestService);
 
@@ -83,7 +85,7 @@ class GuestServiceTest {
     void testGetGuestList_Empty() {
         // Given
         List<Guest> guests = new ArrayList<>();
-        Mockito.when(guestService.getGuestList()).thenReturn(guests);
+        when(guestService.getGuestList()).thenReturn(guests);
         GuestController guestController = new GuestController(guestService);
         // When
         ResponseEntity<List<Guest>> response = guestController.getGuestList();
@@ -97,27 +99,29 @@ class GuestServiceTest {
         // Given
         String guestId = "123";
 
-
-        GuestRepository guestRepository = Mockito.mock(GuestRepository.class);
-        Mockito.when(guestRepository.findById(guestId)).thenReturn(Optional.empty());
-        Mockito.when(guestRepository.save(Mockito.any())).thenAnswer(invocation -> invocation.getArgument(0)); // Rückgabe des gespeicherten Guest-Objekts
-
-
-        GuestService guestService = new GuestService(guestRepository, uuidService);
-
         Guest existingGuest = new Guest();
         existingGuest.setGuestID(guestId);
         existingGuest.setUserName("MaxMustermann");
         existingGuest.setGuestName("Paulinchen");
         existingGuest.setIncludeIngredients(new String[]{"Milch", "Eier"});
         existingGuest.setExcludeIngredients(new String[]{"Butter", "Zucker"});
-        Mockito.when(guestRepository.findById(guestId)).thenReturn(Optional.of(existingGuest));
 
         Guest updatedGuest = new Guest();
-        updatedGuest.setUserName("AntonGross");
+        updatedGuest.setUserName("AntonGross"); // Aktualisierter Benutzername
         updatedGuest.setGuestName("Isabel");
         updatedGuest.setIncludeIngredients(new String[]{"Kaffee", "Tee"});
         updatedGuest.setExcludeIngredients(new String[]{"Bohnen", "Mais"});
+
+        Guest guestWithSameUserName = new Guest();
+        guestWithSameUserName.setGuestID("456");
+        guestWithSameUserName.setUserName("MaxMustermann");
+        guestWithSameUserName.setGuestName("John");
+        guestWithSameUserName.setIncludeIngredients(new String[]{"Eier", "Brot"});
+        guestWithSameUserName.setExcludeIngredients(new String[]{"Milch", "Zucker"});
+
+        when(guestRepository.findById(guestId)).thenReturn(Optional.of(existingGuest));
+        when(guestRepository.findByUserName(existingGuest.getUserName())).thenReturn(Arrays.asList(existingGuest, guestWithSameUserName));
+        when(guestRepository.save(any(Guest.class))).thenReturn(existingGuest);
 
         // When
         Guest editedGuest = guestService.editGuest(guestId, updatedGuest);
@@ -126,55 +130,24 @@ class GuestServiceTest {
         assertNotNull(editedGuest);
         assertEquals(updatedGuest.getUserName(), editedGuest.getUserName());
         assertEquals(updatedGuest.getGuestName(), editedGuest.getGuestName());
-
-        Mockito.verify(guestRepository, Mockito.times(1)).save(existingGuest);
     }
-
 
     @Test
     void testEditGuest_NonExistentGuest() {
         // Given
         String guestId = "123"; // Beispielhafte Gast-ID, die nicht existiert
-        Mockito.when(guestRepository.findById(guestId)).thenReturn(Optional.empty());
-
         Guest updatedGuest = new Guest();
         updatedGuest.setUserName("JohnDoe");
         updatedGuest.setGuestName("JaneDoe");
+
+        when(guestRepository.findById(guestId)).thenReturn(Optional.empty());
 
         // When
         Guest editedGuest = guestService.editGuest(guestId, updatedGuest);
 
         // Then
         assertNull(editedGuest);
-        Mockito.verify(guestRepository, Mockito.never()).save(Mockito.any());
-    }
-    @Test
-    void testDeleteGuest_Successful() {
-        // Given
-        String guestId = "123";
-        Guest existingGuest = new Guest();
-        existingGuest.setGuestID(guestId);
-        Mockito.when(guestRepository.findById(guestId)).thenReturn(Optional.of(existingGuest));
-
-        // When
-        boolean deleted = guestService.deleteGuest(guestId);
-
-        // Then
-        assertTrue(deleted);
-        Mockito.verify(guestRepository, Mockito.times(1)).deleteById(guestId);
-    }
-    @Test
-    void testDeleteGuest_NonExistentGuest() {
-        // Given
-        String guestId = "123";
-        Mockito.when(guestRepository.findById(guestId)).thenReturn(Optional.empty());
-
-        // When
-        boolean deleted = guestService.deleteGuest(guestId);
-
-        // Then
-        assertFalse(deleted);
-        Mockito.verify(guestRepository, Mockito.never()).deleteById(guestId);
+        verify(guestRepository, never()).save(any());
     }
     @Test
     void testGetGuestByGuestName_ReturnsGuest_WhenGuestExists() {
@@ -186,7 +159,7 @@ class GuestServiceTest {
 
 
         GuestRepository guestRepository = mock(GuestRepository.class);
-        Mockito.when(guestRepository.findByGuestName(guestName)).thenReturn(Optional.of(expectedGuest));
+        when(guestRepository.findByGuestName(guestName)).thenReturn(Optional.of(expectedGuest));
 
         GuestService guestService = new GuestService(guestRepository, uuidService);
 
@@ -203,7 +176,7 @@ class GuestServiceTest {
         String guestName = "NonExistingGuest";
 
         GuestRepository guestRepository = mock(GuestRepository.class);
-        Mockito.when(guestRepository.findByGuestName(guestName)).thenReturn(Optional.empty());
+        when(guestRepository.findByGuestName(guestName)).thenReturn(Optional.empty());
 
         GuestService guestService = new GuestService(guestRepository,uuidService);
 

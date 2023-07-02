@@ -105,4 +105,100 @@ class UserTasteBuddiesDetailsServiceTest {
 
         Mockito.verify(userRepo).findUserByUserName(userName);
     }
+    @Test
+    void testEditUserTasteBuddies_UpdateUserNameAndPassword() {
+        // Given
+        String oldUserName = "existingUser";
+        String newUserName = "newUser";
+        String newUserPassword = "newPassword";
+
+        UserTasteBuddies existingUser = new UserTasteBuddies("123", oldUserName, "oldPassword");
+
+        when(userRepo.findUserByUserName(oldUserName)).thenReturn(Optional.of(existingUser));
+        when(passwordEncoder.encode(newUserPassword)).thenReturn("encodedPassword");
+
+        UserTasteBuddies updatedUserTasteBuddies = new UserTasteBuddies("123", newUserName, "encodedPassword");
+        when(userRepo.save(Mockito.any(UserTasteBuddies.class))).thenReturn(updatedUserTasteBuddies);
+
+        // When
+        UserTasteBuddies updatedUser = service.editUserTasteBuddies(oldUserName, newUserName, newUserPassword);
+
+        // Then
+        assertNotNull(updatedUser);
+        assertEquals(existingUser.getUserID(), updatedUser.getUserID());
+        assertEquals(newUserName, updatedUser.getUserName());
+        assertEquals("encodedPassword", updatedUser.getUserPassword());
+
+        Mockito.verify(userRepo).findUserByUserName(oldUserName);
+        Mockito.verify(passwordEncoder).encode(newUserPassword);
+        Mockito.verify(userRepo).save(Mockito.any(UserTasteBuddies.class));
+    }
+    @Test
+    void testEditUserTasteBuddies_UpdateUserNameOnly() {
+        // Given
+        String oldUserName = "existingUser";
+        String newUserName = "newUser";
+        String newUserPassword = null;
+
+        UserTasteBuddies existingUser = new UserTasteBuddies("123", oldUserName, "oldPassword");
+
+        when(userRepo.findUserByUserName(oldUserName)).thenReturn(Optional.of(existingUser));
+        when(userRepo.save(Mockito.any(UserTasteBuddies.class))).thenReturn(existingUser);
+
+        // When
+        UserTasteBuddies updatedUser = service.editUserTasteBuddies(oldUserName, newUserName, newUserPassword);
+
+        // Then
+        assertNotNull(updatedUser);
+        assertEquals(existingUser.getUserID(), updatedUser.getUserID());
+        assertEquals(newUserName, updatedUser.getUserName());
+        assertEquals(existingUser.getUserPassword(), updatedUser.getUserPassword());
+
+        Mockito.verify(userRepo).findUserByUserName(oldUserName);
+        Mockito.verify(userRepo).save(Mockito.any(UserTasteBuddies.class));
+    }
+
+    @Test
+    void testEditUserTasteBuddies_UpdatePasswordOnly() {
+        // Given
+        String oldUserName = "existingUser";
+        String newUserName = null;
+        String newUserPassword = "newPassword";
+
+        UserTasteBuddies existingUser = new UserTasteBuddies("123", oldUserName, "oldPassword");
+
+        when(userRepo.findUserByUserName(oldUserName)).thenReturn(Optional.of(existingUser));
+        when(passwordEncoder.encode(newUserPassword)).thenReturn("encodedPassword");
+        when(userRepo.save(Mockito.any(UserTasteBuddies.class))).thenReturn(existingUser);
+
+        // When
+        UserTasteBuddies updatedUser = service.editUserTasteBuddies(oldUserName, newUserName, newUserPassword);
+
+        // Then
+        assertNotNull(updatedUser);
+        assertEquals(existingUser.getUserID(), updatedUser.getUserID());
+        assertEquals(oldUserName, updatedUser.getUserName());
+        assertEquals("encodedPassword", updatedUser.getUserPassword());
+
+        Mockito.verify(userRepo).findUserByUserName(oldUserName);
+        Mockito.verify(passwordEncoder).encode(newUserPassword);
+        Mockito.verify(userRepo).save(Mockito.any(UserTasteBuddies.class));
+    }
+
+    @Test
+    void testEditUserTasteBuddies_UserNotFound() {
+        // Given
+        String oldUserName = "nonExistingUser";
+        String newUserName = "newUser";
+        String newUserPassword = "newPassword";
+
+        when(userRepo.findUserByUserName(oldUserName)).thenReturn(Optional.empty());
+
+        // When/Then
+        assertThrows(IllegalArgumentException.class, () ->
+                service.editUserTasteBuddies(oldUserName, newUserName, newUserPassword)
+        );
+
+        Mockito.verify(userRepo).findUserByUserName(oldUserName);
+    }
 }

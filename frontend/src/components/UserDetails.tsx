@@ -1,69 +1,114 @@
-import React, {useEffect} from 'react';
-import { Guest } from "../model/Guest";
-import {useNavigate} from "react-router-dom";
-import LogoutButton from "./LogoutButton";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import LogoutButton from './LogoutButton';
+import axios from 'axios';
+import { Guest } from '../model/Guest';
 
 function UserDetails() {
-       const navigate = useNavigate();
+    const navigate = useNavigate();
 
-    const actualUser: Guest = {
-        userName: "",
-        guestName: "",
-        includeIngredients: [],
-        excludeIngredients: [],
+    const [userName, setUserName] = useState('');
+    const [password, setPassword] = useState('');
+    const [guestName, setGuestName] = useState('');
+    const [includeIngredients, setIncludeIngredients] = useState<string[]>([]);
+    const [excludeIngredients, setExcludeIngredients] = useState<string[]>([]);
+
+    useEffect(() => {
+        const storedUserName = localStorage.getItem('user');
+        if (storedUserName !== null) {
+            setUserName(storedUserName);
+        }
+    }, []);
+
+    const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setPassword(event.target.value);
     };
 
-    const storedUserName = localStorage.getItem('user');
-    if (storedUserName !== null) {
-        actualUser.userName = storedUserName;
-    }
+    const handleGuestNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setGuestName(event.target.value);
+    };
 
-    actualUser.guestName = "Edelvin";
-    actualUser.excludeIngredients = ["Apple", "Sugar", "Cinnamon"];
-    actualUser.includeIngredients = ["Onions"];
+    const handleIncludeIngredientsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setIncludeIngredients(event.target.value.split(','));
+    };
 
-    function createGuest(newGuest:Guest) {
-        axios.post('/tb/user/guest', newGuest)
-            .then(r =>{
-                console.log(r.data);
-                const guestID: string = r.data;
-                console.log("G U E S T I D: ", guestID);
+    const handleExcludeIngredientsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setExcludeIngredients(event.target.value.split(','));
+    };
+
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+
+        const newGuest = {
+            userName: userName || '',
+            guestName: guestName,
+            includeIngredients: includeIngredients,
+            excludeIngredients: excludeIngredients,
+        };
+
+        createGuest(newGuest);
+    };
+
+    function createGuest(newGuest: Guest) {
+        axios
+            .post('/tb/user/guest', newGuest)
+            .then((response) => {
+                const guestID = response.data;
                 localStorage.setItem('guestID', guestID);
             })
-            .catch(error => {
-                // Hier können Sie mit dem Fehler umgehen
+            .catch((error) => {
                 console.error(error);
             });
     }
 
-    function deleteGuest(guestID:string){
-        axios.delete(`/tb/user/guest/${guestID}`)
-        .then(response => {
-            // Erfolgreich gelöscht
-            console.log(response.data);
-        })
-        .catch(error => {
-            // Fehler beim Löschen des Gastes
-            console.error(error);
-        });
-}
-
-    useEffect(() => {
-        createGuest(actualUser);
-        const guestID = localStorage.getItem('guestID');
-        if (guestID !== null) {
-            deleteGuest(guestID);
-        }
-        localStorage.removeItem('guestID');
-    }, []);
+    function deleteGuest(guestID: string) {
+        axios
+            .delete(`/tb/user/guest/${guestID}`)
+            .then((response) => {
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
 
     return (
         <div>
             <h3>User Details:</h3>
-            <p>Aktuelle User: {localStorage.getItem('user')}</p>
-            <button onClick={() => navigate('/')}>Zurück zur Startseite</button>
-            <LogoutButton/>
+            <p>Aktueller Benutzername: {userName}</p>
+            <form onSubmit={handleSubmit}>
+                <label>
+                    Neues Passwort:
+                    <input type="password" value={password} onChange={handlePasswordChange} />
+                </label>
+                <br />
+                <label>
+                    Gastname:
+                    <input type="text" value={guestName} onChange={handleGuestNameChange} />
+                </label>
+                <br />
+                <label>
+                    Inkludierte Zutaten (durch Komma getrennt):
+                    <input
+                        type="text"
+                        value={includeIngredients.join(',')}
+                        onChange={handleIncludeIngredientsChange}
+                    />
+                </label>
+                <br />
+                <label>
+                    Ausgeschlossene Zutaten (durch Komma getrennt):
+                    <input
+                        type="text"
+                        value={excludeIngredients.join(',')}
+                        onChange={handleExcludeIngredientsChange}
+                    />
+                </label>
+                <br />
+                <button type="submit">Save</button>
+            </form>
+            <button onClick={() => navigate('/recipesearch')}>Search for Recipes</button>
+            <LogoutButton />
         </div>
     );
 }

@@ -1,7 +1,10 @@
 package de.neuefische.backend.controller;
 
+import de.neuefische.backend.model.UserTasteBuddies;
+import de.neuefische.backend.service.UserTasteBuddiesDetailsService;
 import jakarta.servlet.http.HttpSession;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -30,8 +33,12 @@ class UserTasteBuddiesControllerTest {
     @MockBean
     private HttpSession httpSession;
 
-    @DirtiesContext
+    @MockBean
+    private UserTasteBuddiesDetailsService userDetailsService;
+
+
     @Test
+    @DirtiesContext
     void testRegisterUserTasteBuddies() throws Exception {
         //given
         String userName = "testUser";
@@ -44,7 +51,6 @@ class UserTasteBuddiesControllerTest {
                 )
                 .andExpect(status().isCreated())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.userName").value(userName));
-
     }
     @Test
     @DirtiesContext
@@ -66,6 +72,29 @@ class UserTasteBuddiesControllerTest {
                 .andExpect(status().isOk());
         assertNull(httpSession.getAttribute("SPRING_SECURITY_CONTEXT"));
         assertNull(SecurityContextHolder.getContext().getAuthentication());
+    }
+
+    @Test
+    void testEditUserTasteBuddies_UpdatePasswordOnly() throws Exception {
+        // Given
+        String oldUserName = "existingUser";
+        String newUserName = "";
+        String newUserPassword = "newPassword";
+        UserTasteBuddies updatedUser = new UserTasteBuddies("123", oldUserName, newUserPassword);
+
+        // Mock the service method
+        Mockito.when(userDetailsService.editUserTasteBuddies(oldUserName, newUserName, newUserPassword)).thenReturn(updatedUser);
+
+        // When/Then
+        mockMvc.perform(post("/tb/user/details").with(csrf())
+                        .param("oldUserName", oldUserName)
+                        .param("newUserName", newUserName)
+                        .param("newUserPassword", newUserPassword)
+                )
+                .andExpect(status().isAccepted())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.userName").value(oldUserName))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.userPassword").value(newUserPassword));
+
     }
 
 }
