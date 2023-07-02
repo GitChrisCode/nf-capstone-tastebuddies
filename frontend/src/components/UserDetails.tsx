@@ -84,19 +84,27 @@ function UserDetails() {
             });
     }
 
+    function updateGuest(guestID: string, updatedGuest: Guest) {
+        axios
+            .put(`/tb/user/guest/${guestID}`, updatedGuest)
+            .then((response) => {
+                const editedGuest = response.data;
+                // Handle the edited guest object
+                console.log(editedGuest);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+
     return (
         <div>
             <h3>User Details:</h3>
             <p>Aktueller Benutzername: {userName}</p>
             <form onSubmit={handleSubmit}>
                 <label>
-                    Neues Passwort:
+                    New Password:
                     <input type="password" value={password} onChange={handlePasswordChange} />
-                </label>
-                <br/>
-                <label>
-                    Gastname:
-                    <input type="text" value={guestName} onChange={handleGuestNameChange} />
                 </label>
                 <br/>
                 <label>

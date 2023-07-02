@@ -49,15 +49,37 @@ function RecipeSearch() {
         queryParams.append('excludeIngredients', excludeIngredients.join(','));
         const searchQuery = queryParams.toString();
 
-        axios
-            .get('/tb/user/recipesearch?' + searchQuery)
-            .then(response => response.data)
-            .catch(console.error)
-            .then((data: RecipesResponse) => {
-                setRecipesSearchResult(data.results);
-                setTotalResults(data.totalResults);
-            });
+        const MAX_RETRY_ATTEMPTS = 2; // Maximale Anzahl der erneuten Versuche
+        let retryCount = 0; // Zähler für die erneuten Versuche
+
+        const executeGetRequest = () => {
+            axios
+                .get('/tb/user/recipesearch?' + searchQuery)
+                .then(response => response.data)
+                .then((data: RecipesResponse) => {
+                    setRecipesSearchResult(data.results);
+                    setTotalResults(data.totalResults);
+                })
+                .catch(error => {
+                    if (error.response && error.response.status === 500) {
+                        if (retryCount < MAX_RETRY_ATTEMPTS) {
+                            retryCount++;
+                            // Verzögerung zwischen den erneuten Versuchen (z.B. 1 Sekunde)
+                            setTimeout(() => {
+                                executeGetRequest(); // Erneuter Aufruf des GET-Requests
+                            }, 1000);
+                        } else {
+                            console.error('Max retry attempts reached. Unable to retrieve data.');
+                        }
+                    } else {
+                        console.error(error);
+                    }
+                });
+        };
+
+        executeGetRequest();
     }
+
 
     return (
         <div>
