@@ -89,17 +89,21 @@ function RecipeSearch() {
                 <Autocomplete onIncludeChange={handleIncludeChange} onExcludeChange={handleExcludeChange}/>
                 <button type="submit">Search</button>
             </form>
-            <div>
+            <div style={{ display: 'flex', gap: '20px' }}>
+                <div>
                 <IngredientsList
                     ingredients={includeIngredients}
                     onIngredientRemove={onIncludeIngredientRemove}
                     title="Include Ingredients"
                 />
+                </div>
+                <div>
                 <IngredientsList
                     ingredients={excludeIngredients}
                     onIngredientRemove={onExcludeIngredientRemove}
                     title="Exclude Ingredients"
                 />
+                </div>
             </div>
             <LogoutButton/>
             <h2>Search Results:</h2>

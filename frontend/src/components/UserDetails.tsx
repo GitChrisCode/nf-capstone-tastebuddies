@@ -6,15 +6,16 @@ import { Guest } from '../model/Guest';
 import IngredientsList from "./Ingredients";
 import Autocomplete from "./Autocomplete";
 
+
 function UserDetails() {
     const navigate = useNavigate();
 
     const [userName, setUserName] = useState('');
+    const [newUserName, setNewUserName] = useState('');
     const [password, setPassword] = useState('');
-    const [guestName, setGuestName] = useState('');
     const [includeIngredients, setIncludeIngredients] = useState<string[]>([]);
     const [excludeIngredients, setExcludeIngredients] = useState<string[]>([]);
-
+    const [foundGuest, setFoundGuest] = useState<Guest>();
     useEffect(() => {
         const storedUserName = localStorage.getItem('user');
         if (storedUserName !== null) {
@@ -34,8 +35,8 @@ function UserDetails() {
         setPassword(event.target.value);
     };
 
-    const handleGuestNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setGuestName(event.target.value);
+    const handleUserNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setNewUserName(event.target.value);
     };
 
     const onIncludeIngredientRemove = (value: string) => {
@@ -52,13 +53,43 @@ function UserDetails() {
         event.preventDefault();
 
         const newGuest: Guest = {
+            guestID: '',
             userName: userName || '',
-            guestName: guestName,
+            guestName: userName,
             includeIngredients: includeIngredients,
             excludeIngredients: excludeIngredients,
         };
 
-        createGuest(newGuest);
+        if (userName !== newUserName || password) {
+            updateUser(userName, newUserName, password);
+            localStorage.setItem('user', newUserName);
+            console.log("user: ", userName, " Old: ", newUserName, " PW: ", password)
+            if (userName !== newUserName) {
+                let guestList: Guest[] = [];
+                axios
+                    .get('tb/user/guest')
+                    .then((response) => {
+                        guestList = response.data;
+                        guestList.forEach((guest) => {
+                            if (guest.userName === userName) {
+                                guest.userName = newUserName;
+                                updateGuest(guest.guestID, guest);
+                            }
+                        }
+                        )
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
+            }
+        }
+
+        findGuest(userName);
+        if(foundGuest?.guestName === userName) {
+            updateGuest(foundGuest.guestID, newGuest);
+        } else {
+            createGuest(newGuest);
+        }
     };
 
     function createGuest(newGuest: Guest) {
@@ -66,22 +97,32 @@ function UserDetails() {
             .post('/tb/user/guest', newGuest)
             .then((response) => {
                 const guestID = response.data;
-                localStorage.setItem('guestID', guestID);
+                console.log("Guest created: ", guestID);
             })
             .catch((error) => {
                 console.error(error);
             });
     }
 
-    function deleteGuest(guestID: string) {
+    function updateUser(oldUsername: string, newUsername: string, newUserPassword: string) {
         axios
-            .delete(`/tb/user/guest/${guestID}`)
+            .post(
+                '/tb/user/details',
+                undefined,
+                {
+                    params: {
+                        oldUserName: oldUsername,
+                        newUserName: newUsername,
+                        newUserPassword: newUserPassword,
+                    },
+                }
+                )
             .then((response) => {
-                console.log(response.data);
+                console.log("Updated User: ", response.data)
             })
             .catch((error) => {
-                console.error(error);
-            });
+                console.log(error);
+        });
     }
 
     function updateGuest(guestID: string, updatedGuest: Guest) {
@@ -97,11 +138,27 @@ function UserDetails() {
             });
     }
 
+    function findGuest(guestName: string) {
+        axios
+            .get(`/tb/user/guest/${guestName}`)
+            .then((response)=> {
+                setFoundGuest(response.data);
+            })
+            .catch((error) => {
+                console.error(error)
+            });
+    }
+
     return (
         <div>
             <h3>User Details:</h3>
             <p>Aktueller Benutzername: {userName}</p>
             <form onSubmit={handleSubmit}>
+                <label>
+                    New Username:
+                    <input type="text" value={newUserName} onChange={handleUserNameChange}/>
+                </label>
+                <br/>
                 <label>
                     New Password:
                     <input type="password" value={password} onChange={handlePasswordChange} />
