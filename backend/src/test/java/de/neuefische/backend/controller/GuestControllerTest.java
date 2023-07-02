@@ -234,7 +234,7 @@ class GuestControllerTest {
     }
 
     @Test
-    public void testFindGuest_ReturnsGuest_WhenGuestExists() throws Exception {
+    void testFindGuest_ReturnsGuest_WhenGuestExists() throws Exception {
         // Mock Guest
         Guest mockGuest = new Guest();
         mockGuest.setGuestID("1");
@@ -254,7 +254,7 @@ class GuestControllerTest {
     }
 
     @Test
-    public void testFindGuest_ReturnsNotFound_WhenGuestDoesNotExist() throws Exception {
+    void testFindGuest_ReturnsNotFound_WhenGuestDoesNotExist() throws Exception {
         // Mock GuestService
         Mockito.when(mockGuestService.getGuestByGuestName(anyString())).thenReturn(ResponseEntity.notFound().build());
 
