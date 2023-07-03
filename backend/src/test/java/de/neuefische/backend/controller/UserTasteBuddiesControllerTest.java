@@ -73,6 +73,7 @@ class UserTasteBuddiesControllerTest {
     }
 
     @Test
+    @WithMockUser
     void testEditUserTasteBuddies_UpdatePasswordOnly() throws Exception {
         // Given
         String oldUserName = "existingUser";

@@ -42,11 +42,11 @@ public class SecurityConfig {
                                 )))
 
                 .authorizeHttpRequests(auth -> {
-                    auth.requestMatchers(
-                            ("/tb/user/recipesearch")).authenticated();
-                    auth.requestMatchers(
-                            ("/tb/**")).permitAll();
-                    auth.anyRequest().permitAll();
+                    auth.requestMatchers(("/tb/user/**")).authenticated();
+                    auth.requestMatchers(("/login")).permitAll();
+                    auth.requestMatchers(("/tb/**")).permitAll();
+                    auth.requestMatchers(("/")).permitAll();
+                    auth.anyRequest().authenticated();
                 })
 
                 .build();

@@ -63,7 +63,6 @@ function UserDetails() {
         if (userName !== newUserName || password) {
             updateUser(userName, newUserName, password);
             localStorage.setItem('user', newUserName);
-            console.log("user: ", userName, " Old: ", newUserName, " PW: ", password)
             if (userName !== newUserName) {
                 let guestList: Guest[] = [];
                 axios
@@ -85,6 +84,7 @@ function UserDetails() {
         }
 
         findGuest(userName);
+
         if(foundGuest?.guestName === userName) {
             updateGuest(foundGuest.guestID, newGuest);
         } else {
@@ -187,7 +187,7 @@ function UserDetails() {
                 <br/>
                 <button type="submit">Save</button>
             </form>
-            <button onClick={() => navigate('/recipesearch')}>Search for Recipes</button>
+            <button onClick={() => navigate('/guestManagement')}>Guest Management</button>
             <LogoutButton />
         </div>
     );
