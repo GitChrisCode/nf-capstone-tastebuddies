@@ -43,7 +43,8 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers(("/tb/user/**")).authenticated();
-                    auth.requestMatchers(("/login")).permitAll();
+                    auth.requestMatchers(("/tb/user/login")).permitAll();
+                    auth.requestMatchers(("/tb/user/registration"));
                     auth.requestMatchers(("/tb/**")).permitAll();
                     auth.requestMatchers(("/")).permitAll();
                     auth.anyRequest().authenticated();
