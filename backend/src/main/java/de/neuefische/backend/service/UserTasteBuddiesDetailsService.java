@@ -31,6 +31,7 @@ public class UserTasteBuddiesDetailsService implements UserDetailsService {
     public UserTasteBuddies registerUserTasteBuddies(String userName, String userPassword) {
         Optional<UserTasteBuddies> existingUser = repo.findUserByUserName(userName);
         if (existingUser.isPresent()) {
+
             throw new IllegalArgumentException("User with username '" + userName + "' already exists");
         }
 
@@ -38,4 +39,27 @@ public class UserTasteBuddiesDetailsService implements UserDetailsService {
         UserTasteBuddies newUserTasteBuddies = new UserTasteBuddies(uuidService.generateUUID(), userName, encodedPassword);
         return repo.save(newUserTasteBuddies);
     }
+
+    public UserTasteBuddies editUserTasteBuddies(String oldUserName, String newUserName, String newUserPassword) {
+        Optional<UserTasteBuddies> existingUser = repo.findUserByUserName(oldUserName);
+
+        if (existingUser.isPresent()) {
+            UserTasteBuddies userToUpdate = existingUser.get();
+
+            if (newUserName != null && !newUserName.isEmpty()) {
+                userToUpdate.setUserName(newUserName);
+            }
+
+            if (newUserPassword != null && !newUserPassword.isEmpty()) {
+                String encodedPassword = passwordEncoder.encode(newUserPassword);
+                userToUpdate.setUserPassword(encodedPassword);
+            }
+
+            return repo.save(userToUpdate);
+        }
+
+        throw new IllegalArgumentException("Der alte Benutzername existiert nicht");
+    }
+
+
 }

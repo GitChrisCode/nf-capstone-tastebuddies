@@ -21,6 +21,12 @@ public class UserTasteBuddiesController {
         return service.registerUserTasteBuddies(userName, userPassword);
     }
 
+    @PostMapping("/details")
+        @ResponseStatus(HttpStatus.ACCEPTED)
+        public UserTasteBuddies editUserTasteBuddies(@RequestParam String oldUserName, @RequestParam String newUserName, @RequestParam String newUserPassword) {
+        return service.editUserTasteBuddies(oldUserName, newUserName, newUserPassword);
+        }
+
     @PostMapping("/login")
     public String login() {
         return SecurityContextHolder.getContext().getAuthentication().getName();

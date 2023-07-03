@@ -3,6 +3,7 @@ package de.neuefische.backend.service;
 import de.neuefische.backend.model.Guest;
 import de.neuefische.backend.repository.GuestRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,7 +28,21 @@ public class GuestService {
         Guest existingGuest = guestRepository.findById(guestId).orElse(null);
 
         if (existingGuest != null) {
-            existingGuest.setUserName(updatedGuest.getUserName());
+            String newUserName = updatedGuest.getUserName();
+
+            if (newUserName != null && !newUserName.isEmpty()) {
+                List<Guest> guestsWithSameUserName = guestRepository.findByUserName(existingGuest.getUserName());
+
+                for (Guest guest : guestsWithSameUserName) {
+                    if (!guest.getGuestID().equals(existingGuest.getGuestID())) {
+                        guest.setUserName(newUserName);
+                        guestRepository.save(guest);
+                    }
+                }
+
+                existingGuest.setUserName(newUserName);
+            }
+
             existingGuest.setGuestName(updatedGuest.getGuestName());
             existingGuest.setIncludeIngredients(updatedGuest.getIncludeIngredients());
             existingGuest.setExcludeIngredients(updatedGuest.getExcludeIngredients());
@@ -36,6 +51,7 @@ public class GuestService {
         }
         return null;
     }
+
     public List<Guest> getGuestList() {
         return guestRepository.findAll();
     }
@@ -49,5 +65,15 @@ public class GuestService {
         return false;
     }
 
+    public ResponseEntity<Guest> getGuestByGuestName(String guestName) {
+        Optional<Guest> optionalGuest = guestRepository.findByGuestName(guestName);
+
+        if (optionalGuest.isPresent()) {
+            Guest guest = optionalGuest.get();
+            return ResponseEntity.ok(guest);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 }

@@ -11,6 +11,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -18,7 +19,11 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import java.util.ArrayList;
 import java.util.List;
 
+
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -50,7 +55,7 @@ class GuestControllerTest {
                         .with(csrf())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(new ObjectMapper().writeValueAsString(guest)))
-                .andExpect(MockMvcResultMatchers.status().isCreated())
+                .andExpect(status().isCreated())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.userName").value(guest.getUserName()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.guestName").value(guest.getGuestName()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.includeIngredients").isArray())
@@ -81,7 +86,7 @@ class GuestControllerTest {
                         .with(csrf())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(new ObjectMapper().writeValueAsString(guest)))
-                .andExpect(MockMvcResultMatchers.status().isBadRequest());
+                .andExpect(status().isBadRequest());
 
         Mockito.verify(mockGuestService, Mockito.times(1)).addGuest(guest);
     }
@@ -107,10 +112,10 @@ class GuestControllerTest {
         Mockito.when(mockGuestService.getGuestList()).thenReturn(expectedGuestList);
 
         // When/Then
-        mockMvc.perform(MockMvcRequestBuilders.get("/tb/user/guest")
+        mockMvc.perform(get("/tb/user/guest")
                         .with(csrf())
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.length()").value(expectedGuestList.size()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].guestID").value(expectedGuestList.get(0).getGuestID()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].userName").value(expectedGuestList.get(0).getUserName()))
@@ -129,10 +134,10 @@ class GuestControllerTest {
         Mockito.when(mockGuestService.getGuestList()).thenReturn(emptyGuestList);
 
         // When/Then
-        mockMvc.perform(MockMvcRequestBuilders.get("/tb/user/guest")
+        mockMvc.perform(get("/tb/user/guest")
                         .with(csrf())
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isNoContent());
+                .andExpect(status().isNoContent());
 
         Mockito.verify(mockGuestService, Mockito.times(1)).getGuestList();
     }
@@ -159,7 +164,7 @@ class GuestControllerTest {
                         .with(csrf()) // Include CSRF token
                         .content(requestBody)
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.userName").value(updatedGuest.getUserName()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.guestName").value(updatedGuest.getGuestName()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.includeIngredients").isArray())
@@ -191,7 +196,7 @@ class GuestControllerTest {
                         .with(csrf()) // Include CSRF token
                         .content(requestJson)
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isNotFound());
+                .andExpect(status().isNotFound());
 
         Mockito.verify(mockGuestService, Mockito.times(1)).editGuest(guestId, updatedGuest);
     }
@@ -204,7 +209,7 @@ class GuestControllerTest {
 
         // When
         mockMvc.perform(MockMvcRequestBuilders.delete("/tb/user/guest/{guestId}", guestId).with(csrf()))
-                .andExpect(MockMvcResultMatchers.status().isNoContent())
+                .andExpect(status().isNoContent())
                 .andExpect(MockMvcResultMatchers.content().string(""))
                 .andReturn();
 
@@ -220,11 +225,42 @@ class GuestControllerTest {
 
         // When
         mockMvc.perform(MockMvcRequestBuilders.delete("/tb/user/guest/{guestId}", guestId).with(csrf()))
-                .andExpect(MockMvcResultMatchers.status().isNotFound())
+                .andExpect(status().isNotFound())
                 .andExpect(MockMvcResultMatchers.content().string(""))
                 .andReturn();
 
         // Then
         Mockito.verify(mockGuestService, Mockito.times(1)).deleteGuest(guestId);
+    }
+
+    @Test
+    void testFindGuest_ReturnsGuest_WhenGuestExists() throws Exception {
+        // Mock Guest
+        Guest mockGuest = new Guest();
+        mockGuest.setGuestID("1");
+        mockGuest.setGuestName("John");
+
+        // Mock GuestService
+        ResponseEntity<Guest> responseEntity = ResponseEntity.ok(mockGuest);
+        Mockito.when(mockGuestService.getGuestByGuestName("John")).thenReturn(responseEntity);
+
+        // Perform GET request
+        mockMvc.perform(get("/tb/user/guest/find/John")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.guestID").value("1"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.guestName").value("John"));
+    }
+
+    @Test
+    void testFindGuest_ReturnsNotFound_WhenGuestDoesNotExist() throws Exception {
+        // Mock GuestService
+        Mockito.when(mockGuestService.getGuestByGuestName(anyString())).thenReturn(ResponseEntity.notFound().build());
+
+        // Perform GET request
+        mockMvc.perform(get("/tb/user/guest/find/NonExistingGuest")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound());
     }
 }

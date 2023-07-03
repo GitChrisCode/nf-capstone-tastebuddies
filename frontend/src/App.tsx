@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import RegisterForm from "./components/RegisterForm"
-import useUser from "./components/UserHooks"
+import useUser from "./hooks/UserHooks"
 import {Route, Routes} from "react-router-dom";
 import LoginPage from "./components/LoginPage";
 import RecipeSearch from "./components/RecipeSearch";

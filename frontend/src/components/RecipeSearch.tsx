@@ -2,7 +2,8 @@ import React, {FormEvent, useState} from 'react';
 import LogoutButton from './LogoutButton';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-import Autocomplete from './Ingredients';
+import Autocomplete from './Autocomplete';
+import IngredientsList from "./Ingredients";
 import '../css/RecipeSearch.css';
 
 type Recipes = {
@@ -48,15 +49,37 @@ function RecipeSearch() {
         queryParams.append('excludeIngredients', excludeIngredients.join(','));
         const searchQuery = queryParams.toString();
 
-        axios
-            .get('/tb/user/recipesearch?' + searchQuery)
-            .then(response => response.data)
-            .catch(console.error)
-            .then((data: RecipesResponse) => {
-                setRecipesSearchResult(data.results);
-                setTotalResults(data.totalResults);
-            });
+        const MAX_RETRY_ATTEMPTS = 2; // Maximale Anzahl der erneuten Versuche
+        let retryCount = 0; // Zähler für die erneuten Versuche
+
+        const executeGetRequest = () => {
+            axios
+                .get('/tb/user/recipesearch?' + searchQuery)
+                .then(response => response.data)
+                .then((data: RecipesResponse) => {
+                    setRecipesSearchResult(data.results);
+                    setTotalResults(data.totalResults);
+                })
+                .catch(error => {
+                    if (error.response && error.response.status === 500) {
+                        if (retryCount < MAX_RETRY_ATTEMPTS) {
+                            retryCount++;
+                            // Verzögerung zwischen den erneuten Versuchen (z.B. 1 Sekunde)
+                            setTimeout(() => {
+                                executeGetRequest(); // Erneuter Aufruf des GET-Requests
+                            }, 1000);
+                        } else {
+                            console.error('Max retry attempts reached. Unable to retrieve data.');
+                        }
+                    } else {
+                        console.error(error);
+                    }
+                });
+        };
+
+        executeGetRequest();
     }
+
 
     return (
         <div>
@@ -66,23 +89,21 @@ function RecipeSearch() {
                 <Autocomplete onIncludeChange={handleIncludeChange} onExcludeChange={handleExcludeChange}/>
                 <button type="submit">Search</button>
             </form>
-            <div>
-                <h3>Include Ingredients:</h3>
-                {includeIngredients.map((ingredient) => (
-                    <div key={ingredient}>
-                        {ingredient}
-                        <button onClick={() => onIncludeIngredientRemove(ingredient)}>Remove</button>
-                    </div>
-                ))}
-            </div>
-            <div>
-                <h3>Exclude Ingredients:</h3>
-                {excludeIngredients.map((ingredient) => (
-                    <div key={ingredient}>
-                        {ingredient}
-                        <button onClick={() => onExcludeIngredientRemove(ingredient)}>Remove</button>
-                    </div>
-                ))}
+            <div style={{ display: 'flex', gap: '20px' }}>
+                <div>
+                <IngredientsList
+                    ingredients={includeIngredients}
+                    onIngredientRemove={onIncludeIngredientRemove}
+                    title="Include Ingredients"
+                />
+                </div>
+                <div>
+                <IngredientsList
+                    ingredients={excludeIngredients}
+                    onIngredientRemove={onExcludeIngredientRemove}
+                    title="Exclude Ingredients"
+                />
+                </div>
             </div>
             <LogoutButton/>
             <h2>Search Results:</h2>
