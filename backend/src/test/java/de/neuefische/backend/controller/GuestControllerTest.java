@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -34,6 +35,7 @@ class GuestControllerTest {
     private GuestService mockGuestService;
 
     @Test
+    @WithMockUser
     void testAddGuest_Successful() throws Exception {
         // Given
         String requestGuest = """
@@ -65,6 +67,7 @@ class GuestControllerTest {
     }
 
     @Test
+    @WithMockUser
     void testAddGuest_Failure() throws Exception {
         // Given
         String requestGuest = """
@@ -92,6 +95,7 @@ class GuestControllerTest {
     }
 
     @Test
+    @WithMockUser
     void testGetGuestList_NotEmpty() throws Exception {
         // Given
         String response = """
@@ -127,6 +131,7 @@ class GuestControllerTest {
     }
 
     @Test
+    @WithMockUser
     void testGetGuestList_Empty() throws Exception {
         // Given
         List<Guest> emptyGuestList = new ArrayList<>();
@@ -143,6 +148,7 @@ class GuestControllerTest {
     }
 
     @Test
+    @WithMockUser
     void testEditGuest_Successful() throws Exception {
         // Given
         String guestId = "12345";
@@ -174,6 +180,7 @@ class GuestControllerTest {
     }
 
     @Test
+    @WithMockUser
     void testEditGuest_NotFound() throws Exception {
         // Given
         String guestId = "12345";
@@ -202,6 +209,7 @@ class GuestControllerTest {
     }
 
     @Test
+    @WithMockUser
     void testDeleteGuest_Successful() throws Exception {
         // Given
         String guestId = "12345";
@@ -218,6 +226,7 @@ class GuestControllerTest {
     }
 
     @Test
+    @WithMockUser
     void testDeleteGuest_GuestNotFound() throws Exception {
         // Given
         String guestId = "12345";
@@ -234,6 +243,7 @@ class GuestControllerTest {
     }
 
     @Test
+    @WithMockUser
     void testFindGuest_ReturnsGuest_WhenGuestExists() throws Exception {
         // Mock Guest
         Guest mockGuest = new Guest();
@@ -254,6 +264,7 @@ class GuestControllerTest {
     }
 
     @Test
+    @WithMockUser
     void testFindGuest_ReturnsNotFound_WhenGuestDoesNotExist() throws Exception {
         // Mock GuestService
         Mockito.when(mockGuestService.getGuestByGuestName(anyString())).thenReturn(ResponseEntity.notFound().build());
