@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+//import './App.css';
 import RegisterForm from "./components/RegisterForm"
 import useUser from "./hooks/UserHooks"
 import {Route, Routes} from "react-router-dom";
@@ -23,7 +23,7 @@ function App() {
     return (
         <div>
             <header>
-                <h1>TasteBuddies</h1>
+                <p className="text-3xl font-bold underline text-center">TasteBuddies</p>
             </header>
             <Routes>
                 <Route path="/" element={<Homepage/>}/>
