@@ -22,11 +22,8 @@ function App() {
 
     return (
         <div>
-            <header>
-                <p className="text-3xl font-bold underline text-center">TasteBuddies</p>
-            </header>
             <Routes>
-                <Route path="/" element={<Homepage/>}/>
+                <Route path="/" element={<LoginPage login={handleLogin}/>}/>
                 <Route path="/login" element={<LoginPage login={handleLogin}/>}/>
                 <Route path="/test" element={<Test/>}/>
                 <Route path="/register" element={<RegisterForm/>}/>
