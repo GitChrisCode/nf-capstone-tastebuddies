@@ -2,6 +2,7 @@ import React, { FormEvent, useState } from 'react';
 import {useNavigate} from "react-router-dom";
 import tbImage from "../data/3519283.jpg"
 import tbLogo from "../data/tasteBuddies.png"
+import {Button} from "@material-tailwind/react";
 
 type Props = {
     login: (username: string, password: string) => Promise<void>
@@ -85,7 +86,6 @@ function LoginPage(props: Props) {
                                 <button
                                     type="submit"
                                     className="px-4 py-1 text-sm text-Blue-600 font-semibold rounded-full border border-blue-200 hover:text-white hover:bg-blue-800 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-bule-800 focus:ring-offset-2"
-
                                     data-te-ripple-color="light">
                                     Sign In
                                 </button>
