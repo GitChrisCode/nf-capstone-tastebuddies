@@ -1,7 +1,7 @@
 import React, { FormEvent, useState } from 'react';
 import {useNavigate} from "react-router-dom";
 import tbImage from "../data/3519283.jpg"
-import tbLogo from "../data/TastBuddiesLogo.png"
+import tbLogo from "../data/tasteBuddies.png"
 
 type Props = {
     login: (username: string, password: string) => Promise<void>
@@ -36,7 +36,7 @@ function LoginPage(props: Props) {
                     <div className="place-content-center mb-12 md:mb-0 md:w-8/12 lg:w-5/12 xl:w-5/12">
                         <img
                             src={tbLogo}
-                            className="scale-150"
+                            className="scale-100"
                             alt="TasteBuddiesLogo.png"
                         />
                         <div
@@ -96,11 +96,9 @@ function LoginPage(props: Props) {
                                     <button
                                         onClick={navigateToRegistration}
                                         className="text-danger transition duration-150 ease-in-out hover:text-blue-600 focus:text-blue-600 active:text-blue-700"
-                                    > Sign Up</button
-                                    >
+                                    > Sign Up</button>
                                 </p>
                             </div>
-
                         </form>
                     </div>
                 </div>
