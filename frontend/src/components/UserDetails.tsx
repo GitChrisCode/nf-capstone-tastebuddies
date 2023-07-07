@@ -85,7 +85,7 @@ function UserDetails() {
             }
         }
 
-        findGuest(userName); //needful things
+        findGuest(userName);
 
         if (foundGuest?.guestName === userName) {
             updateGuest(foundGuest.guestID, newGuest);
