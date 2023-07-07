@@ -6,7 +6,7 @@ import {
     Input,
     List,
     ListItem,
-    Button,
+    Button, Typography,
 } from "@material-tailwind/react";
 import { v4 as uuidv4 } from 'uuid';
 import {MinusIcon, PlusIcon} from "@heroicons/react/24/solid"
@@ -25,7 +25,6 @@ const Autocomplete = ({ onIncludeChange, onExcludeChange }: AutocompleteProps) =
     const [searchTerm, setSearchTerm] = useState('');
     const [suggestions, setSuggestions] = useState<Ingredient[]>([]);
     const [selectedSuggestion, setSelectedSuggestion] = useState<Ingredient | null>(null);
-    const [ingredientType, setIngredientType] = useState<'include' | 'exclude'>('include');
     const [includeIngredients, setIncludeIngredients] = useState<string[]>([]);
     const [excludeIngredients, setExcludeIngredients] = useState<string[]>([]);
 
@@ -42,7 +41,6 @@ const Autocomplete = ({ onIncludeChange, onExcludeChange }: AutocompleteProps) =
     const handleSuggestionClick = (type: string, suggestion: Ingredient) => {
         setSelectedSuggestion(suggestion);
         setSearchTerm(suggestion.FIELD1);
-        console.log("INGREDIENT TYPE: ", ingredientType)
         if (type === 'include') {
             setIncludeIngredients([...includeIngredients, suggestion.FIELD1]);
             onIncludeChange(suggestion.FIELD1); // Pass the information to the parent component
@@ -62,14 +60,15 @@ const Autocomplete = ({ onIncludeChange, onExcludeChange }: AutocompleteProps) =
                 }}
                 value={searchTerm}
                 onChange={handleChange} />
-            <Card className="w-96">
-
-                <List className="grid grid-cols-2" >
+            <Card className="">
+                <List className="grid grid-flow-row auto-rows-max" >
                     {suggestions.map((item) => (
-                        <ListItem key={uuidv4()} className="py-1 pr-1 pl-4">
-                            {item.FIELD1}
-                            <Button  onClick={()=>handleSuggestionClick('include', item)}><PlusIcon className="h-5 w-5" color="green"/> </Button>
-                            <Button  onClick={()=>handleSuggestionClick('exclude', item)}><MinusIcon className="h-5 w-5" color="red"/></Button>
+                        <ListItem key={uuidv4()} className="rounded-[7px] bg-gray-100 w-auto px-3 py-0.5 pl-4 m-2">
+                            <Typography size="lg" classsName="">
+                                {item.FIELD1}
+                            </Typography>
+                            <Button  onClick={()=>handleSuggestionClick('include', item)}><PlusIcon className="h-5 w-5 text-green-700 ml-5" /> </Button>
+                            <Button  onClick={()=>handleSuggestionClick('exclude', item)}><MinusIcon className="h-5 w-5 text-red-600 ml-2"/></Button>
                         </ListItem>
                     ))}
                 </List>

@@ -1,8 +1,7 @@
 import React, { FormEvent, useState } from 'react';
 import {useNavigate} from "react-router-dom";
-import tbImage from "../data/3519283.jpg"
-import tbLogo from "../data/tasteBuddies.png"
-import {Button} from "@material-tailwind/react";
+import tbImage from "../data/tbLogo.png"
+
 
 type Props = {
     login: (username: string, password: string) => Promise<void>
@@ -35,16 +34,11 @@ function LoginPage(props: Props) {
                 <div className="grid">
 
                     <div className="place-content-center mb-12 md:mb-0 md:w-8/12 lg:w-5/12 xl:w-5/12">
-                        <img
-                            src={tbLogo}
-                            className="scale-100"
-                            alt="TasteBuddiesLogo.png"
-                        />
                         <div
                             className="flex flex-col items-center justify-center">
                             <img
                                 src={tbImage}
-                                className="object-scale-down h-48 w-96"
+                                className="scale-150 h-auto w-auto"
                                 alt="3519283.jpg"/>
                         </div>
 

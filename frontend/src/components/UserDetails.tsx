@@ -1,17 +1,15 @@
 import React, {useState, useEffect} from 'react';
-import {useNavigate} from 'react-router-dom';
-import LogoutButton from './LogoutButton';
 import axios from 'axios';
 import {Guest} from '../model/Guest';
 import IngredientsList from "./Ingredients";
 import Autocomplete from "./Autocomplete";
 import {Button, Input, Typography} from "@material-tailwind/react";
-import tbLogo from "../data/tasteBuddies.png";
-import "../css/UserDetails.css"
+import tbLogo from "../data/tbLogo.png";
+
+import NavigationBar from './NavigationBar';
 
 
 function UserDetails() {
-    const navigate = useNavigate();
 
     const [userName, setUserName] = useState('');
     const [newUserName, setNewUserName] = useState('');
@@ -154,19 +152,19 @@ function UserDetails() {
     }
 
     return (
-        <div>
+        <div className="flex flex-col">
             <header >
                 <img
                     src={tbLogo}
-                    className="scale-75"
+                    className="scale-75 justify-center"
                     alt="TasteBuddiesLogo.png"
                 />
             </header>
-            <div className="left-sidebar"><p>Ipsum</p></div>
+            <div ><NavigationBar/></div>
             <main>
-                <Typography>User Details:</Typography>
-                <Typography>Hi {userName}, you are logged in!</Typography>
-                <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96" onSubmit={handleSubmit}>
+                <Typography className="p-2" >User Details:</Typography>
+                <Typography className="p-2" >Hi {userName}, you are logged in!</Typography>
+                <form className="mt-8 mb-2 p-2 w-80 max-w-screen-lg sm:w-96" onSubmit={handleSubmit}>
                     <div className="mb-4 flex flex-col gap-6">
                         <Input
                             size="lg"
@@ -191,15 +189,15 @@ function UserDetails() {
                             <Autocomplete onIncludeChange={handleIncludeChange}
                                           onExcludeChange={handleExcludeChange}/>
                         </label>
-                        <div className="flex gap-20">
-                            <div>
+                        <div className="flex gap-12">
+                            <div className="border-solid rounded-[7px] bg-gray-100">
                                 <IngredientsList
                                     ingredients={includeIngredients}
                                     onIngredientRemove={onIncludeIngredientRemove}
                                     title="Include Ingredient"
                                 />
                             </div>
-                            <div>
+                            <div className="border-solid rounded-[7px] bg-gray-100">
                                 <IngredientsList
                                     ingredients={excludeIngredients}
                                     onIngredientRemove={onExcludeIngredientRemove}
@@ -214,17 +212,7 @@ function UserDetails() {
                     >
                         Save
                     </Button>
-
                 </form>
-
-
-                <button
-                    onClick={() => navigate('/guestManagement')}
-                    className="px-4 py-1 text-sm text-Blue-600 font-semibold rounded-full border border-blue-200 hover:text-white hover:bg-blue-800 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-bule-800 focus:ring-offset-2"
-                >
-                    Guest Management
-                </button>
-                <LogoutButton/>
             </main>
         </div>
     );
