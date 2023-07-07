@@ -75,19 +75,15 @@ export default function NavigationBar() {
                 <div className="hidden lg:block">
                     <NavList/>
                 </div>
-
-                <IconButton
-                    variant="text"
-                    className="h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
-                    ripple={false}
-                    onClick={() => setOpenNav(!openNav)}
-                >
+                <button
+                    className="relative h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
+                    onClick={() => setOpenNav(!openNav)}>
                     {openNav ? (
                         <XMarkIcon className="h-6 w-6" strokeWidth={2}/>
                     ) : (
                         <Bars3Icon className="h-6 w-6" strokeWidth={2}/>
                     )}
-                </IconButton>
+                </button>
             </div>
             {openNav && (
                 <NavList/>

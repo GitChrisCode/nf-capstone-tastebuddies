@@ -12,12 +12,13 @@ import tbLogo from "../data/tasteBuddies.png"
 function RegisterForm() {
     const [userName, setUserName] = useState("");
     const [userPassword, setUserPassword] = useState("");
-    const [confirmPassword,setConfirmPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     const navigate = useNavigate();
 
     function navigateToLogin() {
         navigate('/login');
     }
+
     const handleSubmit = () => {
         console.log("HANDLE SUBMIT!!!")
         if (userPassword !== confirmPassword) {
@@ -50,11 +51,13 @@ function RegisterForm() {
         <section className="h-screen">
             <div className="flex h-full justify-center">
                 <div className="grid">
-                    <img
-                        src={tbLogo}
-                        className="scale-75"
-                        alt="TasteBuddiesLogo.png"
-                    />
+                    <header>
+                        <img
+                            src={tbLogo}
+                            className="scale-75"
+                            alt="TasteBuddiesLogo.png"
+                        />
+                    </header>
                     <Card color="transparent" shadow={false}>
                         <Typography variant="h4" color="blue-gray">
                             Sign Up
@@ -62,7 +65,7 @@ function RegisterForm() {
                         <Typography color="gray" className="mt-1 font-normal">
                             Enter your details to register.
                         </Typography>
-                        <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96" onSubmit = {handleSubmit}>
+                        <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96" onSubmit={handleSubmit}>
                             <div className="mb-4 flex flex-col gap-6">
                                 <Input
                                     size="lg"
@@ -72,7 +75,7 @@ function RegisterForm() {
                                         className: "before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-blue-800 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-blue-800 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-blue-800 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"
                                     }}
                                     value={userName}
-                                    onChange={(event)=> setUserName(event.target.value)}/>
+                                    onChange={(event) => setUserName(event.target.value)}/>
                                 <Input
                                     type="password"
                                     size="lg"
@@ -82,7 +85,7 @@ function RegisterForm() {
                                         className: "before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-blue-800 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-blue-800 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-blue-800 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"
                                     }}
                                     value={userPassword}
-                                    onChange={(event)=> setUserPassword(event.target.value)}/>
+                                    onChange={(event) => setUserPassword(event.target.value)}/>
                                 <Input
                                     type="password"
                                     size="lg"
@@ -92,14 +95,13 @@ function RegisterForm() {
                                         className: "before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-blue-800 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-blue-800 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-blue-800 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"
                                     }}
                                     value={confirmPassword}
-                                    onChange={(event)=> setConfirmPassword(event.target.value)}/>
+                                    onChange={(event) => setConfirmPassword(event.target.value)}/>
                             </div>
 
                             <Button
                                 type="submit"
                                 className="px-4 py-1 text-sm text-Blue-600 font-semibold rounded-full border border-blue-200 hover:text-white hover:bg-blue-800 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-bule-800 focus:ring-offset-2"
                             >
-
                                 Register
                             </Button>
                             <Typography color="gray" className="mt-4 text-center font-normal">
@@ -107,7 +109,8 @@ function RegisterForm() {
                                 <button
                                     onClick={navigateToLogin}
                                     className="text-danger transition duration-150 ease-in-out hover:text-blue-600 focus:text-blue-600 active:text-blue-700"
-                                > Sign In</button>
+                                > Sign In
+                                </button>
                             </Typography>
                         </form>
                     </Card>

@@ -3,7 +3,7 @@ import axios from 'axios';
 import {Guest} from '../model/Guest';
 import IngredientsList from "./Ingredients";
 import Autocomplete from "./Autocomplete";
-import {Button, Input, Typography} from "@material-tailwind/react";
+import {Button, Card, Input, Typography} from "@material-tailwind/react";
 import tbLogo from "../data/tbLogo.png";
 
 import NavigationBar from './NavigationBar';
@@ -152,69 +152,75 @@ function UserDetails() {
     }
 
     return (
-        <div className="flex flex-col">
-            <header >
-                <img
-                    src={tbLogo}
-                    className="scale-75 justify-center"
-                    alt="TasteBuddiesLogo.png"
-                />
-            </header>
-            <div ><NavigationBar/></div>
-            <main>
-                <Typography className="p-2" >User Details:</Typography>
-                <Typography className="p-2" >Hi {userName}, you are logged in!</Typography>
-                <form className="mt-8 mb-2 p-2 w-80 max-w-screen-lg sm:w-96" onSubmit={handleSubmit}>
-                    <div className="mb-4 flex flex-col gap-6">
-                        <Input
-                            size="lg"
-                            label="New User Name"
-                            className="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-blue-800 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
-                            labelProps={{
-                                className: "before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-blue-800 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-blue-800 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-blue-800 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"
-                            }}
-                            value={newUserName}
-                            onChange={handleUserNameChange}/>
-                        <Input
-                            type="password"
-                            size="lg"
-                            label="New Password"
-                            className="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-blue-800 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
-                            labelProps={{
-                                className: "before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-blue-800 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-blue-800 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-blue-800 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"
-                            }}
-                            value={password}
-                            onChange={handlePasswordChange}/>
-                        <label>
-                            <Autocomplete onIncludeChange={handleIncludeChange}
-                                          onExcludeChange={handleExcludeChange}/>
-                        </label>
-                        <div className="flex gap-12">
-                            <div className="border-solid rounded-[7px] bg-gray-100">
-                                <IngredientsList
-                                    ingredients={includeIngredients}
-                                    onIngredientRemove={onIncludeIngredientRemove}
-                                    title="Include Ingredient"
-                                />
-                            </div>
-                            <div className="border-solid rounded-[7px] bg-gray-100">
-                                <IngredientsList
-                                    ingredients={excludeIngredients}
-                                    onIngredientRemove={onExcludeIngredientRemove}
-                                    title="Exclude Ingredient"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                    <Button
-                        type="submit"
-                        className="px-4 py-1 text-sm text-Blue-600 font-semibold rounded-full border border-blue-200 hover:text-white hover:bg-blue-800 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-bule-800 focus:ring-offset-2"
-                    >
-                        Save
-                    </Button>
-                </form>
-            </main>
-        </div>
+        <section className="h-screen">
+            <div className="flex h-full justify-center">
+                <div className="grid">
+                    <header>
+                        <img
+                            src={tbLogo}
+                            className="scale-75 justify-center"
+                            alt="TasteBuddiesLogo.png"
+                        />
+                    </header>
+                    <div><NavigationBar/></div>
+                    <main>
+                        <Card color="transparent" shadow={false}>
+                            <Typography className="p-2">User Details:</Typography>
+                            <Typography className="p-2">Hi {userName}, you are logged in!</Typography>
+                            <form className="mt-8 mb-2 p-2 w-80 max-w-screen-lg sm:w-96" onSubmit={handleSubmit}>
+                                <div className="mb-4 flex flex-col gap-6">
+                                    <Input
+                                        size="lg"
+                                        label="Change User Name"
+                                        className="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-blue-800 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                                        labelProps={{
+                                            className: "before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-blue-800 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-blue-800 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-blue-800 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"
+                                        }}
+                                        value={newUserName}
+                                        onChange={handleUserNameChange}/>
+                                    <Input
+                                        type="password"
+                                        size="lg"
+                                        label="New Password"
+                                        className="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-blue-800 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                                        labelProps={{
+                                            className: "before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-blue-800 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-blue-800 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-blue-800 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"
+                                        }}
+                                        value={password}
+                                        onChange={handlePasswordChange}/>
+                                    <label>
+                                        <Autocomplete onIncludeChange={handleIncludeChange}
+                                                      onExcludeChange={handleExcludeChange}/>
+                                    </label>
+                                    <div className="flex flex-wrap gap-12">
+                                        <div className="border-solid rounded-[7px] bg-gray-100">
+                                            <IngredientsList
+                                                ingredients={includeIngredients}
+                                                onIngredientRemove={onIncludeIngredientRemove}
+                                                title="Include Ingredient"
+                                            />
+                                        </div>
+                                        <div className="border-solid rounded-[7px] bg-gray-100">
+                                            <IngredientsList
+                                                ingredients={excludeIngredients}
+                                                onIngredientRemove={onExcludeIngredientRemove}
+                                                title="Exclude Ingredient"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                                <Button
+                                    type="submit"
+                                    className="px-4 py-1 text-sm text-Blue-600 font-semibold rounded-full border border-blue-200 hover:text-white hover:bg-blue-800 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-bule-800 focus:ring-offset-2"
+                                >
+                                    Save
+                                </Button>
+                            </form>
+                        </Card>
+                    </main>
+                </div>
+            </div>
+        </section>
     );
 }
 
