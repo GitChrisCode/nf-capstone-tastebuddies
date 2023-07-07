@@ -1,6 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import {useNavigate} from 'react-router-dom';
-import LogoutButton from './LogoutButton';
 import axios from 'axios';
 import {Guest} from '../model/Guest';
 import IngredientsList from "./Ingredients";
@@ -13,7 +11,6 @@ import {TrashIcon} from "@heroicons/react/24/solid";
 import {v4 as uuidv4} from 'uuid';
 
 function GuestManagement() {
-    const navigate = useNavigate();
 
     const [guestList, setGuestList] = useState<Guest[]>([]);
     const [newGuestName, setNewGuestName] = useState('');
