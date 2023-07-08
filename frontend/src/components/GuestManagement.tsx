@@ -97,7 +97,6 @@ function GuestManagement() {
         } else console.log("newGuest === null!!!!");
     };
 
-
     const handleEditGuest = (event: React.FormEvent) => {
         event.preventDefault();
         if (editGuest) {
@@ -140,30 +139,61 @@ function GuestManagement() {
                         <Card color="transparent" shadow={false}>
                             <Typography variant="h4" className="mt-2 mb-4">Guest Management</Typography>
                             <div>
-                                <Typography variant="h3" className="underline">Guest List:</Typography>
-                                <ul>
-                                    {filteredGuestList.map((guest) => (
-                                        <li key={uuidv4()} className="flex">
-                                            <div className="flex-auto border-solid border-1 border-gray-300-500 bg-gray-50 m-1 ">
-                                                <Typography className="text-justify mt-1.5">{guest.guestName}</Typography>
+                                <section className="py-1 bg-blueGray-50">
+                                    <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24">
+                                        <div
+                                            className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
+                                            <div className="rounded-t mb-0 px-4 py-3 border-0">
+                                                <div className="flex flex-wrap items-center">
+                                                    <div className="relative w-full px-4 max-w-full flex-grow flex-1">
+                                                        <h3 className="font-semibold text-base text-blueGray-700">Guest
+                                                            List</h3>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div className="flex-none">
-                                                <Button
-                                                    onClick={() => setEditGuest(guest)}
-                                                >
-                                                    <PencilSquareIcon className="h-5 w-5" color="black"/>
-                                                </Button>
+
+                                            <div className="block w-full overflow-x-auto">
+                                                <table className="items-center bg-transparent w-full border-collapse ">
+                                                    <thead>
+                                                    <tr>
+                                                        <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                                            Guest Name
+                                                        </th>
+                                                        <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                                        </th>
+                                                        <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"></th>
+
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    {filteredGuestList.map((guest) => (
+                                                        <tr>
+                                                            <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
+                                                                {guest.guestName}
+                                                            </th>
+                                                            <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
+                                                                <Button
+                                                                    onClick={() => setEditGuest(guest)}
+                                                                >
+                                                                    <PencilSquareIcon className="h-5 w-5"
+                                                                                      color="black"/>
+                                                                </Button>
+                                                            </td>
+                                                            <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
+                                                                <Button
+                                                                    onClick={() => handleDeleteGuest(guest.guestID)}
+                                                                >
+                                                                    <TrashIcon className="h-5 w-5" color="black"/>
+                                                                </Button>
+                                                            </td>
+                                                        </tr>
+                                                    ))}
+                                                    </tbody>
+                                                </table>
                                             </div>
-                                            <div  className="flex-none">
-                                                <Button
-                                                    onClick={() => handleDeleteGuest(guest.guestID)}
-                                                >
-                                                    <TrashIcon className="h-5 w-5" color="black"/>
-                                                </Button>
-                                            </div>
-                                        </li>
-                                    ))}
-                                </ul>
+                                        </div>
+                                    </div>
+                                </section>
                             </div>
                             {editGuest ? (
                                 <>
@@ -232,7 +262,8 @@ function GuestManagement() {
                                         <button
                                             type="submit"
                                             className="px-4 py-1 text-sm text-Blue-600 font-semibold rounded-full border border-blue-200 hover:text-white hover:bg-blue-800 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-bule-800 focus:ring-offset-2"
-                                            onClick={handleCreateGuest}>Create</button>
+                                            onClick={handleCreateGuest}>Create
+                                        </button>
                                     </form>
                                 </>
                             )}
@@ -243,5 +274,4 @@ function GuestManagement() {
         </section>
     );
 }
-
 export default GuestManagement;

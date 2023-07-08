@@ -153,7 +153,7 @@ function UserDetails() {
 
     return (
         <section className="h-screen">
-            <div className="flex h-full justify-center">
+            <div className="flex h-full w-auto justify-center">
                 <div className="grid">
                     <header>
                         <img
@@ -167,7 +167,7 @@ function UserDetails() {
                         <Card color="transparent" shadow={false}>
                             <Typography className="p-2">User Details:</Typography>
                             <Typography className="p-2">Hi {userName}, you are logged in!</Typography>
-                            <form className="mt-8 mb-2 p-2 w-80 max-w-screen-lg sm:w-96" onSubmit={handleSubmit}>
+                            <form className="mt-8 mb-2 p-2 w-auto max-w-screen-lg sm:w-96" onSubmit={handleSubmit}>
                                 <div className="mb-4 flex flex-col gap-6">
                                     <Input
                                         size="lg"
@@ -192,7 +192,7 @@ function UserDetails() {
                                         <Autocomplete onIncludeChange={handleIncludeChange}
                                                       onExcludeChange={handleExcludeChange}/>
                                     </label>
-                                    <div className="flex flex-wrap gap-12">
+                                    <div className="flex flex-wrap flex-row gap-12 w-96">
                                         <div className="border-solid rounded-[7px] bg-gray-100">
                                             <IngredientsList
                                                 ingredients={includeIngredients}
