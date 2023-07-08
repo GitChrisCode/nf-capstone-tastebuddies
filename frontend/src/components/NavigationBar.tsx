@@ -1,8 +1,7 @@
 import {
     Navbar,
     Typography,
-    IconButton,
-} from "@material-tailwind/react";
+    } from "@material-tailwind/react";
 import {Bars3Icon, XMarkIcon} from "@heroicons/react/24/outline";
 import {useEffect, useState} from "react";
 import LogoutButton from "./LogoutButton";

@@ -1,8 +1,6 @@
 import React from 'react';
-import {v4 as uuidv4} from 'uuid';
 import {TrashIcon} from "@heroicons/react/24/solid";
-import {Button, Card, CardBody, Typography} from '@material-tailwind/react';
-import {PencilSquareIcon} from "@heroicons/react/24/outline";
+
 
 
 type IngredientsListProps = {

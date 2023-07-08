@@ -8,7 +8,6 @@ import tbLogo from "../data/tbLogo.png";
 import NavigationBar from "./NavigationBar";
 import {PencilSquareIcon} from "@heroicons/react/24/outline";
 import {TrashIcon} from "@heroicons/react/24/solid";
-import {v4 as uuidv4} from 'uuid';
 
 function GuestManagement() {
 
