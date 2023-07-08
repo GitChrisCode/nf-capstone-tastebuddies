@@ -1,10 +1,12 @@
-import React, {FormEvent, useState} from 'react';
+import React, {FormEvent, useEffect, useState} from 'react';
 import LogoutButton from './LogoutButton';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import Autocomplete from './Autocomplete';
 import IngredientsList from "./Ingredients";
 import '../css/RecipeSearch.css';
+import {Card, CardBody, CardHeader, Typography} from "@material-tailwind/react";
+import GuestHandling from "./GuestHandling";
 
 type Recipes = {
     id: number;
@@ -25,6 +27,16 @@ function RecipeSearch() {
     const [excludeIngredients, setExcludeIngredients] = useState<string[]>([]);
     const [recipesSearchResult, setRecipesSearchResult] = useState<Recipes[]>([]);
     const [totalResults, setTotalResults] = useState<number>(0);
+    const [uniqueIncludeIngredients, setUniqueIncludeIngredients] = useState<string[]>([]);
+    const [uniqueExcludeIngredients, setUniqueExcludeIngredients] = useState<string[]>([]);
+    const [mergedIncludeIngredients, setMergedIncludeIngredients] = useState<string[]>([]);
+    const [mergedExcludeIngredients, setMergedExcludeIngredients] = useState<string[]>([]);
+
+    const handleCopyIngredients = (includeIngredients: string[], excludeIngredients: string[]) => {
+        setUniqueIncludeIngredients(includeIngredients);
+        setUniqueExcludeIngredients(excludeIngredients);
+        handleMergeIngredients();
+    };
     const handleIncludeChange = (value: string) => {
         setIncludeIngredients([...includeIngredients, value]);
     };
@@ -41,6 +53,16 @@ function RecipeSearch() {
         const updatedIngredients = excludeIngredients.filter((ingredient) => ingredient !== value);
         setExcludeIngredients(updatedIngredients);
     };
+    const handleMergeIngredients = () => {
+        const mergedIncludeIngredients = [...includeIngredients, ...uniqueIncludeIngredients].filter(
+            (ingredient, index, self) => self.indexOf(ingredient) === index
+        );
+        const mergedExcludeIngredients = [...excludeIngredients, ...uniqueExcludeIngredients].filter(
+            (ingredient, index, self) => self.indexOf(ingredient) === index
+        );
+        setMergedIncludeIngredients(mergedIncludeIngredients);
+        setMergedExcludeIngredients(mergedExcludeIngredients);
+    }
 
     function searchSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -49,8 +71,8 @@ function RecipeSearch() {
         queryParams.append('excludeIngredients', excludeIngredients.join(','));
         const searchQuery = queryParams.toString();
 
-        const MAX_RETRY_ATTEMPTS = 2; // Maximale Anzahl der erneuten Versuche
-        let retryCount = 0; // Zähler für die erneuten Versuche
+        const maxRetryAttempts = 2;
+        let retryCount = 0;
 
         const executeGetRequest = () => {
             axios
@@ -62,11 +84,10 @@ function RecipeSearch() {
                 })
                 .catch(error => {
                     if (error.response && error.response.status === 500) {
-                        if (retryCount < MAX_RETRY_ATTEMPTS) {
+                        if (retryCount < maxRetryAttempts) {
                             retryCount++;
-                            // Verzögerung zwischen den erneuten Versuchen (z.B. 1 Sekunde)
                             setTimeout(() => {
-                                executeGetRequest(); // Erneuter Aufruf des GET-Requests
+                                executeGetRequest();
                             }, 1000);
                         } else {
                             console.error('Max retry attempts reached. Unable to retrieve data.');
@@ -80,48 +101,70 @@ function RecipeSearch() {
         executeGetRequest();
     }
 
+    useEffect(() => {
+        handleMergeIngredients();
+    }, [includeIngredients, excludeIngredients, uniqueIncludeIngredients, uniqueExcludeIngredients]);
 
     return (
         <div>
             <h1>Search Recipe:</h1>
             <form onSubmit={searchSubmit}>
+                <GuestHandling
+                    onCopyIngredients={handleCopyIngredients}
+                    uniqueIncludeIngredients={uniqueIncludeIngredients}
+                    uniqueExcludeIngredients={uniqueIncludeIngredients}/>
                 <p>Enter Ingredients:</p>
                 <Autocomplete onIncludeChange={handleIncludeChange} onExcludeChange={handleExcludeChange}/>
                 <button type="submit">Search</button>
             </form>
-            <div style={{ display: 'flex', gap: '20px' }}>
+            <div className="flex flex-wrap flex-row">
                 <div>
-                <IngredientsList
-                    ingredients={includeIngredients}
-                    onIngredientRemove={onIncludeIngredientRemove}
-                    title="Include Ingredients"
-                />
+                    <IngredientsList
+                        ingredients={mergedIncludeIngredients}
+                        onIngredientRemove={onIncludeIngredientRemove}
+                        title="Include Ingredients"
+                    />
                 </div>
                 <div>
-                <IngredientsList
-                    ingredients={excludeIngredients}
-                    onIngredientRemove={onExcludeIngredientRemove}
-                    title="Exclude Ingredients"
-                />
+                    <IngredientsList
+                        ingredients={mergedExcludeIngredients}
+                        onIngredientRemove={onExcludeIngredientRemove}
+                        title="Exclude Ingredients"
+                    />
                 </div>
             </div>
-            <LogoutButton/>
-            <h2>Search Results:</h2>
+
+            <Typography variant="h3">Search Results:</Typography>
             <p>Total Results: {totalResults}</p>
             {recipesSearchResult.length > 0 ? (
-                <div className="grid-container">
-                    {recipesSearchResult.map(recipe => (
-                        <div key={recipe.id} className="grid-item">
-                            <Link to={`/recipe/${recipe.id}`}>
-                                <img src={recipe.image} alt={recipe.title}/>
-                                <h3>{recipe.title}</h3>
-                            </Link>
-                        </div>
-                    ))}
-                </div>
-            ) : (
-                <p>No recipes found.</p>
-            )}
+                    <div className="grid-container">
+                        {recipesSearchResult.map(recipe => (
+                                <div className="grid-item"                                >
+                                    <Card className="mt-6 w-96">
+                                        <CardHeader color="blue-gray" className="relative h-56">
+                                            <Link to={`/recipe/${recipe.id}`}>
+                                            <img src={recipe.image} alt={recipe.title} className="h-full w-full rounded-lg" />
+                                            </Link>
+                                        </CardHeader>
+                                        <CardBody>
+                                            <Typography variant="h5" color="blue-gray" className="mb-2">
+                                                {recipe.title}
+                                            </Typography>
+                                        </CardBody>
+                                    </Card>
+                                </div>
+                            )
+                        )
+                        }
+                    </div>
+                )
+                : (
+                    <p>No recipes found.</p>
+                )
+            }
+
+            <LogoutButton/>
+
         </div>
     );
 }
