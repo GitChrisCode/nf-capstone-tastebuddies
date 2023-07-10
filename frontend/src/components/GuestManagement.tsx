@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {Guest} from '../model/Guest';
 import IngredientsList from "./Ingredients";
-import { v4 as uuidv4 } from 'uuid';
+import {v4 as uuidv4} from 'uuid';
 import Autocomplete from "./Autocomplete";
 import {Button, Card, Input, Typography} from "@material-tailwind/react";
 import NavigationBar from "./NavigationBar";
@@ -14,6 +14,11 @@ function GuestManagement() {
     const [guestList, setGuestList] = useState<Guest[]>([]);
     const [newGuestName, setNewGuestName] = useState('');
     const [editGuest, setEditGuest] = useState<Guest | null>(null);
+
+    const loggedInUser = localStorage.getItem("user");
+    const filteredGuestList = guestList.filter(
+        (guest) => guest.userName !== guest.guestName && guest.userName === loggedInUser
+    );
 
     useEffect(() => {
         fetchGuestList();
@@ -86,7 +91,7 @@ function GuestManagement() {
         if (newGuest?.guestName !== '' && guestList.filter((guest) => guest.guestName === newGuest?.guestName).length === 0) {
             axios
                 .post<string>("/tb/user/guest", newGuest)
-                .then((response) => {
+                .then(() => {
                     fetchGuestList();
                     setNewGuestName("");
                 })
@@ -100,7 +105,7 @@ function GuestManagement() {
         event.preventDefault();
         if (editGuest) {
             axios.put<Guest>(`/tb/user/guest/${editGuest.guestID}`, editGuest)
-                .then((response) => {
+                .then(() => {
                     fetchGuestList();
                     setEditGuest(null);
                 })
@@ -112,15 +117,13 @@ function GuestManagement() {
 
     const handleDeleteGuest = (guestID: string) => {
         axios.delete(`/tb/user/guest/${guestID}`)
-            .then((response) => {
+            .then(() => {
                 fetchGuestList();
             })
             .catch((error) => {
                 console.error(error);
             });
     };
-
-    const filteredGuestList = guestList.filter((guest) => guest.guestName !== guest.userName);
 
     return (
         <section className="h-screen">
@@ -208,14 +211,14 @@ function GuestManagement() {
                                                               onExcludeChange={handleExcludeChange}/>
                                             </label>
                                             <div className="flex flex-wrap flex-row mb-4">
-                                                <div >
+                                                <div>
                                                     <IngredientsList
                                                         ingredients={editGuest.includeIngredients}
                                                         onIngredientRemove={handleIncludeIngredientRemove}
                                                         title="Include Ingredients"
                                                     />
                                                 </div>
-                                                <div >
+                                                <div>
                                                     <IngredientsList
                                                         ingredients={editGuest.excludeIngredients}
                                                         onIngredientRemove={handleExcludeIngredientRemove}
@@ -266,4 +269,5 @@ function GuestManagement() {
         </section>
     );
 }
+
 export default GuestManagement;
