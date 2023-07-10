@@ -6,11 +6,11 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler;
 
 @EnableWebSecurity
@@ -27,9 +27,11 @@ public class SecurityConfig {
         requestHandler.setCsrfRequestAttributeName(null);
 
         return http
-                .csrf(AbstractHttpConfigurer::disable)
-
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
+                /*.csrf(AbstractHttpConfigurer::disable)*/
+                .csrf(csrf -> csrf
+                        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+                        .csrfTokenRequestHandler(requestHandler))
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
 
                 .httpBasic(basic -> basic.authenticationEntryPoint(
                         (request, response, authException) ->
@@ -40,6 +42,7 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers(HttpMethod.GET,"/tb/user/recipesearch").authenticated();
+                    auth.requestMatchers(HttpMethod.POST,"/tb/user/registration").permitAll();
                     auth.requestMatchers(("/tb/**")).permitAll();
                     auth.anyRequest().permitAll();
                 })

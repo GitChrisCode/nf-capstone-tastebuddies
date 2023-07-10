@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import RegisterForm from "./components/RegisterForm"
 import useUser from "./hooks/UserHooks"
 import {Route, Routes} from "react-router-dom";
@@ -7,7 +6,6 @@ import LoginPage from "./components/LoginPage";
 import RecipeSearch from "./components/RecipeSearch";
 import ProtectedRoutes from "./components/Protected Routes";
 import Test from "./components/Test";
-import Homepage from "./components/Homepage";
 import RecipeDetail from "./components/RecipeDetail";
 import UserDetails from "./components/UserDetails";
 import GuestManagement from "./components/GuestManagement";
@@ -22,11 +20,8 @@ function App() {
 
     return (
         <div>
-            <header>
-                <h1>TasteBuddies</h1>
-            </header>
             <Routes>
-                <Route path="/" element={<Homepage/>}/>
+                <Route path="/" element={<LoginPage login={handleLogin}/>}/>
                 <Route path="/login" element={<LoginPage login={handleLogin}/>}/>
                 <Route path="/test" element={<Test/>}/>
                 <Route path="/register" element={<RegisterForm/>}/>

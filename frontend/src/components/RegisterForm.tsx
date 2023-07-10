@@ -1,21 +1,28 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
+import {
+    Card,
+    Input,
+    Button,
+    Typography,
+} from "@material-tailwind/react";
+import tbLogo from "../data/tbLogo.png"
 
 function RegisterForm() {
-    const [formData, setFormData] = useState({
-        userName: '',
-        password: '',
-        confirmPassword: '',
-    });
-
+    const [userName, setUserName] = useState("");
+    const [userPassword, setUserPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     const navigate = useNavigate();
 
-    const handleSubmit = (event: FormEvent) => {
-        event.preventDefault();
-        // Hier können Sie die Passwortvalidierung implementieren
-        if (formData.password !== formData.confirmPassword) {
-            alert('Die eingegebenen Passwörter stimmen nicht überein.');
+    function navigateToLogin() {
+        navigate('/login');
+    }
+
+    const handleSubmit = () => {
+        console.log("HANDLE RegisterForm SUBMIT!!!: ",userName)
+        if (userPassword !== confirmPassword) {
+            console.error('Die eingegebenen Passwörter stimmen nicht überein.');
             return;
         }
 
@@ -25,8 +32,8 @@ function RegisterForm() {
                 undefined,
                 {
                     params: {
-                        userName: formData.userName,
-                        userPassword: formData.password,
+                        userName: userName,
+                        userPassword: userPassword,
                     },
                 }
             )
@@ -39,47 +46,88 @@ function RegisterForm() {
             });
     };
 
-    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = event.target;
-        setFormData((prevFormData) => ({
-            ...prevFormData,
-            [name]: value,
-        }));
-    };
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="userName">
-                    Enter Username:
-                    <input
-                        type="text"
-                        name="userName"
-                        value={formData.userName}
-                        onChange={handleInputChange}
-                    />
-                </label>
-                <label htmlFor="password">
-                    Enter Password:
-                    <input
-                        type="password"
-                        name="password"
-                        value={formData.password}
-                        onChange={handleInputChange}
-                    />
-                </label>
-                <label htmlFor="confirmPassword">
-                    Confirm Password:
-                    <input
-                        type="password"
-                        name="confirmPassword"
-                        value={formData.confirmPassword}
-                        onChange={handleInputChange}
-                    />
-                </label>
-                <button type="submit">Submit</button>
-            </form>
-        </div>
+        <section className="h-screen ">
+            <div className="mt-10 flex flex-col h-full justify-start place-content-center">
+                <div className="">
+                    <div className="flex flex-col items-center  mb-12 md:mb-0 sm: w-10/12 md:w-8/12 lg:w-5/12 xl:w-5/12">
+                        <header
+                            className="flex flex-col items-center justify-center ">
+                            <img
+                                src={tbLogo}
+                                className="scale-auto"
+                                alt="TasteBuddiesLogo.png"
+                            />
+                        </header>
+                        <Card
+                            color="transparent"
+                            shadow={false}
+                            className="flex flex-col  ">
+                            <div className="">
+                                <Typography variant="h4" color="blue-gray">
+                                    Sign Up
+                                </Typography>
+                                <Typography color="gray" className="mt-1 font-normal">
+                                    Enter your details to register.
+                                </Typography>
+                            </div>
+                            <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96" onSubmit={handleSubmit}>
+                                <div className="mb-4 flex flex-col gap-6">
+                                    <Input
+                                        size="lg"
+                                        label="User Name"
+                                        className="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-blue-800 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                                        labelProps={{
+                                            className: "before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-blue-800 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-blue-800 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-blue-800 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"
+                                        }}
+                                        value={userName}
+                                        onChange={(event) => setUserName(event.target.value)}/>
+                                    <Input
+                                        type="password"
+                                        size="lg"
+                                        label="Password"
+                                        className="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-blue-800 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                                        labelProps={{
+                                            className: "before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-blue-800 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-blue-800 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-blue-800 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"
+                                        }}
+                                        value={userPassword}
+                                        onChange={(event) => setUserPassword(event.target.value)}/>
+                                    <Input
+                                        type="password"
+                                        size="lg"
+                                        label="Repeat Password"
+                                        className="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-blue-800 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                                        labelProps={{
+                                            className: "before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-blue-800 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-blue-800 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-blue-800 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"
+                                        }}
+                                        value={confirmPassword}
+                                        onChange={(event) => setConfirmPassword(event.target.value)}/>
+                                </div>
+                                <div className="text-center lg:text-left mt-4">
+                                    <Button
+                                        type="submit"
+                                        className="px-4 py-1 text-sm text-Blue-600 font-semibold rounded-full border border-blue-200 hover:text-white hover:bg-blue-800 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-bule-800 focus:ring-offset-2"
+                                    >
+                                        Register
+                                    </Button>
+                                </div>
+                                <div className="flex flex-col items-center justify-center">
+                                    <Typography color="gray" className="mt-4 text-center font-normal">
+                                        Already have an account?{" "}
+                                        <button
+                                            onClick={navigateToLogin}
+                                            className="ml-1 text-danger text-blue-700 transition duration-150 ease-in-out hover:text-blue-600 focus:text-blue-600 active:text-blue-700"
+                                        > Sign In
+                                        </button>
+                                    </Typography>
+                                </div>
+                            </form>
+                        </Card>
+                    </div>
+                </div>
+            </div>
+        </section>
     );
 }
 

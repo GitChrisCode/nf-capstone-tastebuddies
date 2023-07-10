@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/IngredientsList.css';
+
 import { v4 as uuidv4 } from 'uuid';
 
 interface IngredientsListProps {
@@ -24,8 +24,8 @@ const IngredientsList: React.FC<IngredientsListProps> = ({
     };
 
     return (
-        <div className="ingredients-list-container">
-            <div className="ingredients-list">
+        <div className="grid">
+            <div className="">
                 <h2>Include Ingredients:</h2>
                 <ul>
                     {includeIngredients.map((ingredient)=> (
@@ -35,7 +35,7 @@ const IngredientsList: React.FC<IngredientsListProps> = ({
                     ))}
                 </ul>
             </div>
-            <div className="ingredients-list">
+            <div className="">
                 <h2>Exclude Ingredients:</h2>
                 <ul>
                     {excludeIngredients.map((ingredient) => (
