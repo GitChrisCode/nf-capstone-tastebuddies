@@ -1,4 +1,4 @@
-import React, {FormEvent, useState} from 'react';
+import React, {FormEvent, useEffect, useState} from 'react';
 import LogoutButton from './LogoutButton';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
@@ -38,39 +38,20 @@ function RecipeSearch() {
     const handleCopyIngredients = (copyIncludeIngredients: string[], copyExcludeIngredients: string[]) => {
         setUniqueIncludeIngredients(copyIncludeIngredients);
         setUniqueExcludeIngredients(copyExcludeIngredients);
-        console.log("handleCopyIngredients");
-        console.log("copyIncludeIngredients: ", [...copyIncludeIngredients]);
-        console.log("copyExcludeIngredients: ", [...copyExcludeIngredients]);
-        console.log("uniqueIncludeIngredients: ", [...uniqueIncludeIngredients]);
-        console.log("uniqueExcludeIngredients: ", [...uniqueExcludeIngredients]);
-        handleMergeIngredients();
     };
     const handleIncludeChange = (value: string) => {
-        setIncludeIngredients(prevIngredients => [...includeIngredients, value]);
-        console.log("handleIncludeChange");
-        console.log("Value: ", value);
-        console.log("includeIngredients: ", [...includeIngredients]);
-        handleMergeIngredients()
+        setIncludeIngredients([...includeIngredients, value]);
     };
 
     const handleExcludeChange = (value: string) => {
-        setExcludeIngredients(prevIngredients => [...excludeIngredients, value]);
-        console.log("handleExcludeChange");
-        handleMergeIngredients()
+        setExcludeIngredients([...excludeIngredients, value]);
     };
     const onIncludeIngredientRemove = (value: string) => {
-        console.log("onIncludeIngredientsRemove => value:", value);
-        console.log("includeIngredients :", ...includeIngredients)
-
         const updatedIngredients = includeIngredients.filter((ingredient) => ingredient !== value);
         setIncludeIngredients([...updatedIngredients]);
         const updatedUniqueIncludeIngredients = uniqueIncludeIngredients.filter((ingredient) => ingredient !== value);
         setUniqueIncludeIngredients([...updatedUniqueIncludeIngredients]);
-        console.log("updatedIngredientsList", updatedIngredients);
-        console.log("updatedUniqueIncludeIngredients", updatedUniqueIncludeIngredients);
-
         setUniqueIncludeIngredients(updatedUniqueIncludeIngredients);
-        handleMergeIngredients();
     };
 
     const onExcludeIngredientRemove = (value: string) => {
@@ -80,24 +61,8 @@ function RecipeSearch() {
         const updatedUniqueExcludeIngredients = uniqueExcludeIngredients.filter(
             ingredient => ingredient !== value
         );
-        console.log("onExcludeIngredientsRemove => value:", value);
         setUniqueExcludeIngredients(updatedUniqueExcludeIngredients);
-        handleMergeIngredients();
     };
-
-    function handleMergeIngredients() {
-        const mergedIncludeIngredients = [...includeIngredients, ...uniqueIncludeIngredients];
-        const mergedExcludeIngredients = [...excludeIngredients, ...uniqueExcludeIngredients];
-        console.log("handleMergeIngredients");
-        console.log("includeIngredients: ", includeIngredients);
-        console.log("excludeIngredients: ", excludeIngredients);
-        console.log("uniqueExcludeIngredients: ", uniqueExcludeIngredients);
-        console.log("uniqueIncludeIngredients: ", uniqueIncludeIngredients);
-        console.log("Merged Include: ", mergedIncludeIngredients);
-        console.log("Merged Exclude: ", mergedExcludeIngredients);
-        setMergedIncludeIngredients(mergedIncludeIngredients);
-        setMergedExcludeIngredients(mergedExcludeIngredients);
-    }
 
 
     function searchSubmit(e: FormEvent<HTMLFormElement>) {
@@ -135,6 +100,12 @@ function RecipeSearch() {
         };
         executeGetRequest();
     }
+    useEffect(() => {
+        const mergedIncludeIngredients = [...includeIngredients, ...uniqueIncludeIngredients];
+        const mergedExcludeIngredients = [...excludeIngredients, ...uniqueExcludeIngredients];
+        setMergedIncludeIngredients(mergedIncludeIngredients);
+        setMergedExcludeIngredients(mergedExcludeIngredients);
+    }, [includeIngredients, excludeIngredients, uniqueIncludeIngredients, uniqueExcludeIngredients]);
 
     return (
         <section className="h-screen">
