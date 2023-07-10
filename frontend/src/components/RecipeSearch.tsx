@@ -10,7 +10,6 @@ import {Card, CardBody, CardHeader, Typography} from "@material-tailwind/react";
 import GuestHandling from "./GuestHandling";
 import NavigationBar from "./NavigationBar";
 
-
 type Recipes = {
     id: number;
     title: string;
