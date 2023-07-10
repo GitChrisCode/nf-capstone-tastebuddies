@@ -4,7 +4,6 @@ import {Guest} from '../model/Guest';
 import IngredientsList from "./Ingredients";
 import Autocomplete from "./Autocomplete";
 import {Button, Card, Input, Typography} from "@material-tailwind/react";
-import tbLogo from "../data/tbLogo.png";
 
 import NavigationBar from './NavigationBar';
 
@@ -22,8 +21,18 @@ function UserDetails() {
         const storedUserName = localStorage.getItem('user');
         if (storedUserName !== null) {
             setUserName(storedUserName);
+            findGuest(storedUserName);
+            console.log("Stored User: ",storedUserName)
         }
     }, []);
+
+    useEffect(() => {
+        console.log("foundGuest: ",foundGuest);
+        if (foundGuest) {
+            setIncludeIngredients(foundGuest.includeIngredients);
+            setExcludeIngredients(foundGuest.excludeIngredients);
+        }
+    }, [foundGuest]);
 
     const handleIncludeChange = (value: string) => {
         setIncludeIngredients([...includeIngredients, value]);
@@ -66,31 +75,20 @@ function UserDetails() {
             updateUser(userName, newUserName, password);
             localStorage.setItem('user', newUserName);
             if (userName !== newUserName) {
-                let guestList: Guest[] = [];
-                axios
-                    .get('tb/user/guest')
-                    .then((response) => {
-                        guestList = response.data;
-                        guestList.forEach((guest) => {
-                                if (guest.userName === userName) {
-                                    guest.userName = newUserName;
-                                    updateGuest(guest.guestID, guest);
-                                }
-                            }
-                        )
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                    });
+                findGuest(newUserName);
+                if (foundGuest?.guestName === newUserName) {
+                    updateGuest(foundGuest.guestID, newGuest);
+                } else {
+                    createGuest(newGuest);
+                }
             }
-        }
-
-        findGuest(userName);
-
-        if (foundGuest?.guestName === userName) {
-            updateGuest(foundGuest.guestID, newGuest);
         } else {
-            createGuest(newGuest);
+            findGuest(userName);
+            if (foundGuest?.guestName === userName) {
+                updateGuest(foundGuest.guestID, newGuest);
+            } else {
+                createGuest(newGuest);
+            }
         }
     };
 
@@ -142,7 +140,7 @@ function UserDetails() {
 
     function findGuest(guestName: string) {
         axios
-            .get(`/tb/user/guest/${guestName}`)
+            .get(`/tb/user/guest/find/${guestName}`)
             .then((response) => {
                 setFoundGuest(response.data);
             })
@@ -155,17 +153,10 @@ function UserDetails() {
         <section className="h-screen">
             <div className="flex h-full w-auto justify-center">
                 <div className="grid">
-                    <header>
-                        <img
-                            src={tbLogo}
-                            className="scale-75 justify-center"
-                            alt="TasteBuddiesLogo.png"
-                        />
-                    </header>
                     <div><NavigationBar/></div>
                     <main>
                         <Card color="transparent" shadow={false}>
-                            <Typography className="p-2">User Details:</Typography>
+                            <Typography variant="h4" className="mt-3 text-gray-500 mb-2">User Details:</Typography>
                             <Typography className="p-2">Hi {userName}, you are logged in!</Typography>
                             <form className="mt-8 mb-2 p-2 w-auto max-w-screen-lg sm:w-96" onSubmit={handleSubmit}>
                                 <div className="mb-4 flex flex-col gap-6">
@@ -192,15 +183,16 @@ function UserDetails() {
                                         <Autocomplete onIncludeChange={handleIncludeChange}
                                                       onExcludeChange={handleExcludeChange}/>
                                     </label>
-                                    <div className="flex flex-wrap flex-row gap-12 w-96">
-                                        <div className="border-solid rounded-[7px] bg-gray-100">
+                                    <div
+                                        className="flex flex-wrap flex-rox columns-2">
+                                        <div className="">
                                             <IngredientsList
                                                 ingredients={includeIngredients}
                                                 onIngredientRemove={onIncludeIngredientRemove}
                                                 title="Include Ingredient"
                                             />
                                         </div>
-                                        <div className="border-solid rounded-[7px] bg-gray-100">
+                                        <div className="">
                                             <IngredientsList
                                                 ingredients={excludeIngredients}
                                                 onIngredientRemove={onExcludeIngredientRemove}

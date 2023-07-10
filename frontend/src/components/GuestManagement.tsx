@@ -4,7 +4,6 @@ import {Guest} from '../model/Guest';
 import IngredientsList from "./Ingredients";
 import Autocomplete from "./Autocomplete";
 import {Button, Card, Input, Typography} from "@material-tailwind/react";
-import tbLogo from "../data/tbLogo.png";
 import NavigationBar from "./NavigationBar";
 import {PencilSquareIcon} from "@heroicons/react/24/outline";
 import {TrashIcon} from "@heroicons/react/24/solid";
@@ -83,7 +82,7 @@ function GuestManagement() {
             };
         }
 
-        if (newGuest?.guestName !== '') {
+        if (newGuest?.guestName !== '' && guestList.filter((guest) => guest.guestName === newGuest?.guestName).length === 0) {
             axios
                 .post<string>("/tb/user/guest", newGuest)
                 .then((response) => {
@@ -127,25 +126,18 @@ function GuestManagement() {
             <div className="flex h-full justify-center">
                 <div className="grid">
                     <div className="flex flex-wrap flex-col justify-items-center ">
-                        <header>
-                            <img
-                                src={tbLogo}
-                                className="scale-75 justify-center"
-                                alt="TasteBuddiesLogo.png"
-                            />
-                        </header>
                         <div><NavigationBar/></div>
                         <Card color="transparent" shadow={false}>
-                            <Typography variant="h4" className="mt-2 mb-4">Guest Management</Typography>
+                            <Typography variant="h4" className="mt-3 text-gray-500 mb-2">Buddie Management</Typography>
                             <div>
-                                <section className="py-1 bg-blueGray-50">
+                                <section className="py-1 bg-blueGray-50 -ml-4 -mt-10">
                                     <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24">
                                         <div
                                             className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
                                             <div className="rounded-t mb-0 px-4 py-3 border-0">
                                                 <div className="flex flex-wrap items-center">
                                                     <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-                                                        <h3 className="font-semibold text-base text-blueGray-700">Guest
+                                                        <h3 className="font-semibold text-base text-blueGray-700">Buddie
                                                             List</h3>
                                                     </div>
                                                 </div>
@@ -156,7 +148,7 @@ function GuestManagement() {
                                                     <thead>
                                                     <tr>
                                                         <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                                            Guest Name
+                                                            Buddy Name
                                                         </th>
                                                         <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                                                         </th>
@@ -215,14 +207,14 @@ function GuestManagement() {
                                                               onExcludeChange={handleExcludeChange}/>
                                             </label>
                                             <div className="flex flex-wrap flex-row mb-4">
-                                                <div className="border-solid rounded-[7px] bg-gray-100">
+                                                <div >
                                                     <IngredientsList
                                                         ingredients={editGuest.includeIngredients}
                                                         onIngredientRemove={handleIncludeIngredientRemove}
                                                         title="Include Ingredients"
                                                     />
                                                 </div>
-                                                <div className="border-solid rounded-[7px] bg-gray-100">
+                                                <div >
                                                     <IngredientsList
                                                         ingredients={editGuest.excludeIngredients}
                                                         onIngredientRemove={handleExcludeIngredientRemove}
@@ -244,7 +236,7 @@ function GuestManagement() {
                                 </>
                             ) : (
                                 <>
-                                    <Typography variant="h3" className="underline mb-4">Create New Guest:</Typography>
+                                    <Typography className="text-lg mb-4">Create New Guest</Typography>
                                     <form onSubmit={handleCreateGuest}>
                                         <label>
                                             <Input

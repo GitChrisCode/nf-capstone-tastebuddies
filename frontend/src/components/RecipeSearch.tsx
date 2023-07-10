@@ -1,4 +1,4 @@
-import React, {FormEvent, useEffect, useState} from 'react';
+import React, {FormEvent, useState} from 'react';
 import LogoutButton from './LogoutButton';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
@@ -7,6 +7,8 @@ import IngredientsList from "./Ingredients";
 import '../css/RecipeSearch.css';
 import {Card, CardBody, CardHeader, Typography} from "@material-tailwind/react";
 import GuestHandling from "./GuestHandling";
+import NavigationBar from "./NavigationBar";
+
 
 type Recipes = {
     id: number;
@@ -32,43 +34,76 @@ function RecipeSearch() {
     const [mergedIncludeIngredients, setMergedIncludeIngredients] = useState<string[]>([]);
     const [mergedExcludeIngredients, setMergedExcludeIngredients] = useState<string[]>([]);
 
-    const handleCopyIngredients = (includeIngredients: string[], excludeIngredients: string[]) => {
-        setUniqueIncludeIngredients(includeIngredients);
-        setUniqueExcludeIngredients(excludeIngredients);
+    const handleCopyIngredients = (copyIncludeIngredients: string[], copyExcludeIngredients: string[]) => {
+        setUniqueIncludeIngredients(copyIncludeIngredients);
+        setUniqueExcludeIngredients(copyExcludeIngredients);
+        console.log("handleCopyIngredients");
+        console.log("copyIncludeIngredients: ", [...copyIncludeIngredients]);
+        console.log("copyExcludeIngredients: ", [...copyExcludeIngredients]);
+        console.log("uniqueIncludeIngredients: ", [...uniqueIncludeIngredients]);
+        console.log("uniqueExcludeIngredients: ", [...uniqueExcludeIngredients]);
         handleMergeIngredients();
     };
     const handleIncludeChange = (value: string) => {
-        setIncludeIngredients([...includeIngredients, value]);
+        setIncludeIngredients(prevIngredients => [...includeIngredients, value]);
+        console.log("handleIncludeChange");
+        console.log("Value: ", value);
+        console.log("includeIngredients: ", [...includeIngredients]);
+        handleMergeIngredients()
     };
 
     const handleExcludeChange = (value: string) => {
-        setExcludeIngredients([...excludeIngredients, value]);
+        setExcludeIngredients(prevIngredients => [...excludeIngredients, value]);
+        console.log("handleExcludeChange");
+        handleMergeIngredients()
     };
     const onIncludeIngredientRemove = (value: string) => {
+        console.log("onIncludeIngredientsRemove => value:", value);
+        console.log("includeIngredients :", ...includeIngredients)
+
         const updatedIngredients = includeIngredients.filter((ingredient) => ingredient !== value);
-        setIncludeIngredients(updatedIngredients);
+        setIncludeIngredients([...updatedIngredients]);
+        const updatedUniqueIncludeIngredients = uniqueIncludeIngredients.filter((ingredient) => ingredient !== value);
+        setUniqueIncludeIngredients([...updatedUniqueIncludeIngredients]);
+        console.log("updatedIngredientsList", updatedIngredients);
+        console.log("updatedUniqueIncludeIngredients", updatedUniqueIncludeIngredients);
+
+        setUniqueIncludeIngredients(updatedUniqueIncludeIngredients);
+        handleMergeIngredients();
     };
 
     const onExcludeIngredientRemove = (value: string) => {
-        const updatedIngredients = excludeIngredients.filter((ingredient) => ingredient !== value);
+        const updatedIngredients = excludeIngredients.filter(ingredient => ingredient !== value);
         setExcludeIngredients(updatedIngredients);
+
+        const updatedUniqueExcludeIngredients = uniqueExcludeIngredients.filter(
+            ingredient => ingredient !== value
+        );
+        console.log("onExcludeIngredientsRemove => value:", value);
+        setUniqueExcludeIngredients(updatedUniqueExcludeIngredients);
+        handleMergeIngredients();
     };
-    const handleMergeIngredients = () => {
-        const mergedIncludeIngredients = [...includeIngredients, ...uniqueIncludeIngredients].filter(
-            (ingredient, index, self) => self.indexOf(ingredient) === index
-        );
-        const mergedExcludeIngredients = [...excludeIngredients, ...uniqueExcludeIngredients].filter(
-            (ingredient, index, self) => self.indexOf(ingredient) === index
-        );
+
+    function handleMergeIngredients() {
+        const mergedIncludeIngredients = [...includeIngredients, ...uniqueIncludeIngredients];
+        const mergedExcludeIngredients = [...excludeIngredients, ...uniqueExcludeIngredients];
+        console.log("handleMergeIngredients");
+        console.log("includeIngredients: ", includeIngredients);
+        console.log("excludeIngredients: ", excludeIngredients);
+        console.log("uniqueExcludeIngredients: ", uniqueExcludeIngredients);
+        console.log("uniqueIncludeIngredients: ", uniqueIncludeIngredients);
+        console.log("Merged Include: ", mergedIncludeIngredients);
+        console.log("Merged Exclude: ", mergedExcludeIngredients);
         setMergedIncludeIngredients(mergedIncludeIngredients);
         setMergedExcludeIngredients(mergedExcludeIngredients);
     }
 
+
     function searchSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
         const queryParams = new URLSearchParams();
-        queryParams.append('includeIngredients', includeIngredients.join(','));
-        queryParams.append('excludeIngredients', excludeIngredients.join(','));
+        queryParams.append('includeIngredients', mergedIncludeIngredients.join(','));
+        queryParams.append('excludeIngredients', mergedExcludeIngredients.join(','));
         const searchQuery = queryParams.toString();
 
         const maxRetryAttempts = 2;
@@ -97,75 +132,86 @@ function RecipeSearch() {
                     }
                 });
         };
-
         executeGetRequest();
     }
 
-    useEffect(() => {
-        handleMergeIngredients();
-    }, [includeIngredients, excludeIngredients, uniqueIncludeIngredients, uniqueExcludeIngredients]);
-
     return (
-        <div>
-            <h1>Search Recipe:</h1>
-            <form onSubmit={searchSubmit}>
-                <GuestHandling
-                    onCopyIngredients={handleCopyIngredients}
-                    uniqueIncludeIngredients={uniqueIncludeIngredients}
-                    uniqueExcludeIngredients={uniqueIncludeIngredients}/>
-                <p>Enter Ingredients:</p>
-                <Autocomplete onIncludeChange={handleIncludeChange} onExcludeChange={handleExcludeChange}/>
-                <button type="submit">Search</button>
-            </form>
-            <div className="flex flex-wrap flex-row">
-                <div>
-                    <IngredientsList
-                        ingredients={mergedIncludeIngredients}
-                        onIngredientRemove={onIncludeIngredientRemove}
-                        title="Include Ingredients"
-                    />
-                </div>
-                <div>
-                    <IngredientsList
-                        ingredients={mergedExcludeIngredients}
-                        onIngredientRemove={onExcludeIngredientRemove}
-                        title="Exclude Ingredients"
-                    />
+        <section className="h-screen">
+            <div className="flex h-full justify-center">
+                <div className="grid">
+                    <div>
+                        <NavigationBar/>
+                    </div>
+                    <div>
+                        <Typography variant="h4" className="mt-3 text-gray-500 mb-2">Recipe Search</Typography>
+                    </div>
+                    <div>
+                        <GuestHandling
+                            onCopyIngredients={handleCopyIngredients}
+                            uniqueIncludeIngredients={uniqueIncludeIngredients}
+                            uniqueExcludeIngredients={uniqueExcludeIngredients}/>
+                    </div>
+                    <div>
+                        <form onSubmit={searchSubmit} className="w-96">
+                            <Autocomplete onIncludeChange={handleIncludeChange} onExcludeChange={handleExcludeChange}/>
+                            <button
+                                type="submit"
+                                className="px-4 py-1 w-fit text-sm text-Blue-600 font-semibold rounded-full border border-blue-200 hover:text-white hover:bg-blue-800 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-bule-800 focus:ring-offset-2"
+                                data-te-ripple-color="light"
+                            >Recipe Search
+                            </button>
+                        </form>
+                    </div>
+                    <div className="flex flex-wrap flex-row columns-2 items-start">
+                        <div className="mr-2">
+                            <IngredientsList
+                                ingredients={mergedIncludeIngredients}
+                                onIngredientRemove={onIncludeIngredientRemove}
+                                title="Include Ingredients"
+                            />
+                        </div>
+                        <div className="">
+                            <IngredientsList
+                                ingredients={mergedExcludeIngredients}
+                                onIngredientRemove={onExcludeIngredientRemove}
+                                title="Exclude Ingredients"
+                            />
+                        </div>
+                    </div>
+
+                    <Typography className="text-gray-500 text-xl">Search Results:</Typography>
+                    <p>Total Results: {totalResults}</p>
+                    {recipesSearchResult.length > 0 ? (
+                            <div className="flex flex-wrap flex-row m-2">
+                                {recipesSearchResult.map(recipe => (
+                                        <div className="">
+                                            <Card className="mt-6 mr-1 w-96">
+                                                <CardHeader color="blue-gray" className="relative h-56">
+                                                    <Link to={`/recipe/${recipe.id}`}>
+                                                        <img src={recipe.image} alt={recipe.title}
+                                                             className="h-full w-full rounded-lg"/>
+                                                    </Link>
+                                                </CardHeader>
+                                                <CardBody>
+                                                    <Typography variant="h5" color="blue-gray" className="mb-2 text-center">
+                                                        {recipe.title}
+                                                    </Typography>
+                                                </CardBody>
+                                            </Card>
+                                        </div>
+                                    )
+                                )
+                                }
+                            </div>
+                        )
+                        : (
+                            <p className="mb-2">No recipes found.</p>
+                        )
+                    }
+                    <LogoutButton/>
                 </div>
             </div>
-
-            <Typography variant="h3">Search Results:</Typography>
-            <p>Total Results: {totalResults}</p>
-            {recipesSearchResult.length > 0 ? (
-                    <div className="grid-container">
-                        {recipesSearchResult.map(recipe => (
-                                <div className="grid-item"                                >
-                                    <Card className="mt-6 w-96">
-                                        <CardHeader color="blue-gray" className="relative h-56">
-                                            <Link to={`/recipe/${recipe.id}`}>
-                                            <img src={recipe.image} alt={recipe.title} className="h-full w-full rounded-lg" />
-                                            </Link>
-                                        </CardHeader>
-                                        <CardBody>
-                                            <Typography variant="h5" color="blue-gray" className="mb-2">
-                                                {recipe.title}
-                                            </Typography>
-                                        </CardBody>
-                                    </Card>
-                                </div>
-                            )
-                        )
-                        }
-                    </div>
-                )
-                : (
-                    <p>No recipes found.</p>
-                )
-            }
-
-            <LogoutButton/>
-
-        </div>
+        </section>
     );
 }
 

@@ -3,9 +3,10 @@ import {
     Typography,
     } from "@material-tailwind/react";
 import {Bars3Icon, XMarkIcon} from "@heroicons/react/24/outline";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import LogoutButton from "./LogoutButton";
 import {Link} from "react-router-dom";
+
 
 function NavList() {
     return (
@@ -27,7 +28,7 @@ function NavList() {
                 className="p-1 font-medium"
             >
                 <Link to="/guestManagement" className="flex items-center hover:text-blue-500 transition-colors">
-                    Guest Management
+                    Buddie Management
                 </Link>
             </Typography>
             <Typography
@@ -62,14 +63,7 @@ export default function NavigationBar() {
     return (
         <Navbar className="mx-auto max-w-screen-xl px-6 py-3">
             <div className="flex items-center justify-between">
-                <Typography
-                    as="a"
-                    href="#"
-                    variant="h6"
-                    className="mr-4 cursor-pointer py-1.5 text-black"
-                >
-                    Taste Buddies
-                </Typography>
+                <Typography className="mr-2 block text-blue-700 font-sans text-2xl font-semibold leading-snug tracking-normal  antialiased">Taste Buddies</Typography>
                 <div className="hidden lg:block">
                     <NavList/>
                 </div>
@@ -77,9 +71,9 @@ export default function NavigationBar() {
                     className="relative h-6 w-6 text-inherit text-black hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
                     onClick={() => setOpenNav(!openNav)}>
                     {openNav ? (
-                        <XMarkIcon className="h-6 w-6" strokeWidth={2}/>
+                        <XMarkIcon className="h-6 w-6 text-black" strokeWidth={2}/>
                     ) : (
-                        <Bars3Icon className="h-6 w-6" strokeWidth={2}/>
+                        <Bars3Icon className="h-6 w-6 text-black" strokeWidth={2}/>
                     )}
                 </button>
             </div>
