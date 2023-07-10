@@ -39,7 +39,7 @@ function LoginPage(props: Props) {
                             className="flex flex-col items-center justify-center ">
                             <img
                                 src={tbImage}
-                                className="scale-100"
+                                className="scale-100 lg:scale-150"
                                 alt="3519283.jpg"/>
                         </div>
 

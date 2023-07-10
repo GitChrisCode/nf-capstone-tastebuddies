@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 import Autocomplete from './Autocomplete';
 import IngredientsList from "./Ingredients";
 import '../css/RecipeSearch.css';
+import { v4 as uuidv4 } from 'uuid';
 import {Card, CardBody, CardHeader, Typography} from "@material-tailwind/react";
 import GuestHandling from "./GuestHandling";
 import NavigationBar from "./NavigationBar";
@@ -184,7 +185,7 @@ function RecipeSearch() {
                     {recipesSearchResult.length > 0 ? (
                             <div className="flex flex-wrap flex-row m-2">
                                 {recipesSearchResult.map(recipe => (
-                                        <div className="">
+                                        <div key={uuidv4()} className="">
                                             <Card className="mt-6 mr-1 w-96">
                                                 <CardHeader color="blue-gray" className="relative h-56">
                                                     <Link to={`/recipe/${recipe.id}`}>

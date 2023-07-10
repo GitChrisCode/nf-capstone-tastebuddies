@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {Guest} from '../model/Guest';
 import IngredientsList from "./Ingredients";
+import { v4 as uuidv4 } from 'uuid';
 import Autocomplete from "./Autocomplete";
 import {Button, Card, Input, Typography} from "@material-tailwind/react";
 import NavigationBar from "./NavigationBar";
@@ -158,7 +159,7 @@ function GuestManagement() {
                                                     </thead>
                                                     <tbody>
                                                     {filteredGuestList.map((guest) => (
-                                                        <tr>
+                                                        <tr key={uuidv4()}>
                                                             <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
                                                                 {guest.guestName}
                                                             </th>
