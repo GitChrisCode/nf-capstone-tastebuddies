@@ -9,6 +9,7 @@ import Test from "./components/Test";
 import RecipeDetail from "./components/RecipeDetail";
 import UserDetails from "./components/UserDetails";
 import GuestManagement from "./components/GuestManagement";
+import "./App.css"
 
 function App() {
 

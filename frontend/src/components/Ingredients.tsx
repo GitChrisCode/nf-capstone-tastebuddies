@@ -15,7 +15,7 @@ const IngredientsList: React.FC<IngredientsListProps> = ({
                                                          }) => {
     console.log("Ingredients List!!!");
     return (
-        <div className="flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded m-8">
+        <div className="">
             <div className="rounded-t mb-0 px-4 py-3 border-0">
                 <div className="flex flex-wrap items-center">
                     <div className="relative w-full px-4 max-w-full flex-grow flex-1">
@@ -25,7 +25,7 @@ const IngredientsList: React.FC<IngredientsListProps> = ({
                 </div>
             </div>
 
-            <div className="block w-full overflow-x-auto">
+            <div className="">
                 <table className="items-center bg-transparent w-full border-collapse">
                     <thead>
                     <tr>

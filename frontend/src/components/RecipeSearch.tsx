@@ -109,7 +109,7 @@ function RecipeSearch() {
     return (
         <section className="h-screen">
             <div className="flex h-full justify-center">
-                <div className="grid">
+                <div className="ml-4">
                     <div>
                         <NavigationBar/>
                     </div>
@@ -123,7 +123,7 @@ function RecipeSearch() {
                             uniqueExcludeIngredients={uniqueExcludeIngredients}/>
                     </div>
                     <div>
-                        <form onSubmit={searchSubmit} className="w-96">
+                        <form onSubmit={searchSubmit} className="w-auto ">
                             <Autocomplete onIncludeChange={handleIncludeChange} onExcludeChange={handleExcludeChange}/>
                             <button
                                 type="submit"
