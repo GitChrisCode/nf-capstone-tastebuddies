@@ -29,6 +29,7 @@ public class RecipeService {
                 .queryParam("apiKey", apiKey)
                 .queryParam("includeIngredients", includeIngredients)
                 .queryParam("excludeIngredients", excludeIngredients)
+                .queryParam("number", "24")
                 .toUriString();
 
         return Objects.requireNonNull(Objects.requireNonNull(webClient.get())

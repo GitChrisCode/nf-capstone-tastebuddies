@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
 import axios from 'axios';
-import LogoutButton from "./LogoutButton";
 import {Steps} from "../model/Steps";
 import {RecipeDetailInformation} from "../model/RecipeDetailInformation";
 import {Typography} from "@material-tailwind/react";
+import LogoutButton from "./LogoutButton";
 
 type Props = {
     id: string;
@@ -42,71 +42,95 @@ function RecipeDetail() {
     }
 
     return (
-        <div>
-            <div className="flex">
-                <LogoutButton/>
+        <div className="flex flex-col">
+            <div className="self-start mt-8">
                 <button
                     onClick={handleGoBack}
-                    className="px-4 py-1 w-fit text-sm text-Blue-600 font-semibold rounded-full border border-blue-200 hover:text-white hover:bg-blue-800 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-bule-800 focus:ring-offset-2"
+                    className="mb-2 px-4 py-1 w-fit text-sm text-Blue-600 font-semibold rounded-full border border-blue-200 hover:text-white hover:bg-blue-800 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-bule-800 focus:ring-offset-2"
                     data-te-ripple-color="light"
                 >Go Back
                 </button>
+                <LogoutButton/>
             </div>
             <Typography
-                className="m-4 block font-sans text-4xl font-semibold leading-tight tracking-normal text-inherit antialiased"
+                className="text-center block font-sans text-4xl font-semibold leading-tight tracking-normal text-inherit antialiased"
             > {recipe.title}
             </Typography>
-            <img className="place-content-center" src={recipe.image} alt={recipe.title}/>
-            <Typography
-                class="ml-8 m-4 block font-sans text-2xl font-semibold leading-snug tracking-normal text-inherit antialiased"
-            >Ingredients:
-            </Typography>
-            <div className="ml-16">
-                <ul className="list-disc">
-                    {recipe.extendedIngredients.map((ingredients, index) => (
-                        <li key={`ingredient-${index}`}>
-                            {Math.ceil(ingredients.measures.metric.amount)} {ingredients.measures.metric.unitShort} {ingredients.name}
-                        </li>
-                    ))}
-                </ul>
+
+            <img className="-mt-40 -mb-40 scale-50" src={recipe.image} alt={recipe.title}/>
+
+            <div className="grid grid-cols-3">
+                <div className="ml-10">
+                    <p
+                        className="text-2xl "
+                    >Ingredients:
+                    </p>
+                    <div className="pl-4">
+                        <ul className="list-disc">
+                            {recipe.extendedIngredients.map((ingredients, index) => (
+                                <li key={`ingredient-${index}`}>
+                                    {Math.ceil(ingredients.measures.metric.amount)} {ingredients.measures.metric.unitShort} {ingredients.name}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+                <div className="">
+                    <table className="border border-fixed table-auto border-slate-500  ml-4">
+                        <thead>
+                        <tr className="">
+                            <th align="left">Nutritional Values</th>
+                            <th align="left"></th>
+                        </tr>
+                        </thead>
+                        <tbody >
+                        <tr >
+                            <td className="border border-slate-600">Calories</td>
+                            <td className="border border-slate-600">{recipe.nutrition.nutrients.find(nutrient => nutrient.name === 'Calories')?.amount} {recipe.nutrition.nutrients.find(nutrient => nutrient.name === 'Calories')?.unit}</td>
+                        </tr>
+                        <tr>
+                            <td className="border border-slate-600">Fat</td>
+                            <td  className="border border-slate-600">{recipe.nutrition.nutrients.find(nutrient => nutrient.name === 'Fat')?.amount} {recipe.nutrition.nutrients.find(nutrient => nutrient.name === 'Fat')?.unit}</td>
+                        </tr>
+                        <tr className="text-sm">
+                            <td  >of which are saturated Fat</td>
+                            <td  >{recipe.nutrition.nutrients.find(nutrient => nutrient.name === 'Saturated Fat')?.amount} {recipe.nutrition.nutrients.find(nutrient => nutrient.name === 'Saturated Fat')?.unit}</td>
+                        </tr>
+                        <tr>
+                            <td  className="border border-slate-600">Carbohydrates</td>
+                            <td  className="border border-slate-600">{recipe.nutrition.nutrients.find(nutrient => nutrient.name === 'Carbohydrates')?.amount} {recipe.nutrition.nutrients.find(nutrient => nutrient.name === 'Carbohydrates')?.unit}</td>
+                        </tr>
+                        <tr className="text-sm">
+                            <td  >of which are sugar</td>
+                            <td  >{recipe.nutrition.nutrients.find(nutrient => nutrient.name === 'Sugar')?.amount} {recipe.nutrition.nutrients.find(nutrient => nutrient.name === 'Sugar')?.unit}</td>
+                        </tr>
+                        <tr>
+                            <td  className="border border-slate-600">Protein</td>
+                            <td  className="border border-slate-600">{recipe.nutrition.nutrients.find(nutrient => nutrient.name === 'Protein')?.amount} {recipe.nutrition.nutrients.find(nutrient => nutrient.name === 'Protein')?.unit}</td>
+                        </tr>
+                        <tr>
+                            <td  className="border border-slate-600">Sodium</td>
+                            <td  className="border border-slate-600">{recipe.nutrition.nutrients.find(nutrient => nutrient.name === 'Sodium')?.amount} {recipe.nutrition.nutrients.find(nutrient => nutrient.name === 'Sodium')?.unit}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div className="ml-4">
-                <Typography
-                    className="m-4 block font-sans text-2xl font-semibold leading-snug tracking-normal text-inherit antialiased">Instructions:</Typography>
+                <p
+                    className="mt-4 ml-4 text-2xl "
+                >Instructions:
+                </p>
 
                 {recipe.analyzedInstructions.map((instruction) => (
                     <div
                         key={instruction.name}
-                        className="ml-8">
+                        className="ml-10">
                         <h3>{instruction.name}</h3>
                         <StepList steps={instruction.steps}/>
                     </div>
                 ))}
 
-            </div>
-            <div className="ml-4">
-                <Typography
-                    className="m-4 block font-sans text-2xl font-semibold leading-snug tracking-normal text-inherit antialiased">Nutrients:</Typography>
-                <table className="ml-8">
-                    <thead>
-                    <tr className="">
-                        <th align="left">Name</th>
-                        <th align="left">Amount</th>
-                        <th align="left">Percent of Daily Needs</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {recipe.nutrition.nutrients.map((nutrient) => (
-                        <tr
-                            className=""
-                            key={nutrient.name.toString()}>
-                            <td>{nutrient.name}</td>
-                            <td>{`${nutrient.amount} ${nutrient.unit}`}</td>
-                            <td>{nutrient.percentOfDailyNeeds}</td>
-                        </tr>
-                    ))}
-                    </tbody>
-                </table>
             </div>
         </div>
     );

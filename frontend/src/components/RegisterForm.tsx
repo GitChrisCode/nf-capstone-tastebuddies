@@ -23,7 +23,7 @@ function RegisterForm() {
     const handleSubmit = () => {
         console.log("HANDLE RegisterForm SUBMIT!!!: ", userName)
 
-        const passwordRegex = /^(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        const passwordRegex = /^(?=.*[A-Z])(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
         if (!passwordRegex.test(userPassword)) {
             console.error('Das Passwort erfüllt nicht die Anforderungen.');
             return;
@@ -70,7 +70,7 @@ function RegisterForm() {
                     shadow={false}
                     className="flex flex-col  ">
                     <div className="">
-                        <Typography variant="h4" color="blue-gray">
+                        <Typography variant="h4" color="blue-gray" clasName="mb-4">
                             Sign Up
                         </Typography>
                         <Typography color="gray" className="mt-1 font-normal">

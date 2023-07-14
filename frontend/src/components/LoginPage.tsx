@@ -1,6 +1,7 @@
 import React, {FormEvent, useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import tbImage from "../data/tbLogo.png"
+import {Card, Typography} from "@material-tailwind/react";
 
 
 type Props = {
@@ -31,20 +32,21 @@ function LoginPage(props: Props) {
 
     return (
         <div className="grid grid-flow-row justify-items-center mb-12">
-            <div className=" mb-12 ">
-                <div
-                    className="flex flex-col items-center justify-center ">
-                    <img
-                        src={tbImage}
-                        className="scale-auto"
-                        alt="3519283.jpg"/>
-                </div>
+            <header>
+                <img
+                    src={tbImage}
+                    className="scale-auto"
+                    alt="3519283.jpg"/>
+            </header>
+            <Card
+                color="transparent"
+                shadow={false}
+                className="flex flex-col  ">
+                <Typography variant="h4" color="blue-gray" className="mb-4">
+                    Sign In
+                </Typography>
                 <form className="flex flex-col"
                       onSubmit={loginOnSubmit}>
-                    <div className="ml-2 flex flex-row items-start justify-start mb-4">
-                        <p className="mb-0 mr-4 text-lg font-bold">Sign In</p>
-                    </div>
-
                     <div className="ml-2 flex w-72 flex-col gap-6">
                         <div className="relative h-10 w-full ">
                             <input
@@ -94,8 +96,9 @@ function LoginPage(props: Props) {
                         </div>
                     </div>
                 </form>
-            </div>
+            </Card>
         </div>
+
     );
 }
 

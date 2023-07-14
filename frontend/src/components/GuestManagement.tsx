@@ -129,12 +129,11 @@ function GuestManagement() {
         <section className="h-screen">
             <div className="flex h-full justify-center">
                 <div className="grid">
-                    <div className="flex flex-wrap flex-col justify-items-center ">
+                    <div className="flex flex-wrap flex-col justify-start">
                         <div><NavigationBar/></div>
-                        <Card color="transparent" shadow={false}>
-                            <Typography variant="h4" className="mt-3 text-gray-500 mb-2">Buddie Management</Typography>
-                            <div>
-                                <section className="py-1 bg-blueGray-50 -ml-4 -mt-10">
+                            <Typography variant="h4" className="mt-3  text-gray-500 mb-2">Buddie Management</Typography>
+                            <div className="self-auto">
+                                <section className="py-1 bg-blueGray-50 -ml-4 -mt-20">
                                     <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24">
                                         <div
                                             className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
@@ -189,14 +188,14 @@ function GuestManagement() {
                                         </div>
                                     </div>
                                 </section>
-                            </div>
+                            </div >
                             {editGuest ? (
-                                <>
-                                    <Typography>Edit Guest:</Typography>
+                                <div className="-mt-5 shadow-lg rounded">
+                                    <Typography className=" ml-2 text-lg">Edit Guest:</Typography>
                                     <form
-                                        className="mt-8 mb-2 p-2 w-80 max-w-screen-lg sm:w-96"
+                                        className="mt-8 mb-2 p-2 w-96"
                                         onSubmit={handleEditGuest}>
-                                        <div className="mb-4 gap-6">
+                                        <div className="mb-4 gap-6 ">
                                             <Input
                                                 size="lg"
                                                 label="Guest Name"
@@ -210,15 +209,15 @@ function GuestManagement() {
                                                 <Autocomplete onIncludeChange={handleIncludeChange}
                                                               onExcludeChange={handleExcludeChange}/>
                                             </label>
-                                            <div className="flex flex-wrap flex-row mb-4">
-                                                <div>
+                                            <div className="flex flex-row columns-2 items-start mb-4">
+                                                <div className="mr-2 shadow-lg rounded">
                                                     <IngredientsList
                                                         ingredients={editGuest.includeIngredients}
                                                         onIngredientRemove={handleIncludeIngredientRemove}
                                                         title="Include Ingredients"
                                                     />
                                                 </div>
-                                                <div>
+                                                <div className="mr-2 shadow-lg rounded">
                                                     <IngredientsList
                                                         ingredients={editGuest.excludeIngredients}
                                                         onIngredientRemove={handleExcludeIngredientRemove}
@@ -237,7 +236,7 @@ function GuestManagement() {
                                             </button>
                                         </div>
                                     </form>
-                                </>
+                                </div>
                             ) : (
                                 <>
                                     <Typography className="text-lg mb-4">Create New Guest</Typography>
@@ -262,7 +261,6 @@ function GuestManagement() {
                                     </form>
                                 </>
                             )}
-                        </Card>
                     </div>
                 </div>
             </div>

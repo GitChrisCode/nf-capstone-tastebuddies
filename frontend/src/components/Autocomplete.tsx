@@ -78,11 +78,6 @@ const Autocomplete = ({onIncludeChange, onExcludeChange}: AutocompleteProps) => 
                     ))}
                 </List>
             </Card>
-            {selectedSuggestion && (
-                <div>
-                    Ausgewählter Vorschlag: {selectedSuggestion.FIELD1} (ID: {selectedSuggestion.FIELD2})
-                </div>
-            )}
         </div>
     );
 };
