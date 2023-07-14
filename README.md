@@ -1,12 +1,7 @@
-TasteBuddies
+Taste Buddies
 
-TasteBuddies is a recipe app with a focus on creating menus based on the preferences and dislikes of your guests, along with features like a shopping list and a menu planner.
-
-Features
-
-  - Guest Preferences: Users can specify their taste preferences, including allergies, dietary restrictions, and personal preferences. This allows for personalized menu creation.
-  - Menu Creation: Enables users to create menus by selecting from a collection of recipes. Users can combine various appetizers, main courses, side dishes, and desserts to create a complete menu.
-  - Menu Recommendation Algorithm: Implements an algorithm that automatically generates suitable menu suggestions based on the preferences and dislikes of the guests.
+TasteBuddies is a recipe app with a focus on creating menus based on the preferences of your guests.
+Users can specify their taste preferences. This allows for personalized menu creation.
 
 Technologies Used
 
