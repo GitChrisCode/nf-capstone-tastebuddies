@@ -4,7 +4,7 @@ import {Guest} from '../model/Guest';
 import IngredientsList from "./Ingredients";
 import {v4 as uuidv4} from 'uuid';
 import Autocomplete from "./Autocomplete";
-import {Button, Card, Input, Typography} from "@material-tailwind/react";
+import {Button, Input, Typography} from "@material-tailwind/react";
 import NavigationBar from "./NavigationBar";
 import {PencilSquareIcon} from "@heroicons/react/24/outline";
 import {TrashIcon} from "@heroicons/react/24/solid";

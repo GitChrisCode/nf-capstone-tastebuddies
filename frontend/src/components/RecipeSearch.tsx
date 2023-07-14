@@ -1,5 +1,4 @@
 import React, {FormEvent, useEffect, useState} from 'react';
-import LogoutButton from './LogoutButton';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import Autocomplete from './Autocomplete';
@@ -28,7 +27,6 @@ function RecipeSearch() {
     const [includeIngredients, setIncludeIngredients] = useState<string[]>([]);
     const [excludeIngredients, setExcludeIngredients] = useState<string[]>([]);
     const [recipesSearchResult, setRecipesSearchResult] = useState<Recipes[]>([]);
-    const [totalResults, setTotalResults] = useState<number>(0);
     const [uniqueIncludeIngredients, setUniqueIncludeIngredients] = useState<string[]>([]);
     const [uniqueExcludeIngredients, setUniqueExcludeIngredients] = useState<string[]>([]);
     const [mergedIncludeIngredients, setMergedIncludeIngredients] = useState<string[]>([]);
@@ -80,7 +78,6 @@ function RecipeSearch() {
                 .then(response => response.data)
                 .then((data: RecipesResponse) => {
                     setRecipesSearchResult(data.results);
-                    setTotalResults(data.totalResults);
                 })
                 .catch(error => {
                     if (error.response && error.response.status === 500) {

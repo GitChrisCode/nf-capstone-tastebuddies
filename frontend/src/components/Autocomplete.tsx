@@ -24,7 +24,6 @@ interface AutocompleteProps {
 const Autocomplete = ({onIncludeChange, onExcludeChange}: AutocompleteProps) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [suggestions, setSuggestions] = useState<Ingredient[]>([]);
-    const [selectedSuggestion, setSelectedSuggestion] = useState<Ingredient | null>(null);
     const [includeIngredients, setIncludeIngredients] = useState<string[]>([]);
     const [excludeIngredients, setExcludeIngredients] = useState<string[]>([]);
 
@@ -39,7 +38,6 @@ const Autocomplete = ({onIncludeChange, onExcludeChange}: AutocompleteProps) => 
     };
 
     const handleSuggestionClick = (type: string, suggestion: Ingredient) => {
-        setSelectedSuggestion(suggestion);
         setSearchTerm(suggestion.FIELD1);
         if (type === 'include') {
             setIncludeIngredients([...includeIngredients, suggestion.FIELD1]);
